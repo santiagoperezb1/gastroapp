@@ -1,0 +1,42 @@
+from django.urls import path
+from .views import (
+    crear_pedido,
+    actualizar_estado,
+    agregar_plato_pedido,
+    finalizar_venta,
+    finalizar_venta_domicilio,
+    listar_pedidos_activos,
+    detalle_pedido,
+    detalle_pedido_domicilio,
+    cambiar_estado_item,
+    cambiar_estado_item_domicilio,
+    pedidos_actualizados,
+    crear_pedido_domicilio,
+    agregar_plato_pedido_domicilio,
+    imprimir_comanda_pedido,
+    imprimir_comanda_pedido_domi,
+    cargar_detalle_pedido,
+    editar_plato,
+    eliminar_plato
+)
+
+urlpatterns = [
+    path('', crear_pedido, name='crear_pedido'),
+    path('crear_pedido_domicilio/', crear_pedido_domicilio, name='crear_pedido_domicilio'),
+    path('actualizar_estado/<int:pedido_id>/', actualizar_estado, name='actualizar_estado'),
+    path('detalle/<int:mesa_id>/', detalle_pedido, name='detalle_pedido'),
+    path('detalle-domicilio/<int:pedido_id>/', detalle_pedido_domicilio, name='detalle_pedido_domicilio'),
+    path('agregar_domicilio/<int:pedido_id>/', agregar_plato_pedido_domicilio, name='agregar_plato_pedido_domicilio'),
+    path('agregar/<int:pedido_id>/', agregar_plato_pedido, name='agregar_plato_pedido'),
+    path('finalizar/<int:pedido_id>/', finalizar_venta, name='finalizar_venta'),
+    path('finalizar-domicilio/<int:pedido_id>/', finalizar_venta_domicilio, name='finalizar_venta_domicilio'),
+    path('pedidos_activos/', listar_pedidos_activos, name='listar_pedidos_activos'),
+    path('cambiar_estado_item/<int:item_id>/', cambiar_estado_item, name='cambiar_estado_item'),
+    path('cambiar_estado_item_domicilio/<int:item_id>/', cambiar_estado_item_domicilio, name='cambiar_estado_item_domicilio'),
+    path('pedidos/actualizados/', pedidos_actualizados, name='pedidos_actualizados'),
+    path('pedido/<int:pedido_id>/generar_comanda/', imprimir_comanda_pedido, name='imprimir_comanda_pedido'),
+    path('pedido/<int:pedido_id>/generar_comanda_domi/', imprimir_comanda_pedido_domi, name='imprimir_comanda_pedido_domi'),
+    path('cargar-detalle-pedido/<int:pedido_id>/', cargar_detalle_pedido, name='cargar_detalle_pedido'),
+    path('editar-plato/<int:item_id>/<int:pedido_id>/', editar_plato, name='editar_plato'),
+    path('eliminar-plato/<int:item_id>/<int:pedido_id>/', eliminar_plato, name='eliminar_plato'),
+]

@@ -1,0 +1,198 @@
+{% extends 'planta.html' %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/usuarios/planes_precios.css' %}">
+{% endblock %}
+
+{% block content %}
+<style>
+    .full-width {
+        width: 100%; /* Ocupar todo el ancho */
+        overflow: hidden; /* Evitar desbordamientos */
+    }
+
+    .full-width img {
+        width: 100%; /* Hacer que la imagen ocupe todo el ancho del contenedor */
+        height: auto; /* Mantener la proporción de la imagen */
+    }
+</style>
+    <div class="full-width">
+        <img src="{% static 'images/lp_inicio_head.png' %}" alt="Mesa" class="img-fluid">
+    </div>
+
+    <div class="container mt-5">
+        <img src="{% static 'images/sofware_head.png' %}" alt="Mesa" class="img-fluid">
+    
+    <div class="modern-title-nav text-center mt-3">
+        <h1><strong>Explora las preguntas frecuentes</strong></h1>
+    </div>
+    <br>
+    <div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="accordion" id="exampleAccordion">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button accordion-button-2 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                            ¿Cuál es la diferencia entre factura POS y factura electrónica?
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#exampleAccordion">
+                        <div class="accordion-body">
+                            <br>Para emitir una factura de venta existen 2 modalidades: Sistemas POS y Facturación Electrónica. La diferencia está en que la factura de venta POS no se reporta en tiempo real a la DIAN, solo consiste en la emisión de un tiquete físico que se genera a través de una máquina registradora al momento de pagar por un bien o servicio.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button accordion-button-2 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            ¿Qué es facturación POS?
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#exampleAccordion">
+                        <div class="accordion-body">
+                            <br>La Facturación POS es la emisión de tiquetes físicos generados por una máquina registradora al momento de realizar el pago de un bien o servicio. A diferencia de la Facturación Electrónica, una factura POS es un tipo de factura de venta que no se reporta en tiempo real a la DIAN.
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingThree">
+                        <button class="accordion-button accordion-button-2 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            ¿Cómo se utiliza un Software POS?
+                        </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#exampleAccordion">
+                        <div class="accordion-body">
+                            <br>Usar un Software Punto de venta es tan fácil que solo necesitas seleccionar el producto vendido, crear la factura de tu cliente, seleccionar el método de pago y registrar el cobro. Tareas como la actualización de inventario o el control de efectivo se hacen de forma automática y en tiempo real. visualizar todas las mesas disponibles, así como crear, editar y eliminar mesas según sea necesario. Esta funcionalidad asegura que el espacio del restaurante se utilice de manera óptima, mejorando la experiencia del cliente y la eficiencia operativa.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFour">
+                        <button class="accordion-button accordion-button-2 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                            ¿Puedo generar solo facturación electrónica y no generar POS electrónico?
+                        </button>
+                    </h2>
+                    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#exampleAccordion">
+                        <div class="accordion-body">
+                            <br>Sí, en Colombia puedes optar por generar únicamente facturación electrónica sin necesidad de usar facturación POS electrónico. La facturación electrónica cumple con todas las normativas de la DIAN y es válida para cualquier tipo de transacción comercial. Con Alegra, puedes gestionar toda tu facturación electrónica de manera eficiente y en conformidad con las regulaciones vigentes.
+                        </div>
+                    </div>
+                </div>
+          
+            </div>
+        </div>
+    </div>
+        <div class="col-md-6">
+            <div class="accordion" id="exampleAccordionTwo">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOneOne">
+                        <button class="accordion-button accordion-button-2 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOneOne" aria-expanded="false" aria-controls="collapseOneOne">
+                            ¿Qué es un sistema POS para negocio?
+                        </button>
+                    </h2>
+                    <div id="collapseOneOne" class="accordion-collapse collapse" aria-labelledby="headingOneOne" data-bs-parent="#exampleAccordionTwo">
+                        <div class="accordion-body">
+                            <br>Un Sistema Punto de venta (POS) es una herramienta que automatiza los procesos que intervienen en tu venta y facturación diaria. Entre ellos tenemos: el registro de clientes, la actualización de inventario, el control de efectivo, la creación de facturas (electrónicas o POS) y mucho más. De esta manera, agilizas tus ventas y ofreces una mejor experiencia de compra a tus clientes.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwoOne">
+                        <button class="accordion-button accordion-button-2 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwoOne" aria-expanded="false" aria-controls="collapseTwoOne">
+                            ¿Qué dispositivos me recomiendan para usar con GastroPOS?
+                        </button>
+                    </h2>
+                    <div id="collapseTwoOne" class="accordion-collapse collapse" aria-labelledby="headingTwoOne" data-bs-parent="#exampleAccordionTwo">
+                        <div class="accordion-body">
+                            <br>GastroPOS se adapta fácilmente a cualquier computadora, impresora o tablet.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingThreeOne">
+                        <button class="accordion-button accordion-button-2 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThreeOne" aria-expanded="false" aria-controls="collapseThreeOne">
+                            ¿Qué beneficios tengo con GastroPOS?
+                        </button>
+                    </h2>
+                    <div id="collapseThreeOne" class="accordion-collapse collapse" aria-labelledby="headingThreeOne" data-bs-parent="#exampleAccordionTwo">
+                        <div class="accordion-body">
+                            <br>Con un Sistema POS como GastroPOS: agilizas tu proceso de venta al crear tus boletas y facturas en segundos, simplificas el manejo de tus terminales de venta al gestionar todo desde un solo lugar, ahorras tiempo al mantener tu inventario siempre actualizado, controlas ágilmente tu efectivo al realizar fácilmente cierres de turnos y mucho más.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFourOne">
+                        <button class="accordion-button accordion-button-2 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFourOne" aria-expanded="false" aria-controls="collapseFourOne">
+                            ¿Puedo generar facturas electrónicas con GastroPOS?
+                        </button>
+                    </h2>
+                    <div id="collapseFourOne" class="accordion-collapse collapse" aria-labelledby="headingFourOne" data-bs-parent="#exampleAccordionTwo">
+                        <div class="accordion-body">
+                            <br>Sí, puedes emitir fácilmente facturas electrónicas o documentos equivalentes con todos los requisitos de la DIAN por cada venta realizada con GastroPOS.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFiveOne">
+                        <button class="accordion-button accordion-button-2  collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFiveOne" aria-expanded="false" aria-controls="collapseFiveOne">
+                            ¿Tengo el control de mi efectivo con GastroPOS?
+                        </button>
+                    </h2>
+                    <div id="collapseFiveOne" class="accordion-collapse collapse" aria-labelledby="headingFiveOne" data-bs-parent="#exampleAccordionTwo">
+                        <div class="accordion-body">
+                            <br>Sí, con GastroPOS tienes el control total de tu efectivo, además de poder registrar cada entrada y salida de dinero diferente al de tus ventas. Visita este artículo y conoce cómo utilizar la Gestión de efectivo en tu local.
+                        </div>
+                    </div>
+                </div>
+               
+            </div>
+            
+</div>
+</div>
+</div>
+</div>
+<br>
+<br>
+    <!-- Modal -->
+    <div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="videoModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content" style="background: transparent; border: none;">
+                <div class="modal-body">
+                    <video id="miVideo" width="100%" autoplay muted>
+                        <source src="{% static 'videos/video_inicio_logo.mp4' %}" type="video/mp4">
+                        Tu navegador no soporta el video.
+                    </video>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Abrir el modal automáticamente al cargar la página
+        window.onload = function() {
+            var videoModal = new bootstrap.Modal(document.getElementById('videoModal'));
+            videoModal.show();
+        };
+
+        // Cuando el modal se abre, reproduce el video
+        $('#videoModal').on('shown.bs.modal', function () {
+            var video = document.getElementById('miVideo');
+            video.play();
+        });
+
+        // Cuando el video termina, cierra el modal
+        document.getElementById('miVideo').addEventListener('ended', function() {
+            var videoModal = bootstrap.Modal.getInstance(document.getElementById('videoModal'));
+            if (videoModal) {
+                videoModal.hide(); // Cierra el modal
+            }
+        });
+
+        // Al cerrar el modal, pausa el video y reinicia
+        $('#videoModal').on('hidden.bs.modal', function () {
+            var video = document.getElementById('miVideo');
+            video.pause();
+            video.currentTime = 0; // Reinicia el video
+        });
+    </script>
+{% endblock %}

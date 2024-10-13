@@ -1,0 +1,91 @@
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/platos/menu_digital.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+
+    <div class="text-center mb-4">
+        <h1 class="menu-title">Menú Digital {{ perfil.company }}</h1>
+        <br>
+        <p class="menu-description">Explora nuestro menú y descubre los deliciosos platos que ofrecemos.</p>
+    </div>
+    <br>
+    <div class="carrito mt-3">
+        <h2>Pedido</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <div id="carrito-contenido" class="mb-3"></div>
+                <div style="text-align: right;">
+                    <button id="vaciar-carrito" class="btn btn-vaciar mb-3">Vaciar Carrito</button>
+                </div>
+                
+            </div>
+            <div class="col-md-6">
+                <h2 id="total" class="font-weight-bold">Total: $0</h2>
+            </div>
+        </div>
+    </div>
+    
+    
+    <br>
+    <div class="accordion" id="accordionMenu">
+        {% for categoria, platos in platos_por_categoria.items %}
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button elegant-header" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ forloop.counter }}" aria-expanded="true" aria-controls="collapse{{ forloop.counter }}">
+                    <h1>{{ categoria.nombre }} </h1>
+                </button>
+            </h2>
+            
+            <div id="collapse{{ forloop.counter }}" class="accordion-collapse collapse show">
+                <div class="accordion-body">
+                    <div class="row">
+                        {% for plato in platos %}
+                        <div class="col-md-4 mb-4">
+                            <div class="card menu-card">
+                                {% if plato.imagen %}
+                                    <img src="{{ plato.imagen.url }}" class="card-img-top" alt="Imagen de plato">
+                                {% else %}
+                                    <img src="{% static 'images/dish.jpg' %}" class="card-img-top" alt="Imagen por defecto">
+                                {% endif %}
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ plato.nombre }}</h5>
+                                    <p class="card-text">${{ plato.precio|floatformat:0 }}</p>
+                                    <br>
+                                    <p class="card-text">{{ plato.detalle }}</p>
+                                    <div class="input-group mb-3">
+                                        <select class="form-control input-cantidad">
+                                            {% for i in "12345678910" %}
+                                                <option value="{{ forloop.counter }}">{{ forloop.counter }}</option>
+                                            {% endfor %}
+                                        </select>
+                                        
+                                        <button class="btn btn-agregar agregar-carrito" data-nombre="{{ plato.nombre }}" data-precio="{{ plato.precio }}" type="button">Agregar al carrito</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <br> 
+                        </div>
+                        {% empty %}
+                        <div class="col-12">
+                            <p>No hay platos en esta categoría.</p>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+</div>
+<br>
+<br>
+<div id="notificacion" class="alert alert-success d-none" role="alert"></div>
+
+<script src="{% static 'js/platos/carrito.js' %}"></script>
+{% endblock %}

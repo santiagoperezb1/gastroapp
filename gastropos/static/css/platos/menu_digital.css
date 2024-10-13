@@ -1,0 +1,342 @@
+/* Estilo general para el fondo */
+body {
+    background: rgba(4, 5, 37, 0.87);
+    font-family: Arial, sans-serif;
+}
+
+.h1{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 40px;
+}
+/* Contenedor principal */
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* Títulos */
+.menu-title {
+    font-size: 3.5rem;
+    font-weight: bold;
+    text-align: center;
+    color: #ebe0d9;
+    margin-bottom: 0.5rem;
+}
+
+.menu-description {
+    font-size: 1.2rem;
+    color: #aba7a7;
+    text-align: left;
+}
+
+/* Acordeón */
+.accordion-button {
+    background-color: #ffffff; /* Color de fondo azul */
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    text-align: center; /* Texto centrado */
+    font-size: 1.1rem;
+    padding: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.accordion-button.elegant-header {
+    background-color: transparent; /* Sin fondo */
+    border: none; /* Sin borde */
+    padding: 0; /* Sin relleno adicional */
+    text-align: center; /* Texto centrado */
+    font-family: 'Georgia', serif; /* Tipografía elegante y cursiva */
+    font-style: italic; /* Cursiva */
+    color: #fffbfb; /* Color de texto elegante y suave */
+    text-align: center;
+}
+
+.accordion-button.elegant-header h1 {
+    font-size: 2.8rem; /* Tamaño de fuente grande, ajustable */
+    font-weight: normal; /* Peso de fuente normal para cursiva */
+    margin: 0; /* Sin margen */
+}
+
+.accordion-button.elegant-header:focus {
+    box-shadow: none; /* Sin sombra al enfocar */
+    outline: none; /* Sin contorno al enfocar */
+}
+
+.accordion-button.elegant-header:not(.collapsed) {
+    color: #dfe5eb; /* Cambiar color cuando está expandido */
+}
+
+
+
+/* Cuerpo del acordeón */
+.accordion-body {
+    padding: 1rem;
+    background-color: transparent; /* Fondo blanco para el cuerpo */
+    border-radius: 8px;
+}
+
+/* Tarjetas de los platos */
+.menu-card {
+    border: none;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.menu-card:hover {
+    transform: scale(1.05); /* Efecto de aumento */
+}
+
+.card-img-top {
+    object-fit: cover;
+    height: 350px;
+    width: 100%;
+}
+
+/* Estilo del cuerpo de la tarjeta */
+.card-body {
+    padding: 1rem;
+    background-color: #ffffff3b;
+}
+
+/* Títulos de las tarjetas */
+.card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fff9f9;
+    margin-bottom: 0.5rem;
+}
+
+/* Texto dentro de las tarjetas */
+.card-text {
+    font-size: 1.2rem;
+    color: #f7f7f7;
+    margin: 0.5rem 0;
+}
+
+/* Botones dentro de las tarjetas */
+.btn-info {
+    background-color: #0078d4;
+    border: none;
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    color: #fff;
+    transition: background-color 0.3s ease;
+}
+
+.btn-info:hover {
+    background-color: #005a9e;
+}
+
+.btn-info i {
+    margin-right: 5px;
+}
+
+/* Estilo del botón del acordeón */
+.microsoft-style-button {
+    background-color: #ce6606; /* Azul de Microsoft */
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    padding: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.microsoft-style-button:hover {
+    background-color: #be6908;
+}
+
+.microsoft-style-button:focus {
+    box-shadow: none;
+}
+
+.microsoft-style-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+}
+
+.microsoft-style-text {
+    font-size: 1.2rem;
+}
+
+.carrito {
+    background: #060224d2;/* Opacidad ajustada para mayor visibilidad */
+    color: white;
+    border-radius: 8px; /* Bordes redondeados para un estilo más suave */
+    box-shadow: 0 4px 8px rgba(7, 195, 198, 0.849); /* Sombra sutil para profundidad */
+    padding: 16px; /* Espaciado interno para contenido más cómodo */
+    margin: 16px; /* Margen para separación de otros elementos */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transición suave para efectos interactivos */
+  }
+  .carrito:hover {
+    transform: translateY(-4px); /* Levantar la tarjeta al pasar el cursor */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Sombra más prominente al interactuar */
+  }
+
+  #carrito-contenido {
+    background-color: transparent; /* Fondo claro */
+    border: 1px solid #ced4da; /* Borde suave */
+    color: rgb(194, 194, 201);
+    font-size: 30px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 600;
+    border-radius: 8px; /* Bordes redondeados */
+    padding: 15px; /* Espaciado interno */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    max-height: 300px; /* Altura máxima */
+    overflow-y: auto; /* Scroll si el contenido es muy grande */
+}
+
+#carrito-contenido div {
+    padding: 10px; /* Espaciado para cada item */
+    border-bottom: 1px solid #dee2e6; /* Línea entre items */
+}
+
+#carrito-contenido div:last-child {
+    border-bottom: none; /* Sin línea en el último item */
+}
+
+.btn-eliminar {
+    background-color: #dc3545; /* Color de fondo rojo */
+    color: white; /* Texto en blanco */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 5px 10px; /* Espaciado interno */
+    font-size: 24px; /* Tamaño de fuente */
+    cursor: pointer; /* Cursor de mano al pasar el ratón */
+    transition: background-color 0.3s ease; /* Transición suave */
+    margin-left: 10px;
+}
+
+.btn-eliminar:hover {
+    background-color: #c82333; /* Color más oscuro al pasar el ratón */
+}
+
+.btn-eliminar:focus {
+    outline: none; /* Sin contorno al hacer clic */
+}
+
+
+.carrito h2 {
+    margin-bottom: 15px;
+}
+
+.carrito div {
+    padding: 5px 0;
+}
+
+.carrito .btn {
+    margin-top: 10px;
+}
+
+.cantidad {
+    width: 70px;
+    margin-right: 10px;
+}
+
+.alert {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 1000;
+}
+
+.btn-agregar {
+    background-color: #28a745; /* Verde */
+    color: white;
+    border: none;
+    border-radius: 20px; /* Bordes redondeados */
+    padding: 10px 20px;
+    font-size: 26px;
+    transition: background-color 0.3s, transform 0.2s;
+    margin-left: 20px;
+}
+
+.btn-agregar:hover {
+    background-color: #218838; /* Verde más oscuro */
+    transform: scale(1.05); /* Efecto de aumento */
+}
+
+.btn-vaciar {
+    background-color: #2e4fbb; /* Rojo */
+    color: white;
+    border: none;
+    border-radius: 30px; /* Bordes redondeados */
+    padding: 10px 20px;
+    font-size: 26px;
+    transition: background-color 0.3s, transform 0.2s;
+    text-align: right;
+    margin-right: 10px;
+}
+
+.btn-vaciar:hover {
+    background-color: #050a6c; /* Rojo más oscuro */
+    transform: scale(1.05); /* Efecto de aumento */
+}
+
+.input-cantidad {
+    width: 70px; /* Ancho del select */
+    padding: 10px; /* Espaciado interno */
+    border: 2px solid #007bff; /* Color del borde */
+    border-radius: 5px; /* Bordes redondeados */
+    font-size: 22px; /* Tamaño de la fuente */
+    transition: border-color 0.3s, box-shadow 0.3s; /* Transiciones suaves */
+}
+
+.input-cantidad:focus {
+    border-color: #0056b3; /* Color del borde al hacer foco */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Sombra suave al foco */
+    outline: none; /* Elimina el contorno predeterminado */
+}
+
+#notificacion {
+    background: #060224d2;/* Opacidad ajustada para mayor visibilidad */
+    color: white;
+    border-radius: 8px; /* Bordes redondeados para un estilo más suave */
+    box-shadow: 0 4px 8px rgba(7, 195, 198, 0.849); /* Sombra sutil para profundidad */
+    font-size: 32px;
+    padding: 16px; /* Espaciado interno para contenido más cómodo */
+    margin: 16px; /* Margen para separación de otros elementos */
+    position: fixed;
+    top: 150px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: auto;
+    z-index: 1050; /* Asegúrate de que esté encima de otros elementos */
+    transition: opacity 0.5s ease-in-out;
+}
+
+
+@media (max-width: 576px) {
+    .menu-title {
+        font-size: 1.75rem;
+    }
+
+    .menu-description {
+        font-size: 0.9rem;
+    }
+
+    .accordion-button {
+        font-size: 0.9rem;
+        padding: 0.5rem;
+    }
+
+    .card-title {
+        font-size: 1.1rem;
+    }
+
+    .card-text {
+        font-size: 0.8rem;
+    }
+
+    .btn-info {
+        font-size: 0.7rem;
+        padding: 0.3rem 0.6rem;
+    }
+}

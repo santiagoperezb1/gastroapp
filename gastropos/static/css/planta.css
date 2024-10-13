@@ -1,0 +1,54 @@
+/* Estilos globales */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+/* Estilos del navbar */
+.custom-navbar {
+    background-color: #050b25; /* Fondo del navbar */
+    padding: 1rem; /* Espaciado alrededor del contenido */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); /* Sombra */
+}
+
+/* Estilos para los enlaces del navbar */
+.navbar-nav .nav-item .nav-link {
+    color: #0b1b5f; /* Color del texto */
+    padding: 0.75rem 1rem; /* Espaciado interno */
+    border-radius: 20px; /* Bordes redondeados */
+    transition: background-color 0.3s, color 0.3s; /* Transición suave */
+    font-weight: 600;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background: white;
+}
+
+/* Efecto al pasar el ratón sobre los enlaces */
+.navbar-nav .nav-item .nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Fondo en hover */
+    color: #ffffff; /* Color del texto en hover */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); /* Sombra */
+}
+
+/* Estilo para el logo */
+.logo {
+    width: 110px; /* Ajusta el tamaño del logo */
+    height: auto; /* Mantiene la proporción */
+}
+
+/* Ajuste de botones en móviles */
+.navbar-toggler {
+    border: none; /* Sin borde para el botón de menú */
+}
+
+/* Iconos en los enlaces */
+.nav-link i {
+    margin-right: 0.5rem; /* Espacio entre el icono y el texto */
+}
+
+/* Alineación de navbar en dispositivos pequeños */
+@media (max-width: 768px) {
+    .navbar-nav {
+        text-align: center; /* Centrar texto en dispositivos pequeños */
+    }
+}

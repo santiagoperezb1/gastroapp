@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/platos/listar_platos.css' %}">
+{% endblock %}
+
+{% block content %}
+<br>
+<div class="container mt-5">
+    <div>
+        <a href="{% url 'crear_plato' %}">
+            <h2>Crear Plato</h2>
+        </a>
+    </div>
+    <div>
+        <a href="{% url 'gestionar_categorias' %}">
+            <h4>Categorías</h4>
+        </a>
+    </div>
+    <!-- Botón para ir al menú digital -->
+    <div class="mb-4">
+        <a href="{% url 'menu_digital' user.id %}" class="btn btn-primary">Ver Menú Digital</a>
+        <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#qrModal">
+            Ver Código QR
+        </button>
+    </div>
+
+    <!-- Modal para el Código QR -->
+    <div class="modal fade" id="qrModal" tabindex="-1" aria-labelledby="qrModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="qrModalLabel">Código QR del Menú Digital</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <img src="data:image/png;base64,{{ qr_code }}" alt="Código QR" class="img-fluid">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="accordion" id="accordionPanelsStayOpenExample">
+        {% for categoria, platos in platos_por_categoria.items %}
+        <div class="accordion-item" style="background: transparent;">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed microsoft-style-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse{{ forloop.counter }}" aria-expanded="false" aria-controls="panelsStayOpen-collapse{{ forloop.counter }}">
+                    
+                    <span class="microsoft-style-text">{{ categoria.nombre }}</span>
+                </button>
+            </h2>
+            <div id="panelsStayOpen-collapse{{ forloop.counter }}" class="accordion-collapse collapse">
+                <div class="accordion-body">
+                    <div class="row">
+                        {% for plato in platos %}
+                        <div class="col-md-4 mb-4">
+                            <div class="card">
+                                {% if plato.imagen %}
+                                    <img src="{{ plato.imagen.url }}" class="card-img-top img-custom" alt="Imagen de plato">
+                                {% else %}
+                                    <img src="{% static 'images/dish.jpg' %}" class="card-img-top img-custom" alt="Imagen por defecto">
+                                {% endif %}
+                                <div class="card-body">
+                                    <div>
+                                        <a href="{% url 'actualizar_plato' plato.id %}">
+                                         {{ plato.nombre }}
+                                        </a>
+                                    </div>
+                                    
+                                    <div>
+                                        <a href="{% url 'actualizar_plato' plato.id %}">
+                                            <i class="fa-solid fa-tag"> ${{ plato.precio|floatformat:0 }}</i>
+                                        </a>
+                                    </div>
+                                    <div class="text-center mt-4">
+                                        <form method="post" action="{% url 'eliminar_plato' plato.id %}" style="display: inline;" onsubmit="return confirm('¿Estás seguro de que deseas eliminar?');">
+                                            {% csrf_token %}
+                                            <button type="submit" class="btn btn-danger">ᴇʟɪᴍɪɴᴀʀ</button>
+                                        </form>
+                                        <a href="{% url 'asociar_producto' plato.id %}" class="btn btn-primary">ʀᴇᴄᴇᴛᴀ</a>           
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% empty %}
+                        <p>No hay platos en esta categoría.</p>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<br>
+{% endblock %}

@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/inventario/asociar_producto.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="card card-shadow shadow-sm col-md-8 mx-auto">
+        
+            <h3 class="modern-title-alt">{{ plato.nombre }}</h3>
+        
+        <div class="card-body recipe-body">
+            <div class="row">
+                <!-- Formulario para asociar productos -->
+                <div class="col-md-12 mb-4">
+                    <form method="post" action="" class="d-flex align-items-center justify-content-between">
+                        {% csrf_token %}
+                        <div class="form-group mr-2">
+                            <label for="producto_id" class="sr-only">Seleccionar Producto:</label>
+                            <select name="producto_id" id="producto_id" class="form-control mr-2">
+                                {% for producto in productos %}
+                                    <option value="{{ producto.id }}">{{ producto.nombre }}</option>
+                                {% endfor %}
+                            </select>
+                            <br>
+                            <button type="submit" class="btn btn-primary">
+                                + ᴘʀᴏᴅᴜᴄᴛᴏ
+                            </button>
+                        </div>
+                        
+                    </form>
+                </div>
+
+                <!-- Lista de productos asociados al plato -->
+                <div class="col-md-12">
+                    <h3 class="text-center text-white">ɪɴɢʀᴇᴅɪᴇɴᴛᴇs</h3>
+                    <ul class="list-group recipe-ingredients">
+                        {% for plato_producto in plato_productos %}
+                        <li class="list-group-item recipe-item d-flex align-items-center">
+                            <form method="post" action="" class="d-inline w-100">
+                                {% csrf_token %}
+                                <div class="table-responsive">
+                                <div class="d-flex justify-content-between align-items-center w-100">
+                                    <!-- Nombre del producto -->
+                                    <div class="col-md-4">
+                                        <h5>{{ plato_producto.producto.nombre }}</h5>
+                                    </div>
+                                    <!-- Controles de cantidad necesaria -->
+                                    <div class="col-md-4 d-flex align-items-center justify-content-center">
+                                        <input type="hidden" name="plato_producto_id" value="{{ plato_producto.id }}">
+                                        <input type="text" name="cantidad_necesaria" value="{{ plato_producto.cantidad_necesaria }}" class="form-control mx-2" style="width: 80px;">
+                                        <input type="text" name="unidad_medida" value="{{ plato_producto.unidad_medida }}" class="form-control mx-2" style="width: 130px;">
+                                    </div>
+                                    <!-- Botones de actualizar y eliminar -->
+                                    <div class="col-md-4 d-flex justify-content-end">
+                                        <button type="submit" name="update" class="btn btn-success btn-sm mx-1"><i class="fa-solid fa-arrows-rotate"></i></button>
+                                        <button type="submit" name="delete" class="btn btn-danger btn-sm mx-1"><i class="fa-solid fa-trash-can"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            </form>
+                        </li>
+                        {% empty %}
+                        <li class="list-group-item text-center">No hay ingredientes asociados a este plato.</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer text-center">
+            <a href="{% url 'listar_platos' %}" class="btn btn-hover"><img src="{% static 'icons/back_sred.svg' %}" alt="Mesa" style="width:37px; height:37px;"></a>
+        </div>
+    </div>
+</div>
+<br>
+{% endblock %}

@@ -1,0 +1,397 @@
+body {
+    background: rgba(255, 255, 255, 0.949);
+    scrollbar-width: thin; /* Para navegadores Firefox */
+    scrollbar-color: #007bff #f8f9fa; /* Para navegadores Firefox */
+}
+
+.cards-container {
+    display: flex;
+    overflow-x: auto; /* Permitir desplazamiento horizontal */
+    padding: 1rem;
+    gap: 1rem;
+    justify-content: center; /* Centrar el contenido horizontalmente */
+    scrollbar-width: thin; /* Para navegadores Firefox */
+    scrollbar-color: #007bff #f8f9fa; /* Para navegadores Firefox */
+    width: 100%; /* Asegúrate de que ocupe todo el ancho del contenedor padre */
+    box-sizing: border-box;
+}
+
+.cards-container::-webkit-scrollbar {
+    height: 8px; /* Ajusta el grosor de la barra de desplazamiento */
+}
+
+.cards-container::-webkit-scrollbar-thumb {
+    background-color: #007bff; /* Color del botón de desplazamiento */
+    border-radius: 4px;
+}
+
+.cards-container::-webkit-scrollbar-track {
+    background-color: #f8f9fa; /* Color del fondo del área de desplazamiento */
+}
+
+/* Estilo general de la tarjeta */
+.card-custom-title {
+    flex: 0 0 350px; /* Ajusta el ancho de la tarjeta */
+    background: transparent;
+    min-width: 250px; /* Ancho mínimo para evitar tarjetas demasiado pequeñas */
+}
+.card-custom {
+    background: rgba(255, 252, 252, 0.994);
+    border-radius: 30px;
+
+}
+
+/* Estilo de la tarjeta al pasar el mouse */
+.card-custom:hover {
+    box-shadow: 0 8px 16px rgba(223, 52, 52, 0.2);
+    background: transparent;
+}
+
+.card-custom-premium {
+    background: rgba(255, 252, 252, 0.994);
+    border: 3px solid rgb(233, 163, 163);
+    border-radius: 30px;
+    transition: transform 0.3s ease; /* Suaviza la transición */
+}
+
+.card-custom-premium:hover {
+    box-shadow: 0 8px 16px rgba(223, 52, 52, 0.2);
+    background: rgb(255, 252, 252);
+    transform: translateY(-10px); /* Ajusta el valor para moverla más o menos */
+}
+
+/* Estilo del checkbox */
+.custom-checkbox {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 10;
+}
+
+.custom-checkbox input {
+    display: none; /* Ocultar el checkbox por defecto */
+}
+
+.custom-checkbox label {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    border: 2px solid #007bff;
+    border-radius: 4px;
+    background-color: #fff;
+    text-align: center;
+    line-height: 24px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.custom-checkbox input:checked + label::before {
+    content: "\f00c"; /* Unicode para el icono de check (de Bootstrap Icons) */
+    font-family: "Bootstrap Icons";
+    color: #007bff;
+}
+
+.card-header-custom {
+    background-color: transparent;
+    color: #fff;
+    text-align: left;
+    padding: 2rem;
+    border: none;
+    margin-bottom: -3rem; /* Ajusta este margen según sea necesario */
+}
+
+.card-body-custom {
+    padding: 2rem;
+}
+
+.pricing {
+    font-size: 2.6rem; /* Tamaño de fuente grande para el monto */
+    font-weight: bold;
+    color: #2e2828d3;
+    text-align: left;
+    margin: 1rem 0;
+}
+
+.pricing .amount {
+    font-size: 2.6rem; /* Asegúrate de que el monto mantenga el tamaño de fuente grande */
+    font-weight: bold;
+}
+
+.pricing .period {
+    font-weight: lighter;
+    font-size: 1.5rem; /* Tamaño de fuente más pequeño para la unidad de tiempo */
+    color: #292626; /* Puedes ajustar el color si es necesario */
+}
+
+.features {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    list-style-type: disc; /* Usa 'disc' para viñetas redondas */
+    padding-left: 20px;
+}
+
+.parrafo {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    list-style-type: disc; 
+    padding-left: 20px;
+    text-align: left;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 600;
+}
+
+.features li {
+    margin-bottom: 0.5rem;
+    text-align: left;
+    font-weight: 400;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.btn-comprar {
+    background-color: #007aff; /* Color azul similar al de Apple */
+    color: white; /* Texto en blanco */
+    border: none; /* Sin borde */
+    border-radius: 25px; /* Esquinas redondeadas */
+    padding: 10px 20px; /* Espaciado interno */
+    font-size: 16px; /* Tamaño de fuente */
+    font-weight: bold; /* Negrita */
+    text-transform: uppercase; /* Texto en mayúsculas */
+    cursor: pointer; /* Cambia el cursor al pasar el ratón */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Suaviza la transición */
+}
+
+.btn-comprar:hover {
+    background-color: #005bb5; /* Color más oscuro al hacer hover */
+    transform: scale(1.05); /* Aumenta el tamaño un poco */
+}
+
+.btn-comprar:focus {
+    outline: none; /* Sin contorno al hacer clic */
+}
+
+.btn-factura {
+    background-color: #aa6e1f; /* Color azul similar al de Apple */
+    color: white; /* Texto en blanco */
+    border: none; /* Sin borde */
+    border-radius: 25px; /* Esquinas redondeadas */
+    padding: 10px 20px; /* Espaciado interno */
+    font-size: 12px; /* Tamaño de fuente */
+    font-weight: bold; /* Negrita */
+    cursor: pointer; /* Cambia el cursor al pasar el ratón */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Suaviza la transición */
+}
+
+.btn-factura:hover {
+    background-color: #79470f; /* Color más oscuro al hacer hover */
+    transform: scale(1.05); /* Aumenta el tamaño un poco */
+}
+
+.btn-factura:focus {
+    outline: none; /* Sin contorno al hacer clic */
+}
+
+
+.additional-features {
+    display: none; /* Ocultar las funcionalidades adicionales por defecto */
+}
+
+.card-body-custom.expanded .additional-features {
+    display: list-item; /* Mostrar las funcionalidades adicionales cuando la tarjeta esté expandida */
+}
+
+.toggle-details {
+    background: none; /* Sin fondo para que solo se vea el texto */
+    border: none; /* Sin borde */
+    color: #007bff; /* Color del texto */
+    font-size: 1rem; /* Tamaño del texto */
+    text-decoration: underline; /* Subrayado */
+    text-underline-offset: 3px; /* Opcional: espacio entre el texto y la línea */
+    padding: 0; /* Elimina el relleno predeterminado */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+}
+
+/* Estilos para encabezados */
+.h4-basico {
+    color: #ca6c14;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.h4-premium {
+    color: #c2331a;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.h4-tienda {
+    color: #151a1f;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+/* Botón para alternar la visibilidad de la barra lateral (opcional si no es necesario) */
+.toggle-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1001;
+    cursor: pointer;
+    font-size: 28px;
+    background: #2a2a74;
+    border: none;
+    padding: 4px;
+    border-radius: 12px;
+}
+
+/* Estilo inicial para los menús desplegables */
+.sidebar .dropdown-menu {
+    display: none; /* Ocultar el menú por defecto */
+    position: absolute;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin: 0;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    opacity: 0; /* Hacer el menú invisible por defecto */
+    visibility: hidden; /* Asegurar que no se puede interactuar con el menú cuando está oculto */
+    z-index: 1001; /* Asegurar que el menú se muestre sobre otros elementos */
+}
+  
+/* Mostrar el menú desplegable cuando el cursor está sobre el ítem del menú */
+.sidebar .nav-item:hover .dropdown-menu {
+    display: block; /* Mostrar el menú */
+    opacity: 1; /* Hacer el menú visible */
+    visibility: visible; /* Hacer el menú interactivo */
+}
+
+/* Asegurar que el menú desplegable se mantenga visible mientras el cursor está sobre él */
+.sidebar .dropdown-menu:hover {
+    display: block; /* Mantener el menú visible */
+    opacity: 1; /* Mantener el menú visible */
+    visibility: visible; /* Mantener el menú interactivo */
+}
+
+.accordion{
+    border: none;
+  }
+  .accordion-button {
+    background: rgb(212, 223, 226);
+    border: none;
+    border-radius: 20px;
+    border-style: ridge;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Sombra más prominente al interactuar */
+  }
+
+  .accordion-button-2 {
+    background: rgb(254, 255, 255);
+    border: none;
+    border-radius: 20px;
+    border-style:ridge;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Sombra más prominente al interactuar */
+    font-size: 20px;
+    text-align: left;
+  }
+
+  .accordion-item {
+    background: rgb(252, 254, 255);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 600;
+  }
+
+  .pic-page {
+    width: 560px; 
+    height: 340px; 
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    border-radius: 20px;
+  }
+
+  .pic-page:hover {
+    transform: scale(1.05); /* Aumenta el tamaño un poco */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    
+  }
+
+  .pic-text {
+    width: 720px; 
+    height: 300px; 
+  }
+
+  .pic-text:hover {
+    transform: scale(1.05); /* Aumenta el tamaño un poco */
+  }
+
+  .pic-text-2 {
+    width: 720px; 
+    height: 340px; 
+  }
+
+  .pic-text-2:hover {
+    transform: scale(1.05); /* Aumenta el tamaño un poco */
+  }
+
+  /* Estilo responsivo para pantallas pequeñas */
+  @media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        left: 0; /* Mostrar la barra lateral en pantallas pequeñas */
+    }
+    .main-content.shift {
+        margin-left: 0;
+    }
+    .toggle-btn {
+        left: 10px;
+    }
+  }
+
+  .modern-title {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 2.4rem; /* Tamaño de fuente grande */
+    font-weight: 600; /* Peso de fuente para un toque moderno */
+    color: #f9f3f3; /* Color de texto oscuro para buen contraste */
+    text-align: center; /* Centrar el título */
+    margin-bottom: 1rem; /* Espacio debajo del título */
+    border-bottom: 2px solid #0078D4; /* Línea inferior para destacar */
+    padding-bottom: 0.5rem; /* Espacio entre el texto y la línea */
+  }
+
+  .modern-title-nav {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 2.4rem; /* Tamaño de fuente grande */
+    font-weight: 600; /* Peso de fuente para un toque moderno */
+    color: #1d1d1a; /* Color de texto oscuro para buen contraste */
+    text-align: center; /* Centrar el título */
+    margin-top: 1rem;
+    margin-bottom: 1rem; /* Espacio debajo del título */
+    border-bottom: 1px solid #0078D4; /* Línea inferior para destacar */
+    padding-bottom: 0.5rem; /* Espacio entre el texto y la línea */
+  }
+
+  .modern-title-nav-soft {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 2.4rem; /* Tamaño de fuente grande */
+    font-weight: 600; /* Peso de fuente para un toque moderno */
+    color: #060a24; /* Color de texto oscuro para buen contraste */
+    text-align: center; /* Centrar el título */
+    border-bottom: 2px solid #0078D4; /* Línea inferior para destacar */
+    padding-bottom: 0.5rem; /* Espacio entre el texto y la línea */
+  }
+
+  .modern-title-page {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 5.4rem; /* Tamaño de fuente grande */
+    font-weight: 900; /* Peso de fuente para un toque moderno */
+    color: #2d2a2a; /* Color de texto oscuro para buen contraste */
+    text-align: left; /* Centrar el título */
+    margin-top: 1rem;
+    margin-bottom: 1rem; /* Espacio debajo del título */
+    padding-bottom: 0.5rem; /* Espacio entre el texto y la línea */
+  }
+
+  
+  /* Ajustar el margen del contenido principal cuando la barra lateral está abierta */
+  .main-content.shift {
+    margin-left: 250px; /* Espacio para la barra lateral expandida */
+  }
+

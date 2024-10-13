@@ -1,0 +1,250 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load custom_filters %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/ventas/obtener_registros_venta.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid mt-2">
+    <div class="card-body card-body-custom">
+        <!-- Formulario de búsqueda -->
+        <form method="GET" class="mb-4 d-flex flex-column flex-md-row justify-content-center">
+            <div class="input-group mb-2 mx-2">
+                <input type="text" name="cedula" class="form-control" placeholder="Buscar por documento" value="{{ request.GET.cedula }}">
+            </div>
+            <div class="input-group mb-2 mx-2">
+                <input type="text" name="id" class="form-control" placeholder="Buscar por ID" value="{{ request.GET.id }}">
+            </div>
+            <div class="input-group mb-2 mx-2">
+                <input type="date" name="fecha" class="form-control" value="{{ request.GET.fecha }}">
+            </div>
+            <div class="input-group mx-2">
+                <button type="submit" class="btn btn-warning mt-3" style="height: 58px; width: 52px;">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+            </div>
+        </form>
+    </div>
+
+
+
+
+    <!-- Accordion for Sales History -->
+    <div class="accordion mt-4" id="salesHistoryAccordion">
+        <!-- Mesa Sales -->
+        <div class="accordion-item">
+            <h2 class="accordion-header ventas-item" id="headingOne">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                    <span class="microsoft-style-text">HISTORIAL DE VENTAS EN MESAS</span>
+                </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#salesHistoryAccordion">
+                <div class="accordion-body">
+                    <div class="table-responsive">
+                    <table class="table table-custom">
+                        <thead >
+                            <tr>
+                                <th></th>
+                                <th>venta id</th>
+                                <th>fecha de venta</th>
+                                <th>mesa</th>
+                                <th>documento cliente</th>
+                                <th>platos asociados</th>
+                                <th>tipo de pago</th>
+                                <th>subtotal</th>
+                                <th>descuento</th>
+                                <th>propina</th>
+                                <th>total iva</th>
+                                <th>total</th>                               
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for compra in compras %}
+                            <tr>
+                                <td>
+                                    <a href="{% url 'imprimir_factura_venta' compra.id %}" class="btn btn-hover">
+                                        <img src="{% static 'icons/printer_mdn.svg' %}" alt="Mesa" class="microsoft-style-icon">
+                                    </a>
+                
+                                </td>
+                                <td>
+                                    <a href="{% url 'editar_venta' compra.id %}">{{ compra.id }}</a>
+                    
+                                </td>
+                                <td>{{ compra.fecha_compra|date:"d/m/Y h:i a" }}</td>
+                                <td>{{ compra.mesa.numero }}</td>
+                                <td>{{ compra.cedula_cliente }}</td>
+                                <td>
+                                    <ul class="list-unstyled">
+                                        {% for detalle in compra.detalles.all %}
+                                        <li>{{ detalle.plato.nombre }} - {{ detalle.cantidad }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                </td>
+                                <td>{{ compra.get_tipo_pago_display }}</td>
+                                <td>${{ compra.total_sin_descuento|format_number }}</td>
+                                <td>${{ compra.total_descuento|format_number }}</td>
+                                <td>${{ compra.total_propina|format_number }}</td>
+                                <td>${{ compra.valor_impuesto|format_number }}</td>
+                                <td>${{ compra.total_impuesto|format_number }}</td>
+                            </tr>
+                            {% empty %}
+                            <tr>
+                                <td colspan="6" class="text-center">No hay ventas de mesa.</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                    <!-- Paginación para ventas de mesa -->
+                    <nav aria-label="Page navigation">
+                        <ul class="pagination justify-content-center">
+                            {% if compras.has_previous %}
+                                <li class="page-item">
+                                    <a class="page-link" href="?page_compras=1{% if request.GET.cedula %}&cedula={{ request.GET.cedula }}{% endif %}{% if request.GET.id %}&id={{ request.GET.id }}{% endif %}{% if request.GET.fecha %}&fecha={{ request.GET.fecha }}{% endif %}" aria-label="Primera">
+                                        <span aria-hidden="true">&laquo;&laquo;</span>
+                                    </a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="?page_compras={{ compras.previous_page_number }}{% if request.GET.cedula %}&cedula={{ request.GET.cedula }}{% endif %}{% if request.GET.id %}&id={{ request.GET.id }}{% endif %}{% if request.GET.fecha %}&fecha={{ request.GET.fecha }}{% endif %}" aria-label="Anterior">
+                                        <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                </li>
+                            {% endif %}
+                            {% for num in compras.paginator.page_range %}
+                                {% if compras.number == num %}
+                                    <li class="page-item active"><span class="page-link">{{ num }}</span></li>
+                                {% else %}
+                                    <li class="page-item"><a class="page-link" href="?page_compras={{ num }}{% if request.GET.cedula %}&cedula={{ request.GET.cedula }}{% endif %}{% if request.GET.id %}&id={{ request.GET.id }}{% endif %}{% if request.GET.fecha %}&fecha={{ request.GET.fecha }}{% endif %}">{{ num }}</a></li>
+                                {% endif %}
+                            {% endfor %}
+                            {% if compras.has_next %}
+                                <li class="page-item">
+                                    <a class="page-link" href="?page_compras={{ compras.next_page_number }}{% if request.GET.cedula %}&cedula={{ request.GET.cedula }}{% endif %}{% if request.GET.id %}&id={{ request.GET.id }}{% endif %}{% if request.GET.fecha %}&fecha={{ request.GET.fecha }}{% endif %}" aria-label="Siguiente">
+                                        <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="?page_compras={{ compras.paginator.num_pages }}{% if request.GET.cedula %}&cedula={{ request.GET.cedula }}{% endif %}{% if request.GET.id %}&id={{ request.GET.id }}{% endif %}{% if request.GET.fecha %}&fecha={{ request.GET.fecha }}{% endif %}" aria-label="Última">
+                                        <span aria-hidden="true">&raquo;&raquo;</span>
+                                    </a>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+        <!-- Domicilio Sales -->
+        <div class="accordion-item">
+            <h2 class="accordion-header ventas-item mt-4" id="headingTwo">
+                <button class="accordion-button collapsed microsoft-style-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    
+                    <span class="microsoft-style-text">HISTORIAL DE VENTAS EN DOMICILIOS</span>
+                </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#salesHistoryAccordion">
+                <div class="accordion-body">
+                    <div class="table-responsive">
+                    <table class="table table-custom">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>venta id</th>
+                                <th>fecha de venta</th>
+                                <th>nombre del cliente</th>
+                                <th>direccion</th>
+                                <th>platos asociados</th>
+                                <th>tipo de pago</th>
+                                <th>subtotal</th>
+                                <th>descuento</th>
+                                <th>propina</th>
+                                <th>total iva</th>
+                                <th>total</th>                              
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for compra in compras_domicilios %}
+                            <tr>
+                                <td>
+                                    <a href="{% url 'imprimir_factura_venta_domicilio' compra.id %}" class="btn btn-hover">
+                                        <img src="{% static 'icons/printer_mdn.svg' %}" alt="Mesa" class="microsoft-style-icon">
+                                    </a>
+                                    
+                                </td>
+                                <td>
+                                    <a href="{% url 'editar_venta_domicilio' compra.id %}">{{ compra.id }}</a>
+                                </td>
+                                <td>{{ compra.fecha_compra|date:"d/m/Y h:i a" }}</td>
+                                <td>{{ compra.nombre_cliente }}</td>
+                                <td>{{ compra.direccion_cliente }}</td>
+                                <td>
+                                    <ul class="list-unstyled">
+                                        {% for detalle in compra.detalles.all %}
+                                        <li>{{ detalle.plato.nombre }} - Cantidad: {{ detalle.cantidad }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                </td>
+                                <td>{{ compra.get_tipo_pago_display }}</td>
+                                <td>${{ compra.total_sin_descuento|format_number }}</td>
+                                <td>${{ compra.total_descuento|format_number }}</td>
+                                <td>${{ compra.total_propina|format_number }}</td>
+                                <td>${{ compra.valor_impuesto|format_number }}</td>
+                                <td>${{ compra.total_impuesto|format_number }}</td>
+                            </tr>
+                            {% empty %}
+                            <tr>
+                                <td colspan="9" class="text-center">No hay ventas de domicilio.</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                    <!-- Paginación para ventas de domicilio -->
+                    <nav aria-label="Page navigation">
+                        <ul class="pagination justify-content-center">
+                            {% if compras_domicilios.has_previous %}
+                                <li class="page-item">
+                                    <a class="page-link" href="?page_compras_domicilios=1{% if request.GET.cedula %}&cedula={{ request.GET.cedula }}{% endif %}{% if request.GET.id %}&id={{ request.GET.id }}{% endif %}{% if request.GET.fecha %}&fecha={{ request.GET.fecha }}{% endif %}" aria-label="Primera">
+                                        <span aria-hidden="true">&laquo;&laquo;</span>
+                                    </a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="?page_compras_domicilios={{ compras_domicilios.previous_page_number }}{% if request.GET.cedula %}&cedula={{ request.GET.cedula }}{% endif %}{% if request.GET.id %}&id={{ request.GET.id }}{% endif %}{% if request.GET.fecha %}&fecha={{ request.GET.fecha }}{% endif %}" aria-label="Anterior">
+                                        <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                </li>
+                            {% endif %}
+                            {% for num in compras_domicilios.paginator.page_range %}
+                                {% if compras_domicilios.number == num %}
+                                    <li class="page-item active"><span class="page-link">{{ num }}</span></li>
+                                {% else %}
+                                    <li class="page-item"><a class="page-link" href="?page_compras_domicilios={{ num }}{% if request.GET.cedula %}&cedula={{ request.GET.cedula }}{% endif %}{% if request.GET.id %}&id={{ request.GET.id }}{% endif %}{% if request.GET.fecha %}&fecha={{ request.GET.fecha }}{% endif %}">{{ num }}</a></li>
+                                {% endif %}
+                            {% endfor %}
+                            {% if compras_domicilios.has_next %}
+                                <li class="page-item">
+                                    <a class="page-link" href="?page_compras_domicilios={{ compras_domicilios.next_page_number }}{% if request.GET.cedula %}&cedula={{ request.GET.cedula }}{% endif %}{% if request.GET.id %}&id={{ request.GET.id }}{% endif %}{% if request.GET.fecha %}&fecha={{ request.GET.fecha }}{% endif %}" aria-label="Siguiente">
+                                        <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link" href="?page_compras_domicilios={{ compras_domicilios.paginator.num_pages }}{% if request.GET.cedula %}&cedula={{ request.GET.cedula }}{% endif %}{% if request.GET.id %}&id={{ request.GET.id }}{% endif %}{% if request.GET.fecha %}&fecha={{ request.GET.fecha }}{% endif %}" aria-label="Última">
+                                        <span aria-hidden="true">&raquo;&raquo;</span>
+                                    </a>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<br>    
+
+{% endblock %}

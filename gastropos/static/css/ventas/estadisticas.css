@@ -1,0 +1,92 @@
+/* Estilos generales */
+.card-custom-estadisticas {
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(8, 4, 246, 0.1);
+    background-color:transparent;
+    border: none;
+    color: #ffffff;
+    
+}
+
+.card-body-custom {
+    padding: 20px;
+}
+
+.card-custom-stacts {
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(8, 4, 246, 0.1);
+    background-color: transparent; /* Fondo oscuro para un aspecto moderno */
+    color: #171212; /* Texto blanco para contraste */
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .card-custom-stacts:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+
+  h5 {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 1.1rem; /* Tamaño de fuente grande */
+    font-weight: 600; /* Peso de fuente para un toque moderno */
+    color: #05082b; /* Color de texto oscuro para buen contraste */
+    text-align: center; 
+    text-transform: uppercase;
+  }
+  h4 {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 1.3rem; /* Tamaño de fuente grande */
+    font-weight: 600; /* Peso de fuente para un toque moderno */
+    color: #bbbcc8; /* Color de texto oscuro para buen contraste */
+    text-align: center; 
+    text-transform: uppercase;
+  }
+  h3 {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 1.2rem; /* Tamaño de fuente grande */
+    font-weight: 600; /* Peso de fuente para un toque moderno */
+    color: #05082b; /* Color de texto oscuro para buen contraste */
+    text-align: center; 
+    text-transform: uppercase;
+  }
+
+.modern-title-alt {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 1.2rem; /* Tamaño de fuente grande */
+    font-weight: 600; /* Peso de fuente para un toque moderno */
+    color: #050928f4; /* Color de texto oscuro para buen contraste */
+    text-align: center; /* Centrar el título */
+    margin-bottom: 1rem; /* Espacio debajo del título */
+    border-bottom: 2px solid #0078D4; /* Línea inferior para destacar */
+    padding-bottom: 0.5rem; /* Espacio entre el texto y la línea */
+  }
+
+  .badge-custom-large {
+    font-size: 1.1rem; /* Ajusta el tamaño según tus necesidades */
+    padding: 0.5em 1em; /* Ajusta el padding según tus necesidades */
+    background: rgba(52, 47, 47, 0.905);
+    color: white;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .col-md-4 {
+      flex: 0 0 100%; /* Hacer que las columnas ocupen el 100% en móviles */
+      max-width: 100%; /* Eliminar el ancho máximo */
+  }
+  .d-flex {
+      flex-direction: column; /* Cambiar a dirección de columna en móviles */
+      align-items: stretch; /* Alinear elementos a lo largo del contenedor */
+  }
+  .card-body-custom {
+      padding: 10px; /* Ajustar el padding para pantallas pequeñas */
+  }
+  h3 {
+      font-size: 1.5rem; /* Aumentar tamaño de fuente en móviles */
+  }
+  h4 {
+      font-size: 1.2rem; /* Aumentar tamaño de fuente en móviles */
+  }
+}

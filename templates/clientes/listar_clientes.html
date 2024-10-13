@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/clientes/listar_clientes.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="modern-title">Modulo de Clientes</h1><br>
+    <div class="client-list" id="clientesAccordion">
+
+        {% for item in formularios %}
+        <div class="accordion-item" style="background: transparent;">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed microsoft-style-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ item.cliente.id }}" aria-expanded="false" aria-controls="panelsStayOpen-collapse{{ forloop.counter }}">
+                    <img src="{% static 'icons/item_nav.svg' %}" alt="Mesa" class="microsoft-style-icon"> 
+                    <span class="microsoft-style-text">{{ item.cliente.nombre }}</span>
+                </button>
+            </h2>
+            <div id="collapse{{ item.cliente.id }}" class="accordion-collapse collapse" aria-labelledby="heading{{ item.cliente.id }}" data-bs-parent="#clientesAccordion">
+                <div class="accordion-body" style="background-color: transparent; padding: 20px; ">
+                    <form method="post" action="{% url 'editar_cliente' item.cliente.id %}">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="{{ item.form.nombre.id_for_label }}" class="text-dark">Nombre</label>
+                            {{ item.form.nombre }}
+                        </div>
+                        <div class="form-group">
+                            <label for="{{ item.form.telefono.id_for_label }}" class="text-dark">Teléfono</label>
+                            {{ item.form.telefono }}
+                        </div>
+                        <div class="form-group">
+                            <label for="{{ item.form.direccion.id_for_label }}" class="text-dark">Dirección</label>
+                            {{ item.form.direccion }}
+                        </div>
+                        <div class="form-group">
+                            <label for="{{ item.form.documento.id_for_label }}" class="text-dark">Documento</label>
+                            {{ item.form.documento }}
+                        </div>
+                        <div class="form-group">
+                            <label for="{{ item.form.correo.id_for_label }}" class="text-dark">Correo Electrónico</label>
+                            {{ item.form.correo }}
+                        </div>
+                        <br>
+                        <div class="text-center">
+                            <a href="{% url 'eliminar_cliente' item.cliente.id %}"><img src="{% static 'icons/delete_bred.svg' %}" alt="Guardar" style="width:35px; height:35px;"></a>
+                            <button type="submit" class="btn btn-hover"><img src="{% static 'icons/save_mdn.svg' %}" alt="Guardar" class="icon-save-profile"></button>
+                        </div>
+                    </form>
+                    <br>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="alert alert-warning" role="alert">No hay clientes registrados.</div>
+        {% endfor %}
+    </div>
+</div>
+<br>
+{% endblock %}

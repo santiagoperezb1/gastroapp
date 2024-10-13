@@ -1,0 +1,170 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load custom_filters %}
+
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'css/ventas/estadisticas.css' %}">
+{% endblock %}s
+
+{% block content %}
+<div class="container-fluid mt-5">
+  <div class="card  card-custom-estadisticas shadow-sm">
+    <div class="card-body card-body-custom">
+      <!-- Primera fila con las dos tarjetas en la misma línea -->
+      <div class="row mt-4">
+        <!-- Tarjeta del formulario de fechas -->
+        <div class="col-md-4 mb-4">
+          <div class="card card-custom-stacts">
+            <div class="card-body card-body-custom">
+              <h3 class="modern-title-alt">Reportes por fecha</h3>
+              <form method="GET" action="{% url 'estadisticas' %}" class="mb-4">
+                <div class="d-flex flex-column flex-md-row justify-content-between align-items-center">
+                  <div class="d-flex flex-column flex-grow-1 mb-2 mb-md-0">
+                    <div class="form-group me-2">
+                      <input type="date" id="start_date" name="start_date" class="form-control" required>
+                    </div>
+                    <div class="form-group me-2">
+                      <input type="date" id="end_date" name="end_date" class="form-control" required>
+                    </div>
+                  </div>
+                  <button type="submit" class="btn btn-primary mt-2 mt-md-0">
+                    <img src="{% static 'icons/search.svg' %}" alt="Buscar" style="width:37px; height:25px;">
+                  </button>
+                </div>
+              </form>
+            </div>
+            <div>
+              <h4><i class="fa-regular fa-calendar-check"> GastroPOS</i></h4>
+            </div>
+          </div>
+        </div>
+        
+
+            <!-- Tarjeta del resumen -->
+            <div class="col-md-4 mb-4">
+              <div class="card card-custom-stacts">
+                <div class="card-body card-body-custom">
+                  <h3 class="modern-title-alt"> Ingresos en mesas</h3>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item list-group-item-custom d-flex justify-content-between align-items-center">
+                    <strong> ᴛᴏᴛᴀʟ ᴅᴇ ᴅɪɴᴇʀᴏ</strong>
+                      <span class="badge badge-custom-large rounded-pill">${{ total_ventas|format_number  }}</span>
+                    </li>
+                    <li class="list-group-item list-group-item-custom d-flex justify-content-between align-items-center">
+                    <strong>ᴄᴀɴᴛɪᴅᴀᴅ ᴅᴇ ᴘʟᴀᴛᴏs</strong>
+                    <span class="badge badge-custom-large rounded-pill">{{ total_platos_vendidos }}</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+          <div class="col-md-4 mb-4">
+            <div class="card card-custom-stacts">
+              <div class="card-body card-body-custom">
+                <h3 class="modern-title-alt"> Ingresos en Domicilios</h3>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item list-group-item-custom d-flex justify-content-between align-items-center">
+                   <strong> ᴛᴏᴛᴀʟ ᴅᴇ ᴅɪɴᴇʀᴏ</strong>
+                   <span class="badge badge-custom-large rounded-pill">${{ total_ventas_domicilio|format_number  }}</span>
+                  </li>
+                  <li class="list-group-item list-group-item-custom d-flex justify-content-between align-items-center">
+                  <strong>ᴄᴀɴᴛɪᴅᴀᴅ ᴅᴇ ᴘʟᴀᴛᴏs</strong>
+                  <span class="badge badge-custom-large rounded-pill">{{ total_platos_vendidos_domicilio }}</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- Resto de las filas -->
+          <div class="row mt-4">
+            <div class="col-md-4 mb-4">
+              <div class="card">
+                <div class="card-body card-body-custom">
+                  <h3 class="modern-title-alt">Reportes por tipo de pago</h3>
+                  <ul class="list-group list-group-flush">
+                    {% for tipo, total in ventas_por_tipo_pago.items %}
+                    <li class="list-group-item list-group-item-custom d-flex justify-content-between align-items-center">
+                      <strong>{{ tipo }}</strong>
+                      <h4 class="text-dark">${{ total }}</h4>
+                    </li>
+                    {% endfor %}
+                  </ul>
+                  <canvas id="ventasTipoPagoChart" class="mt-4" width="150" height="150"></canvas>
+                </div>
+                <div class="card-body card-body-custom">
+                  <h3 class="modern-title-alt">Reportes por tipo de pago domicilios</h3>
+                  <ul class="list-group list-group-flush">
+                    {% for tipo, total in ventas_por_tipo_pago_domicilio.items %}
+                    <li class="list-group-item list-group-item-custom d-flex justify-content-between align-items-center">
+                      {{ tipo }}
+                      <h4 class="text-dark">${{ total }}</h4>
+                    </li>
+                    {% endfor %}
+                  </ul>
+                 
+                </div>
+              </div>
+            </div>              
+
+
+        <div class="col-md-4 mb-4">
+          <div class="card">
+            <div class="card-body card-body-custom">
+              <h3 class="modern-title-alt">Platos mas vendidos en mesa</h3>
+              <canvas id="platosMasVendidosChart" class="mt-3"></canvas>
+              <div class="card-body card-body-custom">
+                <h3 class="card-title card-title-custom">Ventas por Mes</h3>
+                <ul class="list-group list-group-flush">
+                  {% for mes, total in ventas_por_mes.items %}
+                  <li class="list-group-item list-group-item-custom">{{ mes }} |
+                    <h4 class="text-dark"> ${{ total }}</h4>
+                  </li>
+                  {% endfor %}
+                </ul>
+                <canvas id="ventasMesChart" class="mt-3"></canvas>
+              </div>
+            </div>
+          </div>
+          </div>
+
+          <div class="col-md-4 mb-4">
+            <div class="card">
+              <div class="card-body card-body-custom">
+                <h3 class="modern-title-alt">Platos mas vendidos en domicilio</h3>
+                <canvas id="platosMasVendidosDomicilioChart" class="mt-3"></canvas>          
+                <div class="card-body card-body-custom">
+                  <h3 class="card-title card-title-custom">Ventas por Mes</h3>
+                  <ul class="list-group list-group-flush">
+                    {% for mes, total in ventas_por_mes_domicilio.items %}
+                    <li class="list-group-item list-group-item-custom">{{ mes }} |
+                      <h4 class="text-dark"> ${{ total }}</h4>
+                    </li>
+                    {% endfor %}
+                  </ul>
+                  <canvas id="ventasMesDomicilioChart" class="mt-3"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+<!-- Scripts con datos JSON -->
+<script id="platosNombres" type="application/json">{{ platos_nombres|safe }}</script>
+<script id="platosNombresDomicilio" type="application/json">{{ platos_nombres_domicilio|safe }}</script>
+<script id="platosCantidades" type="application/json">{{ platos_cantidades|safe }}</script>
+<script id="platosCantidadesDomicilio" type="application/json">{{ platos_cantidades_domicilio|safe }}</script>
+<script id="tiposPago" type="application/json">{{ tipos_pago|safe }}</script>
+<script id="ventasTiposPago" type="application/json">{{ ventas_tipos_pago|safe }}</script>
+<script id="meses" type="application/json">{{ meses|safe }}</script>
+<script id="ventas_meses" type="application/json">{{ ventas_meses|safe }}</script>
+<script id="ventas_meses_domicilio" type="application/json">{{ ventas_meses_domicilio|safe }}</script>
+
+<script src="{% static 'js/ventas/estadisticas.js' %}"></script>
+{% endblock %}

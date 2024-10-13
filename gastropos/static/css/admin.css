@@ -1,0 +1,14 @@
+#header {
+    height: 50px;
+    background: #10284e;
+    color: #fff;
+}
+
+#branding h1 {
+    color: #fff;
+}
+
+.button, input[type="submit"], input[type="button"], .submit-row input, a.button {
+    background: #10284e;
+    color: #fff;
+}

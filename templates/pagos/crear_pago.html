@@ -1,0 +1,132 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/pagos/crear_pago.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="card card-custom shadow-sm">
+        <div class="card-body">
+            <!-- Formulario de creación en cuadrícula -->
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="id_efectivo_inicial" class="form-label form-label-custom">Fecha</label>
+                        {{ form.fecha }}
+                    </div>
+                    <div class="col-md-6">
+                        <label for="id_efectivo_inicial" class="form-label form-label-custom">Metodo de Pago</label>
+                        {{ form.metodo_pago }}
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="id_efectivo_inicial" class="form-label form-label-custom">Nota Egreso</label>
+                        {{ form.nota_egreso }}
+                    </div>
+                    <div class="col-md-6">
+                        <label for="id_efectivo_inicial" class="form-label form-label-custom">Adjuntar Factura</label>
+                        {{ form.archivo_adjunto }}
+                    </div>
+                </div>
+
+                <div class="accordion" id="accordionPanelsStayOpenExample">
+                    <div class="accordion-item">
+                        <h3 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse{{ forloop.counter }}" aria-expanded="false" aria-controls="panelsStayOpen-collapse{{ forloop.counter }}">
+                                <h3 style="font-weight: bold;">Ingreso de productos al inventario</h3>
+                            </button>
+                        </h3>
+                        <div id="panelsStayOpen-collapse{{ forloop.counter }}" class="accordion-collapse collapse">
+                            <div class="accordion-body">
+
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <div class="row mb-3">
+                                            <div class="col-md-8">
+                                                <label for="producto_select"><h3>producto</h3></label>
+                                                <select id="producto_select" class="form-control">
+                                                    {% for producto in productos %}
+                                                        <option value="{{ producto.id }}">{{ producto.nombre }}/{{ producto.unidad_medida|slice:"-3:" }} |  ID: {{ producto.id }}</option>
+                                                    {% endfor %}
+                                                </select>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label for="cantidad_agregar"><h3>Cantidad</h3></label>
+                                                <input type="number" id="cantidad_agregar" class="form-control" min="1">
+                                            </div>
+                                        </div>
+                                        <div class="text-center">
+                                            <button type="button" id="agregar_producto_btn" class="btn btn-hover"><img src="{% static 'icons/add_sqblack.svg' %}" alt="Mesa" style="width:50px; height:50px;"></button>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                
+                                    <div class="col-md-6">
+                                        <h3 class="mt-4">Productos seleccionados:</h3>
+                                        <ul id="lista-productos" class="list-group">
+                                            
+                                            <!-- Items agregados dinámicamente -->
+                                        </ul>
+                                    </div>
+                                
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                 <!-- Aquí están los inputs ocultos generados dinámicamente -->
+                 <div id="productos-hidden-inputs"></div>
+
+                <!-- Tabla con datos del formulario -->
+                <div class="card card-custom mt-4">
+                    <div class="card-header text-white">
+                        <h3>Cuentas contables</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th >Concepto</th>
+                                    <th>Total</th>
+                                    <th>Impuesto</th>
+                                    <th>Cantidad</th>
+                                    <th>Observaciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>{{ form.concepto }}</td>
+                                    <td>{{ form.valor }}</td>
+                                    <td>{{ form.impuesto }}</td>
+                                    <td>{{ form.cantidad }}</td>
+                                    <td>{{ form.observaciones }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    </div>
+                </div>
+
+                <div class="card-footer text-center">
+                    <div>
+                        <a href="{% url 'listar_pagos' %}" class="btn btn-hover">
+                            <img src="{% static 'icons/backaw.svg' %}" alt="Mesa" style="width:50px; height:50px;">
+                        </a>
+                    <button type="submit" class="btn-arqueo">GUARDAR</button>  
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<br>
+<!-- Asegúrate de incluir el script justo antes del cierre del body -->
+<script src="{% static 'js/pagos/crear_pago.js' %}" defer></script>
+    
+{% endblock %}

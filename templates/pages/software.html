@@ -1,0 +1,681 @@
+{% extends 'planta.html' %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/usuarios/planes_precios.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+        
+        <div class="row">
+            <div class="col-md-7">
+                <img src="{% static 'images/1.png' %}" alt="Mesa" class="pic-text">
+            </div>
+
+            <div class="col-md-5">
+                <img src="{% static 'images/pic_soft.png' %}" alt="Mesa" class="pic-page">
+            </div>
+        </div>
+        <button type="submit" class="btn-comprar mt-4">
+            <a href="https://api.whatsapp.com/send?phone=573206930837&text=%C2%A1Hola!%20Me%20gustar%C3%ADa%20saber%20m%C3%A1s%20acerca%20GastroPOS%20%F0%9F%98%80" class="text-white">Prueba gratis</a>
+        </button>  
+    </div>
+    
+    <div class="container mt-5">
+        <div class="modern-title-nav-soft mt-4">
+            <h1><strong>Crea tu Menu, Genera el QR y Comparte con tus clientes</strong></h1>
+        </div>
+        <div class="row">
+            
+            <div class="col-md-10">
+                <video id="miVideo" width="100%" autoplay muted loop>
+                    <source src="{% static 'videos/menu_platos.mp4' %}" type="video/mp4">
+                    Tu navegador no soporta el video.
+                </video>
+            </div>
+            <div class="col-md-2">
+                <h5 class="mx-1">GastroPOS es modernidad y eficiencia en el servicio.</h5>
+                <br>
+                <video id="miVideo" width="100%" autoplay muted loop>
+                    <source src="{% static 'videos/movil_dish_dg.mp4' %}" type="video/mp4">
+                    Tu navegador no soporta el video.
+                </video>
+            </div>
+      
+    </div>
+        <div class="row">
+            <div class="col-md-3">
+                <img src="{% static 'images/22.png' %}" alt="Mesa" style="width: 320px; height: 220px;">
+            </div>
+
+            <div class="col-md-3">
+                <img src="{% static 'images/3.png' %}" alt="Mesa" style="width: 320px; height: 220px;">
+            </div>
+
+            <div class="col-md-3">
+                <img src="{% static 'images/5.png' %}" alt="Mesa" style="width: 320px; height: 220px;">
+            </div>
+
+            <div class="col-md-3">
+                <img src="{% static 'images/4.png' %}" alt="Mesa" style="width: 320px; height: 220px;">
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-5">
+        <div class="card-custom-title">
+            <div class="row">
+                <div class="col-md-12">
+                    <img src="{% static 'images/lp_modernt.png' %}" alt="Mesa" style="width: 1300px; height: 330px;">
+                </div>
+                
+                <br>
+                <br>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-2">
+                <div class="modern-title-nav">
+                    <h5>Navegacion</h5>
+                </div>
+                <div id="carouselExample3" class="carousel slide">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="sidebar">
+                                <ul class="navbar-nav">
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <span class=" text-dark"><img src="{% static 'icons/dash.svg' %}" alt="Mesa" style="width:27px; height:27px;"> ᴅᴀsʜʙᴏᴀʀᴅ</span>
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#" id="restauranteLinkSidebar">ʀᴇsᴛᴀᴜʀᴀɴᴛᴇ</a></li>
+                                            <li><a class="dropdown-item" href="#" id="cocinaLinkSidebar">ᴄᴏᴄɪɴᴀ</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <span class="text-dark"><img src="{% static 'icons/stock.svg' %}" alt="Mesa" style="width:27px; height:27px;"> ɪɴᴠᴇɴᴛᴀʀɪᴏ</span> 
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#" id="mesaLinkSidebar">ᴍᴇsᴀs</a></li>
+                                            <li><a class="dropdown-item" href="#" id="platosLinkSidebar">ᴘʟᴀᴛᴏs</a></li>
+                                            <li><a class="dropdown-item" href="#" id="productosLinkSidebar">ᴘʀᴏᴅᴜᴄᴛᴏs</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <span class="text-dark"><img src="{% static 'icons/ventas.svg' %}" alt="Mesa" style="width:27px; height:27px;"> ʀᴇᴘᴏʀᴛᴇs</span> 
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#" id="ventasLinkSidebar">ᴠᴇɴᴛᴀs</a></li>
+                                            <li><a class="dropdown-item" href="#" id="pagosLinkSidebar">ᴘᴀɢᴏs</a></li>
+                                            <li><a class="dropdown-item" href="#" id="reportesLinkSidebar">ʀᴇᴘᴏʀᴛᴇs</a></li>              
+                                            <li><hr class="dropdown-divider"></li>
+                                            <li><a class="dropdown-item" href="#" id="arqueoLinkSidebar">ᴀʀǫᴜᴇᴏs</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <span class="text-dark"><img src="{% static 'icons/user.svg' %}" alt="Mesa" style="width:27px; height:27px;"> ᴜsᴜᴀʀɪᴏ</span> 
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="#" id="perfilLinkSidebar">ᴘᴇʀꜰɪʟ</a></li>
+                                            <li><a class="dropdown-item" href="#" id="clientesLinkSidebar">ᴄʟɪᴇɴᴛᴇs</a></li>
+                        
+                                        </ul>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <span class="text-dark"></span> 
+                                        </a>
+                                        
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <span class="text-dark"></span> 
+                                        </a>
+                                        
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <span class="text-dark"></span> 
+                                        </a>
+                                        
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <span class="text-dark"></span> 
+                                        </a>
+                                        
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="modern-title">
+                    <h5 class="text-dark">Diseño moderno para PC y LAPTOP</h5>
+                </div>
+                
+                <div id="carouselExample" class="carousel slide">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                        <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                        <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="4" aria-label="Slide 5"></button>
+                        <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="5" aria-label="Slide 6"></button>
+                        <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="6" aria-label="Slide 7"></button>
+                        <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="7" aria-label="Slide 8"></button>
+                        <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="8" aria-label="Slide 9"></button>
+                        <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="9" aria-label="Slide 10"></button>
+                        <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="10" aria-label="Slide 11"></button>
+            
+                    </div>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <video id="miVideo" width="100%" autoplay muted loop>
+                                <source src="{% static 'videos/lp_pedidos.mp4' %}" type="video/mp4">
+                                Tu navegador no soporta el video.
+                            </video>
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>ᴅᴀsʜʙᴏᴀʀᴅ ʀᴇsᴛᴏʙᴀʀ</h5>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="{% static 'images/lp_cocina.png' %}" class="d-block w-100" alt="...">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>ᴍᴏɴɪᴛᴏʀ ᴅᴇ ᴘᴇᴅɪᴅᴏs ᴄᴏᴄɪɴᴀ</h5>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="{% static 'images/lp_mesa.png' %}" class="d-block w-100" alt="...">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>ɢᴇsᴛɪᴏɴ ᴅᴇ ᴍᴇsᴀs</h5>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="{% static 'images/lp_platos.png' %}" class="d-block w-100" alt="...">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>ɢᴇsᴛɪᴏɴ ᴅᴇ ᴘʟᴀᴛᴏs</h5>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="{% static 'images/lp_productos.png' %}" class="d-block w-100" alt="...">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>ɢᴇsᴛɪᴏɴ ᴅᴇ ᴘʀᴏᴅᴜᴄᴛᴏs</h5>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="{% static 'images/lp_ventas.png' %}" class="d-block w-100" alt="...">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>ʜɪsᴛᴏʀɪᴀʟ ᴅᴇ ᴠᴇɴᴛᴀ</h5>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="{% static 'images/lp_pagos.png' %}" class="d-block w-100" alt="...">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>ʜɪsᴛᴏʀɪᴀʟ ᴅᴇ ɢᴀsᴛᴏs</h5>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="{% static 'images/lp_reportes.png' %}" class="d-block w-100" alt="...">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>ʀᴇᴘᴏʀᴛᴇs ᴇsᴛᴀᴅɪsᴛɪᴄᴏs</h5>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="{% static 'images/lp_arqueo.png' %}" class="d-block w-100" alt="...">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>ᴀʀǫᴜᴇᴏ ᴅᴇ ᴄᴀᴊᴀ</h5>
+                            </div>
+                        </div>
+                        
+                        <div class="carousel-item">
+                            <img src="{% static 'images/lp_perfil.png' %}" class="d-block w-100" alt="...">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>ᴘᴇʀꜰɪʟ ᴅᴇ ᴜsᴜᴀʀɪᴏ</h5>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="{% static 'images/lp_clientes.png' %}" class="d-block w-100" alt="...">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>ᴄʟɪᴇɴᴛᴇs</h5>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="modern-title">
+                    <h5 class="text-dark">Movil y Tablets</h5>
+                </div>
+                <div id="carouselExample2" class="carousel slide">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#carouselExample2" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#carouselExample2" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#carouselExample2" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                        <button type="button" data-bs-target="#carouselExample2" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                        <button type="button" data-bs-target="#carouselExample2" data-bs-slide-to="4" aria-label="Slide 5"></button>
+                        <button type="button" data-bs-target="#carouselExample2" data-bs-slide-to="5" aria-label="Slide 6"></button>
+                        <button type="button" data-bs-target="#carouselExample2" data-bs-slide-to="6" aria-label="Slide 7"></button>
+                        <button type="button" data-bs-target="#carouselExample2" data-bs-slide-to="7" aria-label="Slide 8"></button>
+                        <button type="button" data-bs-target="#carouselExample2" data-bs-slide-to="8" aria-label="Slide 9"></button>
+                        <button type="button" data-bs-target="#carouselExample2" data-bs-slide-to="9" aria-label="Slide 10"></button>
+                        <button type="button" data-bs-target="#carouselExample2" data-bs-slide-to="10" aria-label="Slide 11"></button>
+                        
+                    </div>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="{% static 'images/movil_pedido.png' %}" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="{% static 'images/movil_cocina.png' %}" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="{% static 'images/movil_domicilio.png' %}" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="{% static 'images/movil_agregar.png' %}" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="{% static 'images/movil_finalizar.png' %}" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="{% static 'images/movil_ventas.png' %}" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="{% static 'images/movil_pagos.png' %}" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="{% static 'images/movil_reportes.png' %}" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="{% static 'images/movil_arqueo.png' %}" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="{% static 'images/movil_perfil.png' %}" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="{% static 'images/movil_clientes.png' %}" class="d-block w-100" alt="...">
+                        </div>
+                    </div>
+             
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        
+    
+
+    <div class="container mt-5">
+        <div class="modern-title-nav">
+            <h1><strong>Funcionalidades</strong></h1>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="accordion" id="exampleAccordion">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                               <strong>Modulo de Pedidos</strong>
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#exampleAccordion">
+                            <div class="accordion-body">
+                                <br>Este módulo es esencial para la gestión eficiente de los pedidos en el restaurante. Permite organizar las mesas disponibles y gestionar los pedidos en mesa y domicilios. Los usuarios pueden visualizar los pedidos en preparación y realizar tareas clave como editar platos en una mesa, agregar nuevos platos al pedido, y finalizar la venta. También incluye opciones para diferentes tipos de pago, aplicar descuentos y registrar propinas, asegurando una experiencia de servicio completa y flexible.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                <strong>Modulo de Cocina</strong>
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#exampleAccordion">
+                            <div class="accordion-body">
+                                <br>El módulo de cocina está diseñado para optimizar el flujo de trabajo en la cocina. Permite a los cocineros visualizar en tiempo real los pedidos que llegan, facilitando la gestión de la producción. Los usuarios pueden marcar los pedidos cuando están listos para salir, y recibir notificaciones instantáneas cuando se recibe un nuevo pedido, lo que ayuda a mantener una comunicación fluida entre el personal de servicio y cocina.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                <strong>Gestión de Mesas</strong>
+                            </button>
+                        </h2>
+                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#exampleAccordion">
+                            <div class="accordion-body">
+                                <br>Este módulo proporciona herramientas para una gestión efectiva de las mesas del restaurante. Permite a los usuarios visualizar todas las mesas disponibles, así como crear, editar y eliminar mesas según sea necesario. Esta funcionalidad asegura que el espacio del restaurante se utilice de manera óptima, mejorando la experiencia del cliente y la eficiencia operativa.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingFour">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                <strong>Gestión de Platos</strong>
+                            </button>
+                        </h2>
+                        <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#exampleAccordion">
+                            <div class="accordion-body">
+                                <br>La gestión de platos es fundamental para mantener un menú variado y atractivo. Este módulo permite crear y organizar platos por categorías, asegurando que el menú sea fácil de navegar. Los usuarios pueden agregar recetas utilizando productos disponibles del inventario, especificando unidades de medida exactas. Además, se puede generar un menú atractivo y códigos QR para facilitar el acceso a la carta.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingFive">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                <strong>Gestión de Productos</strong>
+                            </button>
+                        </h2>
+                        <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#exampleAccordion">
+                            <div class="accordion-body">
+                                <br>El módulo de productos ofrece una visión clara del inventario disponible en el restaurante. Permite listar todos los productos, editar su información y gestionar el inventario de manera eficiente. Esta funcionalidad es clave para asegurar que siempre haya suficientes ingredientes disponibles y para facilitar la planificación de compras.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="accordion" id="exampleAccordionTwo">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOneOne">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOneOne" aria-expanded="false" aria-controls="collapseOneOne">
+                                <strong>Historial de Ventas</strong>
+                            </button>
+                        </h2>
+                        <div id="collapseOneOne" class="accordion-collapse collapse" aria-labelledby="headingOneOne" data-bs-parent="#exampleAccordionTwo">
+                            <div class="accordion-body">
+                                <br>El módulo de ventas proporciona un análisis detallado de las ventas realizadas en el restaurante, ya sea en mesa o domicilios. Los usuarios pueden visualizar las ventas, editar registros, reimprimir facturas y enviarlas por correo electrónico. También se ofrece la opción de eliminar ventas si es necesario, permitiendo una gestión financiera precisa y un seguimiento de las transacciones con facilidad.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingTwoOne">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwoOne" aria-expanded="false" aria-controls="collapseTwoOne">
+                                <strong>Historial de Gastos</strong>
+                            </button>
+                        </h2>
+                        <div id="collapseTwoOne" class="accordion-collapse collapse" aria-labelledby="headingTwoOne" data-bs-parent="#exampleAccordionTwo">
+                            <div class="accordion-body">
+                                <br>El módulo de gastos permite registrar todos los gastos del restaurante, categorizándolos por conceptos contables para mantener la contabilidad organizada. Facilita la emisión de facturas de gasto y su envío por correo electrónico, asegurando que toda la documentación esté en orden. Además, ayuda a llevar la nómina del personal al día, contribuyendo a una gestión financiera más eficiente y clara.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingThreeOne">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThreeOne" aria-expanded="false" aria-controls="collapseThreeOne">
+                                <strong>Reportes Estadisticos</strong>
+                            </button>
+                        </h2>
+                        <div id="collapseThreeOne" class="accordion-collapse collapse" aria-labelledby="headingThreeOne" data-bs-parent="#exampleAccordionTwo">
+                            <div class="accordion-body">
+                                <br>Este módulo ofrece un análisis completo sobre el desempeño del restaurante, proporcionando estadísticas valiosas como los platos más vendidos, el total de ventas por tipo de pago, y las ventas mensuales. También permite analizar la cantidad de platos vendidos en periodos específicos y estadísticas sobre los domicilios, ayudando a la toma de decisiones informadas y a la mejora de las estrategias comerciales.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingFourOne">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFourOne" aria-expanded="false" aria-controls="collapseFourOne">
+                                <strong>Arqueo de Caja</strong>
+                            </button>
+                        </h2>
+                        <div id="collapseFourOne" class="accordion-collapse collapse" aria-labelledby="headingFourOne" data-bs-parent="#exampleAccordionTwo">
+                            <div class="accordion-body">
+                                <br>El módulo de arqueo de caja facilita la gestión de las transacciones financieras del restaurante. Permite llevar un control detallado desde que se inicia la venta hasta su finalización, contabilizando los ingresos, egresos y el conteo de monedas y billetes. Esta funcionalidad es esencial para asegurar que las cuentas estén equilibradas y que no haya discrepancias en el flujo de efectivo.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingFiveOne">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFiveOne" aria-expanded="false" aria-controls="collapseFiveOne">
+                                <strong>Perfil de Usuario</strong>
+                            </button>
+                        </h2>
+                        <div id="collapseFiveOne" class="accordion-collapse collapse" aria-labelledby="headingFiveOne" data-bs-parent="#exampleAccordionTwo">
+                            <div class="accordion-body">
+                                <br>En este módulo, los clientes pueden registrar la información esencial necesaria para la facturación y los datos del negocio. Esto asegura que toda la información relevante esté fácilmente accesible y organizada, mejorando la experiencia general del usuario al interactuar con el sistema.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingSixOne">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSixOne" aria-expanded="false" aria-controls="collapseSixOne">
+                                <strong>Lista de Clientes</strong>
+                            </button>
+                        </h2>
+                        <div id="collapseSixOne" class="accordion-collapse collapse" aria-labelledby="headingSixOne" data-bs-parent="#exampleAccordionTwo">
+                            <div class="accordion-body">
+                                <br>Este módulo permite mantener una base de datos con los clientes más frecuentes, facilitando la creación de pedidos y mejorando la experiencia del usuario. Al tener acceso rápido a la información de los clientes, se optimizan los tiempos de servicio y se personaliza la atención, lo que contribuye a una relación más cercana y satisfactoria con los clientes.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <br>
+            </div>
+            
+            <div class="modern-title-nav">
+                <h1>Preguntas frecuentes</h1>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="accordion" id="exampleAccordionThree">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingOneTwo">
+                                <button class="accordion-button accordion-button-2 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOneTwo" aria-expanded="false" aria-controls="collapseOneTwo">
+                                    ¿Cuál es la diferencia entre factura POS y factura electrónica?
+                                </button>
+                            </h2>
+                            <div id="collapseOneTwo" class="accordion-collapse collapse" aria-labelledby="headingOneTwo" data-bs-parent="#exampleAccordionThree">
+                                <div class="accordion-body">
+                                    <br>Para emitir una factura de venta existen 2 modalidades: Sistemas POS y Facturación Electrónica. La diferencia está en que la factura de venta POS no se reporta en tiempo real a la DIAN, solo consiste en la emisión de un tiquete físico que se genera a través de una máquina registradora al momento de pagar por un bien o servicio.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingTwoTwo">
+                                <button class="accordion-button accordion-button-2 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwoTwo" aria-expanded="false" aria-controls="collapseTwoTwo">
+                                    ¿Qué es facturación POS?
+                                </button>
+                            </h2>
+                            <div id="collapseTwoTwo" class="accordion-collapse collapse" aria-labelledby="headingTwoTwo" data-bs-parent="#exampleAccordionTwo">
+                                <div class="accordion-body">
+                                    <br>La Facturación POS es la emisión de tiquetes físicos generados por una máquina registradora al momento de realizar el pago de un bien o servicio. A diferencia de la Facturación Electrónica, una factura POS es un tipo de factura de venta que no se reporta en tiempo real a la DIAN.
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingThreeTwo">
+                                <button class="accordion-button accordion-button-2 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThreeTwo" aria-expanded="false" aria-controls="collapseThreeTwo">
+                                    ¿Cómo se utiliza un Software POS?
+                                </button>
+                            </h2>
+                            <div id="collapseThreeTwo" class="accordion-collapse collapse" aria-labelledby="headingThreeTwo" data-bs-parent="#exampleAccordionThree">
+                                <div class="accordion-body">
+                                    <br>Usar un Software Punto de venta es tan fácil que solo necesitas seleccionar el producto vendido, crear la factura de tu cliente, seleccionar el método de pago y registrar el cobro. Tareas como la actualización de inventario o el control de efectivo se hacen de forma automática y en tiempo real. visualizar todas las mesas disponibles, así como crear, editar y eliminar mesas según sea necesario. Esta funcionalidad asegura que el espacio del restaurante se utilice de manera óptima, mejorando la experiencia del cliente y la eficiencia operativa.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingFourTwo">
+                                <button class="accordion-button accordion-button-2 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFourTwo" aria-expanded="false" aria-controls="collapseFourTwo">
+                                    ¿Puedo generar solo facturación electrónica y no generar POS electrónico?
+                                </button>
+                            </h2>
+                            <div id="collapseFourTwo" class="accordion-collapse collapse" aria-labelledby="headingFourTwo" data-bs-parent="#exampleAccordionThree">
+                                <div class="accordion-body">
+                                    <br>Sí, en Colombia puedes optar por generar únicamente facturación electrónica sin necesidad de usar facturación POS electrónico. La facturación electrónica cumple con todas las normativas de la DIAN y es válida para cualquier tipo de transacción comercial. Con Alegra, puedes gestionar toda tu facturación electrónica de manera eficiente y en conformidad con las regulaciones vigentes.
+                                </div>
+                            </div>
+                        </div>
+                  
+                    </div>
+                </div>
+            </div>
+                <div class="col-md-6">
+                    <div class="accordion" id="exampleAccordionFour">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingOneThree">
+                                <button class="accordion-button accordion-button-2 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOneThree" aria-expanded="false" aria-controls="collapseOneThree">
+                                    ¿Qué es un sistema POS para negocio?
+                                </button>
+                            </h2>
+                            <div id="collapseOneThree" class="accordion-collapse collapse" aria-labelledby="headingOneThree" data-bs-parent="#exampleAccordionFour">
+                                <div class="accordion-body">
+                                    <br>Un Sistema Punto de venta (POS) es una herramienta que automatiza los procesos que intervienen en tu venta y facturación diaria. Entre ellos tenemos: el registro de clientes, la actualización de inventario, el control de efectivo, la creación de facturas (electrónicas o POS) y mucho más. De esta manera, agilizas tus ventas y ofreces una mejor experiencia de compra a tus clientes.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingTwoThree">
+                                <button class="accordion-button accordion-button-2 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwoThree" aria-expanded="false" aria-controls="collapseTwoThree">
+                                    ¿Qué dispositivos me recomiendan para usar con GastroPOS?
+                                </button>
+                            </h2>
+                            <div id="collapseTwoThree" class="accordion-collapse collapse" aria-labelledby="headingTwoThree" data-bs-parent="#exampleAccordionFour">
+                                <div class="accordion-body">
+                                    <br>GastroPOS se adapta fácilmente a cualquier computadora, impresora o tablet.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingThreeOne">
+                                <button class="accordion-button accordion-button-2 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThreeThree" aria-expanded="false" aria-controls="collapseThreeThree">
+                                    ¿Qué beneficios tengo con GastroPOS?
+                                </button>
+                            </h2>
+                            <div id="collapseThreeThree" class="accordion-collapse collapse" aria-labelledby="headingThreeThree" data-bs-parent="#exampleAccordionFour">
+                                <div class="accordion-body">
+                                    <br>Con un Sistema POS como GastroPOS: agilizas tu proceso de venta al crear tus boletas y facturas en segundos, simplificas el manejo de tus terminales de venta al gestionar todo desde un solo lugar, ahorras tiempo al mantener tu inventario siempre actualizado, controlas ágilmente tu efectivo al realizar fácilmente cierres de turnos y mucho más.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingFourThree">
+                                <button class="accordion-button accordion-button-2 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFourThree" aria-expanded="false" aria-controls="collapseFourThree">
+                                    ¿Puedo generar facturas electrónicas con GastroPOS?
+                                </button>
+                            </h2>
+                            <div id="collapseFourThree" class="accordion-collapse collapse" aria-labelledby="headingFourThree" data-bs-parent="#exampleAccordionFour">
+                                <div class="accordion-body">
+                                    <br>Sí, puedes emitir fácilmente facturas electrónicas o documentos equivalentes con todos los requisitos de la DIAN por cada venta realizada con GastroPOS.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingFiveThree">
+                                <button class="accordion-button accordion-button-2 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFiveThree" aria-expanded="false" aria-controls="collapseFiveThree">
+                                    ¿Tengo el control de mi efectivo con GastroPOS?
+                                </button>
+                            </h2>
+                            <div id="collapseFiveThree" class="accordion-collapse collapse" aria-labelledby="headingFiveThree" data-bs-parent="#exampleAccordionFour">
+                                <div class="accordion-body">
+                                    <br>Sí, con GastroPOS tienes el control total de tu efectivo, además de poder registrar cada entrada y salida de dinero diferente al de tus ventas. Visita este artículo y conoce cómo utilizar la Gestión de efectivo en tu local.
+                                </div>
+                            </div>
+                        </div>
+                       
+                    </div>
+                    <br>
+                    <br>
+        </div>
+        
+    </div>
+    </div>
+</div>
+</div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // También puedes hacerlo desde el sidebar
+            document.getElementById('restauranteLinkSidebar').addEventListener('click', function(event) {
+                event.preventDefault();
+                var carousel = new bootstrap.Carousel(document.getElementById('carouselExample'));
+                var carousel2 = new bootstrap.Carousel(document.getElementById('carouselExample2'));
+                carousel.to(0);
+                carousel2.to(0);
+            });
+            document.getElementById('cocinaLinkSidebar').addEventListener('click', function(event) {
+                event.preventDefault();
+                var carousel = new bootstrap.Carousel(document.getElementById('carouselExample'));
+                var carousel2 = new bootstrap.Carousel(document.getElementById('carouselExample2'));
+                carousel.to(1);
+                carousel2.to(1);
+            });
+            document.getElementById('mesaLinkSidebar').addEventListener('click', function(event) {
+                event.preventDefault();
+                var carousel = new bootstrap.Carousel(document.getElementById('carouselExample'));
+                var carousel2 = new bootstrap.Carousel(document.getElementById('carouselExample2'));
+                carousel.to(2);
+                carousel2.to(2);
+            });
+            document.getElementById('platosLinkSidebar').addEventListener('click', function(event) {
+                event.preventDefault();
+                var carousel = new bootstrap.Carousel(document.getElementById('carouselExample'));
+                var carousel2 = new bootstrap.Carousel(document.getElementById('carouselExample2'));
+                carousel.to(3);
+                carousel2.to(3);
+            });
+            document.getElementById('productosLinkSidebar').addEventListener('click', function(event) {
+                event.preventDefault();
+                var carousel = new bootstrap.Carousel(document.getElementById('carouselExample'));
+                var carousel2 = new bootstrap.Carousel(document.getElementById('carouselExample2'));
+                carousel.to(4);
+                carousel2.to(4);
+            });
+            document.getElementById('ventasLinkSidebar').addEventListener('click', function(event) {
+                event.preventDefault();
+                var carousel = new bootstrap.Carousel(document.getElementById('carouselExample'));
+                var carousel2 = new bootstrap.Carousel(document.getElementById('carouselExample2'));
+                carousel.to(5);
+                carousel2.to(5);
+            });
+            document.getElementById('pagosLinkSidebar').addEventListener('click', function(event) {
+                event.preventDefault();
+                var carousel = new bootstrap.Carousel(document.getElementById('carouselExample'));
+                var carousel2 = new bootstrap.Carousel(document.getElementById('carouselExample2'));
+                carousel.to(6);
+                carousel2.to(6);
+            });
+            document.getElementById('reportesLinkSidebar').addEventListener('click', function(event) {
+                event.preventDefault();
+                var carousel = new bootstrap.Carousel(document.getElementById('carouselExample'));
+                var carousel2 = new bootstrap.Carousel(document.getElementById('carouselExample2'));
+                carousel.to(7);
+                carousel2.to(7);
+            });
+            document.getElementById('arqueoLinkSidebar').addEventListener('click', function(event) {
+                event.preventDefault();
+                var carousel = new bootstrap.Carousel(document.getElementById('carouselExample'));
+                var carousel2 = new bootstrap.Carousel(document.getElementById('carouselExample2'));
+                carousel.to(8);
+                carousel2.to(8);
+            });
+            document.getElementById('perfilLinkSidebar').addEventListener('click', function(event) {
+                event.preventDefault();
+                var carousel = new bootstrap.Carousel(document.getElementById('carouselExample'));
+                var carousel2 = new bootstrap.Carousel(document.getElementById('carouselExample2'));
+                carousel.to(9);
+                carousel2.to(9);
+            });
+            document.getElementById('clientesLinkSidebar').addEventListener('click', function(event) {
+                event.preventDefault();
+                var carousel = new bootstrap.Carousel(document.getElementById('carouselExample'));
+                var carousel2 = new bootstrap.Carousel(document.getElementById('carouselExample2'));
+                carousel.to(10);
+                carousel2.to(10);
+            });
+        });
+    </script>
+{% endblock %}

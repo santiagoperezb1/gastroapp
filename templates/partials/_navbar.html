@@ -1,0 +1,70 @@
+{% load static %}
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark custom-navbar sticky-top">
+    <div class="container">
+        <a class="navbar-brand">
+            <img src="{% static 'images/modern-logo.png' %}" class="logo" alt="">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <ul class="navbar-nav">
+                <li class="nav-item dropdown mr-3">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <span class="text-dark"><img src="{% static 'icons/dash.svg' %}" alt="Dashboard" class="icon-navbar"></span> Dashboard
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{% url 'crear_pedido' %}">Restaurante</a></li>
+                        <li><a class="dropdown-item" href="{% url 'listar_pedidos_activos' %}">Cocina</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown mr-3">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <span class="text-primary"><img src="{% static 'icons/stock.svg' %}" alt="Inventario" class="icon-navbar"></span> Inventario
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{% url 'listar_mesas' %}">Mesas</a></li>
+                        <li><a class="dropdown-item" href="{% url 'listar_platos' %}">Platos</a></li>
+                        <li><a class="dropdown-item" href="{% url 'lista_productos' %}">Productos</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown mr-3">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <span class="text-primary"><img src="{% static 'icons/ventas.svg' %}" alt="Reportes"class="icon-navbar"></span> Reportes
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{% url 'obtener_registros_venta' %}">Ventas</a></li>
+                        <li><a class="dropdown-item" href="{% url 'listar_pagos' %}">Pagos</a></li>
+                        <li><a class="dropdown-item" href="{% url 'estadisticas' %}">Reportes</a></li>              
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="{% url 'listar_arqueos' %}">Arqueos</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown mr-3">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <span class="text-primary"><img src="{% static 'icons/user.svg' %}" alt="Usuario" class="icon-navbar"></span> Usuario
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{% url 'profile' %}">Perfil</a></li>
+                        <li><a class="dropdown-item" href="{% url 'listar_clientes' %}">Clientes</a></li>
+                        <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item mr-3">
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-user-plus"></i> Register
+                    </a>
+                </li>
+                <li class="nav-item mr-3">
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-sign-in-alt"></i> Login
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

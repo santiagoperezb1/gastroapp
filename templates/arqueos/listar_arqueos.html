@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load custom_filters %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/arqueos/listar_arqueo_caja.css' %}">
+{% endblock %}
+
+{% block content %}
+<br>
+<br>
+<div class="container-fluid mt-5">
+    {% if not hay_en_curso %}
+
+        <a href="{% url 'iniciar_arqueo_caja' %}" class="btn btn-arqueo mb-4" >NUEVO ARQUEO DE CAJA</a>
+
+    {% endif %}
+
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-custom">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Fecha de Inicio</th>
+                        <th>Fecha de Cierre</th>
+                        <th>Base Inicial</th>
+                        <th>Venta Mesa</th>
+                        <th>Venta Domicilio</th>
+                        <th>Total Pagos</th>
+                        <th>Efectivo Final</th>
+                        <th>Efectivo Contado</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for arqueo in arqueos %}
+                    <tr>
+                        <td>{{ arqueo.id }}</td>
+                        <td>{{ arqueo.fecha_inicio|date:"d/m/Y h:i a" }}</td>
+                        <td>{{ arqueo.fecha_fin|date:"d/m/Y h:i a" }}</td>
+                        <td>${{ arqueo.efectivo_inicial|format_number }}</td>
+                        <td>${{ arqueo.total_ventas|format_number }}</td>
+                        <td>${{ arqueo.total_ventas_domicilios|format_number }}</td>
+                        <td>${{ arqueo.total_pagos|format_number }}</td>
+                        <td>${{ arqueo.efectivo_final|format_number }}</td>
+                        <td>${{ arqueo.efectivo_final_registrado|format_number }}</td>
+                        <td>{{ arqueo.estado }}</td>
+                        <td>
+                            {% if arqueo.estado == 'En Curso' %}
+                            <a href="{% url 'cerrar_arqueo_caja' arqueo.id %}" class="btn btn-warning">Cerrar</a>
+                            {% endif %}
+                            <a href="{% url 'detalle_arqueo' arqueo.id %}" class="btn btn-primary">Detalle</a>
+                            <a href="#" class="btn btn-danger btn-sm" onclick="confirmDelete('{{ arqueo.id }}'); return false;">Eliminar</a>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="9" class="text-center">No hay arqueos de caja registrados.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+          </div>
+        </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="pinModal" tabindex="-1" aria-labelledby="pinModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="pinModalLabel">Verificación de PIN</h5>
+        </div>
+        <div class="modal-body">
+          <div class="pin-calculator">
+            <input type="password" id="pinInput" class="form-control mb-3" placeholder="Ingrese PIN" readonly>
+            <div class="button-grid">
+              <button class="btn btn-light" data-value="1">1</button>
+              <button class="btn btn-light" data-value="2">2</button>
+              <button class="btn btn-light" data-value="3">3</button>
+              <button class="btn btn-light" data-value="4">4</button>
+              <button class="btn btn-light" data-value="5">5</button>
+              <button class="btn btn-light" data-value="6">6</button>
+              <button class="btn btn-light" data-value="7">7</button>
+              <button class="btn btn-light" data-value="8">8</button>
+              <button class="btn btn-light" data-value="9">9</button>
+              <button class="btn btn-light" data-value="0">0</button>
+              <button class="btn btn-danger" id="clearButton">C</button>
+              <button class="btn btn-primary" id="submitPin">Aceptar</button>
+            </div>
+            <div id="pinError" class="text-danger mt-2" style="display: none;">PIN incorrecto. Intente de nuevo.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    var deleteUrl = "{% url 'eliminar_arqueo' '0' %}";
+    var redirectUrl = "{% url 'listar_arqueos' %}";
+    const userPin = "{{ pin }}";
+ </script>
+ <script src="{% static 'js/arqueos/verify-pin.js' %}"></script>
+{% endblock %}

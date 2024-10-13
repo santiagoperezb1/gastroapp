@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/platos/gestionar_categorias.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <div class="card-shadow">
+                <div class="card-body card-body-custom">
+                    <!-- Formulario para crear una nueva categoría -->
+                    <form method="post" class="mb-4">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button type="submit" name="create" class="btn btn-hover">
+                            <img src="{% static 'icons/save_yw.svg' %}" alt="Guardar" style="width:35px; height:35px;">
+                        </button>
+                    </form>
+
+                    <!-- Listado de categorías con opciones para editar y eliminar -->
+                    <form method="post">
+                        {% csrf_token %}
+                        <table class="table table-custom">
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for categoria in categorias %}
+                                <tr style="background: white;">
+                                    <td>{{ categoria.nombre }}</td>
+                                    <td>
+                                        <!-- Formulario para editar la categoría -->
+                                        <button type="button" data-bs-toggle="modal" data-bs-target="#editModal{{ categoria.id }}" class="btn btn-primary">
+                                            Editar
+                                        </button>
+                                        <!-- Modal para editar la categoría -->
+                                        <div class="modal fade" id="editModal{{ categoria.id }}" tabindex="-1" aria-labelledby="editModalLabel{{ categoria.id }}" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+
+                                            <div class="modal-dialog">
+                                                <div class="modal-content card-custom">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="editModalLabel{{ categoria.id }}">Editar Categoría</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <form method="post" class="d-flex align-items-center">
+                                                            {% csrf_token %}
+                                                            <input type="hidden" name="categoria_id" value="{{ categoria.id }}">
+                                                            <div class="form-group mb-0 me-2">
+                                                                <label for="nombre" class="form-label">Nombre</label>
+                                                                <input type="text" id="nombre" name="nombre" class="form-control" value="{{ categoria.nombre }}">
+                                                            </div>
+                                                            <button type="submit" name="update" class="btn btn-hover">
+                                                                <img src="{% static 'icons/save_yw.svg' %}" alt="Guardar" style="width:35px; height:35px;">
+                                                            </button>
+                                                        </form>
+                                                    </div>
+                                                    
+                                                    
+                                                    <div class="modal-footer">
+                                                        <form method="post">
+                                                            {% csrf_token %}
+                                                            <input type="hidden" name="categoria_id" value="{{ categoria.id }}">
+                                                            <button type="submit" name="delete" class="btn btn-danger">Eliminar</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

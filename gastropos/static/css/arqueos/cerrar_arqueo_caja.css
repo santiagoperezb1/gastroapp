@@ -1,0 +1,239 @@
+/* Estilos generales */
+.card-custom {
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(8, 4, 246, 0.1);
+    background-color:transparent;
+    border: none;
+    color: #ffffff;
+    
+}
+
+
+.card-body-custom {
+    padding: 20px;
+}
+
+.card-title-finalizar {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #091e44e6;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.span-size-image {
+    max-width: 60px;
+    max-height: 52px;
+    object-fit: contain;
+}
+
+.form-group label {
+    color: #091e44e6;
+}
+
+.input-group-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    width: 60px;
+}
+
+/* Estilos de botones */
+.btn-outline-secondary {
+    background-color: rgb(224, 186, 74);
+    border: 1px solid #4c4747;
+    color: #171515;
+    transition: all 0.3s ease;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.btn-outline-secondary:hover {
+    background-color: #e5e28d;
+    border-color: #544c4c;
+    color: #fffefe;
+}
+
+.form-control-custom {
+    background-color: rgba(255, 255, 255, 0.8); /* Fondo más claro */
+    border: 2px solid #4c4747; /* Borde más definido */
+    border-radius: 10px; /* Bordes redondeados */
+    color: #171515; /* Color del texto */
+    font-size: 1.2rem; /* Tamaño de fuente más grande */
+    font-weight: 500;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    padding: 10px; /* Espaciado interno */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Transiciones suaves */
+    width: 50px;
+    height: 80px;
+}
+
+.form-control-custom[readonly] {
+    background-color: rgba(220, 220, 220, 0.5); /* Cambia el fondo para indicar que es readonly */
+    cursor: not-allowed; /* Cambia el cursor para indicar que no se puede escribir */
+    width: 35px;
+    height: 52px;
+}
+
+.form-control-contado {
+    background-color: rgba(255, 255, 255, 0.946); /* Fondo más claro */
+    border: 2px solid #4c4747; /* Borde más definido */
+    border-radius: 10px; /* Bordes redondeados */
+    color: #dadae4; /* Color del texto */
+    font-size: 1.3rem; /* Tamaño de fuente más grande */
+    font-weight: 500;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    padding: 10px; /* Espaciado interno */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Transiciones suaves */
+}
+
+.form-control-contado[readonly] {
+    background-color: rgba(37, 98, 219, 0.922); /* Cambia el fondo para indicar que es readonly */
+    cursor: not-allowed; /* Cambia el cursor para indicar que no se puede escribir */
+}
+
+.form-label-custom {
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+.form-control-write {
+    background-color: rgba(255, 255, 255, 0.946); /* Fondo más claro */
+    border: 2px solid #4c4747; /* Borde más definido */
+    border-radius: 10px; /* Bordes redondeados */
+    color: #19191b; /* Color del texto */
+    font-size: 1.3rem; /* Tamaño de fuente más grande */
+    font-weight: 500;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    padding: 10px; /* Espaciado interno */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Transiciones suaves */
+}
+
+.form-control-white {
+    background-color: rgba(255, 255, 255, 0.946); /* Fondo más claro */
+    border: 2px solid #4c4747; /* Borde más definido */
+    border-radius: 10px; /* Bordes redondeados */
+    color: #19191b; /* Color del texto */
+    font-size: 1.3rem; /* Tamaño de fuente más grande */
+    font-weight: 500;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    padding: 10px; /* Espaciado interno */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Transiciones suaves */
+}
+
+.form-control-white[readonly] {
+    background-color: rgba(243, 246, 252, 0.922); /* Cambia el fondo para indicar que es readonly */
+    cursor: not-allowed; /* Cambia el cursor para indicar que no se puede escribir */
+}
+
+.form-control-custom:focus {
+    border-color: #e0ba4a; /* Color del borde al enfocar */
+    box-shadow: 0 0 5px rgba(224, 186, 74, 0.5); /* Sombra al enfocar */
+    outline: none; /* Eliminar el contorno por defecto */
+}
+
+/* Cambiar color del texto si el campo está vacío */
+.form-control-custom::placeholder {
+    color: #999999; /* Color del placeholder */
+    opacity: 1; /* Asegura que se muestre */
+}
+
+/* Estilo para el encabezado de la tabla */
+.table thead {
+    background: rgb(2, 43, 97);
+    color: white;
+}
+
+/* Estilo para las filas del cuerpo de la tabla */
+.table tbody {
+    background: rgba(235, 230, 230, 0.467);
+    font-weight: bold;
+}
+
+/* Estilo para la tabla en general */
+.table {
+    border: 1px solid #ddd; /* Estilo de borde */
+}
+
+/* Estilo para las celdas de la tabla */
+.table th, .table td {
+    border: 1px solid #ddd; /* Borde entre celdas */
+    padding: 8px; /* Espaciado interno */
+    text-align: left; /* Alineación de texto */
+}
+
+/* Estilo adicional para el encabezado de las celdas */
+.table th {
+    text-align: center; /* Centrar texto en las cabeceras */
+}
+
+.btn-arqueo {
+    background: rgb(1, 72, 165);
+    color: beige;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn-arqueo:hover {
+    background: rgb(140, 60, 0); /* Color de fondo más oscuro al pasar el mouse */
+    transform: translateY(-2px); /* Levanta ligeramente el botón */
+}
+
+.btn-arqueo:active {
+    transform: translateY(1px); /* Efecto de presión */
+}
+/* Media Queries para dispositivos móviles */
+@media (max-width: 768px) {
+    .card-body-custom {
+        padding: 15px; /* Reduce el padding en móviles */
+    }
+
+    .card-title-finalizar {
+        font-size: 1.2rem; /* Ajusta el tamaño de fuente */
+    }
+
+    .input-group {
+        flex-direction: column; /* Coloca los elementos en columna */
+        align-items: stretch; /* Alinea los elementos al ancho completo */
+    }
+
+    .input-group .form-control {
+        margin-bottom: 10px; /* Espacio entre inputs */
+        width: 100%; /* Asegura que los inputs ocupen el ancho completo */
+    }
+
+    .btn-outline-secondary {
+        font-size: 16px; /* Reduce el tamaño de los botones */
+        width: 100%; /* Botones ocupan el ancho completo */
+        margin-bottom: 5px; /* Espacio entre botones */
+    }
+
+    .table {
+        font-size: 14px; /* Reduce el tamaño de la fuente de las tablas */
+        width: 100%; /* Asegura que las tablas ocupen el ancho completo */
+    }
+
+    .span-size-image {
+        max-width: 40px; /* Ajusta el tamaño de las imágenes en móviles */
+        max-height: 35px;
+    }
+
+    /* Mejora la visibilidad de las tablas */
+    .table th, .table td {
+        text-align: center; /* Centra el texto en las tablas */
+    }
+}

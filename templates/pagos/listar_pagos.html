@@ -1,0 +1,146 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/pagos/listar_pagos.css' %}">
+{% endblock %}
+
+{% block content %}
+<br>
+<br>
+<div class="container-fluid mt-2">
+    <div class="card card-custom-stacts shadow-sm">
+        <div class="card-body card-body-custom">
+            <h3 class="modern-title-alt">Filtrar por Fecha o Concepto</h3>
+            <!-- Formulario de búsqueda -->
+            <form method="GET" class="form-inline mb-4 d-flex justify-content-center">
+                <div class="input-group mx-2">
+                    <input type="date" name="fecha" class="form-control" value="{{ request.GET.fecha }}">
+                </div>
+                <div class="input-group mx-2">
+                    <select name="concepto" class="form-control">
+                        <option value="">Todos los conceptos</option>
+                        {% for c in conceptos %}
+                        <option value="{{ c }}" {% if request.GET.concepto == c %}selected{% endif %}>{{ c }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-warning"><i class="fa-solid fa-magnifying-glass"></i></button>
+
+            </form>
+            <a href="{% url 'crear_pago' %}" class="btn btn-arqueo mb-4" >Registrar Pago</a>
+        </div>
+    </div>
+    <br>
+    <div class="table-responsive">
+    <!-- Tabla de pagos -->
+    <table class="table table-custom">
+        <thead>
+            <tr>                
+                <th>fecha</th>
+                <th>nota de egreso</th>
+                <th>concepto</th>
+                <th>observaciones</th>
+                <th>metodo de pago</th>
+                <th>subtotal</th>
+                <th>total cancelado</th>              
+                <th>acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for pago in pagos %}
+            <tr>
+                <td>{{ pago.fecha|date:"d/m/Y h:i a" }}</td>
+                <td>{{ pago.nota_egreso }}</td>
+                <td>{{ pago.concepto }}</td>
+                <td>{{ pago.observaciones }}</td>
+                <td>{{ pago.metodo_pago }}</td>
+                <td>${{ pago.valor }}</td>
+                <td>${{ pago.calcular_total }}</td>
+                <td>
+                    <a href="{% url 'editar_pago' pago.id %}" class="btn btn-primary btn-sm">Editar</a>
+                    <a href="#" class="btn btn-danger btn-sm" onclick="confirmDelete('{{ pago.id }}'); return false;">Eliminar</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="8" class="text-center">No hay pagos registrados.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+    <!-- Paginación -->
+    <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+            {% if pagos.has_previous %}
+                <li class="page-item">
+                    <a class="page-link" href="?page=1{% if request.GET.fecha %}&fecha={{ request.GET.fecha }}{% endif %}{% if request.GET.concepto %}&concepto={{ request.GET.concepto }}{% endif %}" aria-label="Primera">
+                        <span aria-hidden="true">&laquo;&laquo;</span>
+                    </a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ pagos.previous_page_number }}{% if request.GET.fecha %}&fecha={{ request.GET.fecha }}{% endif %}{% if request.GET.concepto %}&concepto={{ request.GET.concepto }}{% endif %}" aria-label="Anterior">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+            {% endif %}
+            {% for num in pagos.paginator.page_range %}
+                {% if pagos.number == num %}
+                    <li class="page-item active"><span class="page-link">{{ num }}</span></li>
+                {% else %}
+                    <li class="page-item"><a class="page-link" href="?page={{ num }}{% if request.GET.fecha %}&fecha={{ request.GET.fecha }}{% endif %}{% if request.GET.concepto %}&concepto={{ request.GET.concepto }}{% endif %}">{{ num }}</a></li>
+                {% endif %}
+            {% endfor %}
+            {% if pagos.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ pagos.next_page_number }}{% if request.GET.fecha %}&fecha={{ request.GET.fecha }}{% endif %}{% if request.GET.concepto %}&concepto={{ request.GET.concepto }}{% endif %}" aria-label="Siguiente">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ pagos.paginator.num_pages }}{% if request.GET.fecha %}&fecha={{ request.GET.fecha }}{% endif %}{% if request.GET.concepto %}&concepto={{ request.GET.concepto }}{% endif %}" aria-label="Última">
+                        <span aria-hidden="true">&raquo;&raquo;</span>
+                    </a>
+                </li>
+            {% endif %}
+        </ul>
+    </nav>
+</div>
+<br>
+<br>
+<!-- Modal -->
+<div class="modal fade" id="pinModal" tabindex="-1" aria-labelledby="pinModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog">
+      <div class="modal-content bg-dark">
+  
+        <div class="modal-body">
+          <div class="pin-calculator">
+            <input type="password" id="pinInput" class="form-control mb-3" placeholder="Ingrese PIN" readonly>
+            <div class="button-grid">
+              <button class="btn btn-light" data-value="1">1</button>
+              <button class="btn btn-light" data-value="2">2</button>
+              <button class="btn btn-light" data-value="3">3</button>
+              <button class="btn btn-light" data-value="4">4</button>
+              <button class="btn btn-light" data-value="5">5</button>
+              <button class="btn btn-light" data-value="6">6</button>
+              <button class="btn btn-light" data-value="7">7</button>
+              <button class="btn btn-light" data-value="8">8</button>
+              <button class="btn btn-light" data-value="9">9</button>
+              <button class="btn btn-light" data-value="0">0</button>
+              <button class="btn btn-danger" id="clearButton">C</button>
+              <button class="btn btn-primary" id="submitPin">Aceptar</button>
+            </div>
+            <div id="pinError" class="text-danger mt-2" style="display: none;">PIN incorrecto. Intente de nuevo.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+   var deleteUrl = "{% url 'eliminar_pago' '0' %}";
+   var redirectUrl = "{% url 'listar_pagos' %}";
+   const userPin = "{{ pin }}";
+</script>
+<script src="{% static 'js/pagos/verify-pin.js' %}"></script>
+{% endblock %}

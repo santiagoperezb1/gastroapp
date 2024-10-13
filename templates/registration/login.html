@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio de Sesión</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="login-box">
+            <div class="login-header">
+                <h1>𝗕𝗶𝗲𝗻𝘃𝗲𝗻𝗶𝗱𝗼 a GastroPOS</h1>
+                <p>Inicia sesión para continuar</p>
+            </div>
+            <div class="login-body">
+                <!-- Icono de usuario en el login -->
+                <div class="text-center mb-3">
+                    <i class="fa fa-user-circle login-icon"></i>
+                </div>
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="{{ form.username.id_for_label }}">Nombre de Usuario</label>
+                        <input type="text" id="{{ form.username.id_for_label }}" name="{{ form.username.html_name }}" class="form-control" value="{{ form.username.value }}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="{{ form.password.id_for_label }}">Contraseña</label>
+                        <input type="password" id="{{ form.password.id_for_label }}" name="{{ form.password.html_name }}" class="form-control" value="{{ form.password.value }}" required>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-warning"><strong>Iniciar Sesión</strong></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

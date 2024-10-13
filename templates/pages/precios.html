@@ -1,0 +1,498 @@
+{% extends 'planta.html' %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/usuarios/planes_precios.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-7">
+                <img src="{% static 'images/7.png' %}" alt="Mesa"  class="pic-text-2">
+            </div>
+
+            <div class="col-md-5">
+                <img src="{% static 'images/pic_price.png' %}" alt="Mesa" class="pic-page">
+            </div>
+        </div>
+         
+    </div>
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-4">
+                <img src="{% static 'images/8.png' %}" alt="Mesa" style="width: 320px; height: 220px;">
+            </div>
+
+            <div class="col-md-4">
+                <img src="{% static 'images/9.png' %}" alt="Mesa" style="width: 320px; height: 220px;">
+            </div>
+
+            <div class="col-md-4">
+                <img src="{% static 'images/10.png' %}" alt="Mesa" style="width: 320px; height: 220px;">
+            </div>
+
+           
+        </div>
+    </div>
+    <div class="container mt-5">
+        <div class="modern-title-nav">
+            <h1><strong>Planes y precios para software POS</strong></h1>
+        </div>
+    <br>
+    <div class="cards-container">
+        <!-- POS Restobar Basico -->
+        <div class="card card-custom">
+            <div class="card-header card-header-custom">
+                <h4 class="h4-basico">
+                    <img src="{% static 'icons/pos_premium.svg' %}" alt="Mesa" style="width:37px; height:37px;">
+                    Restobar POS
+                </h4>
+        </div>
+           
+    <div class="card-body card-body-custom text-center">
+        <div class="pricing">
+            <span class="amount mx-2">$29.900</span><span class="period">/mes</span>
+        </div>
+        <div class="parrafo">
+            <p>Ideal para empezar tu negocio con todo lo esencial.</p>
+        </div>
+        <ul class="features list-unstyled">
+            <!-- Características Principales -->
+            <li><strong>POS Online (No electrónico) ILIMITADOS:</strong> Ideal para expandir tu negocio sin limitaciones.</li>
+            <li><strong>Gestión de mesas, pedidos, comandas:</strong> Organiza tu servicio de manera efectiva.</li>
+            <li><strong>Gestión de gastos y pagos:</strong> Mantén tus costos bajo control.</li>
+            <li class="additional-features"><strong>Control de domicilios:</strong> Facilita la administración de pedidos a domicilio.</li>
+            <li class="additional-features"><strong>Menu digital:</strong> Ofrece a tus clientes los platos actualizados.</li>
+            <li class="additional-features"><strong>Arqueo de caja:</strong> Asegura la precisión en la gestión de efectivo.</li>
+            
+            <!-- Características Adicionales -->
+            <li class="additional-features"><strong>Manejo de caja y medios de pago:</strong> Simplifica la gestión financiera de tu negocio.</li>
+            <li class="additional-features"><strong>Gestión de gastos y pagos:</strong> Mantén tus costos bajo control.</li>
+            <li class="additional-features"><strong>Estadísticas y reportes en tiempo real:</strong> Toma decisiones basadas en datos.</li>
+            <li class="additional-features"><strong>Productos de Inventario: 300:</strong> Control eficiente del stock.</li>
+            <li class="additional-features"><strong>Productos de Menu: 100:</strong> Amplia variedad para ofrecer a tus clientes.</li>
+            <li class="additional-features"><strong>Numero de Clientes: 50:</strong> Mantén tus clientes a la mano.</li>
+            <li class="additional-features"><strong>Usuarios: 2:</strong> Permite el acceso de múltiples usuarios simultáneamente.</li>
+    
+        </ul>
+        <!-- Botón para expandir o contraer la tarjeta -->
+        <button class="btn btn-hover toggle-details">Ver más</button>
+        <br>
+       
+    </div>
+    <div class="text-center">
+        <button class="btn-comprar mb-4" onclick="window.location.href='https://api.whatsapp.com/send?phone=573006476030&text=Hola%2C%20me%20gustar%C3%ADa%20saber%20m%C3%A1s%20acerca%20del%20RestobarPOS.'">Comprar</button>
+        
+    </div>
+    
+</div>
+
+<!-- POS Restobar Premium -->
+<div class="card-custom-premium">
+
+    <div class="card-header card-header-custom">
+        <h4 class="h4-premium">
+            <img src="{% static 'icons/pos_basico.svg' %}" alt="Mesa" style="width:37px; height:37px;">
+            Premium POS
+        </h4>
+    </div>
+    <div class="card-body card-body-custom text-center">
+        <div class="pricing">
+            <span class="amount mx-2">$39.900</span><span class="period">/mes</span>
+        </div>
+        <div class="parrafo">
+            <p>Herramientas avanzadas para impulsar tu negocio.</p>
+            <p>Todo lo del <strong>Restobar POS</strong> mas:</p>
+        </div>
+        <ul class="features list-unstyled">
+            <!-- Características Principales -->
+            <li><strong>Productos de Menu, Inventario y Clientes ILIMITADOS.</strong></li>
+            <li><strong>Menu digital y QR personalizado.</strong></li>
+            <li><strong>Control de recetas y gramaje:</strong> Mantén la calidad de tus productos.</li>
+            
+            <li><strong>Monitor de comandas para la cocina:</strong> Mejora la comunicación entre sala y cocina.</li>
+            <!-- Características Adicionales ocultas inicialmente -->
+            <li class="additional-features"><strong>Contabilidad integrada:</strong> Opcional para una gestión financiera más completa.</li>      
+            <li class="additional-features"><strong>Envío de facturas y reportes por email:</strong> Facilita la gestión administrativa.</li>
+            <li class="additional-features"><strong>Usuarios: 4.</strong></li>
+        </ul>
+        <!-- Botón para expandir o contraer la tarjeta -->
+        <button class="btn btn-hover toggle-details">Ver más</button><br><br>
+        <!-- Botón para abrir el modal -->
+        <button type="button" class="btn-factura" data-bs-toggle="modal" data-bs-target="#priceModalPremium">
+            Facturación electrónica Ilimitada
+        </button>
+    </div>
+    <div class="text-center">
+        <button class="btn-comprar mb-4" onclick="window.location.href='https://api.whatsapp.com/send?phone=573206930837&text=Hola%2C%20me%20gustar%C3%ADa%20saber%20m%C3%A1s%20acerca%20del%20RestobarPOS%20Premium.'">Comprar</button>
+
+    </div>
+</div>
+
+<!-- POS Tienda -->
+<div class="card card-custom">
+
+    <div class="card-header card-header-custom">
+        <h4 class="h4-tienda">
+            <img src="{% static 'icons/pos_tienda.svg' %}" alt="Mesa" style="width:37px; height:37px;">
+               Tienda POS
+        </h4>
+    </div>
+    <div class="card-body card-body-custom text-center">
+        <div class="pricing">
+            <span class="amount mx-2">$39.900</span><span class="period">/mes</span>
+        </div>
+        <div class="parrafo">
+            <p>Ideal para tiendas que requieren funcionalidades específicas y gestión avanzada.</p>
+        </div>
+        <ul class="features list-unstyled">
+            <!-- Características Principales -->
+            <li><strong>Usuarios: 2:</strong> Para un equipo pequeño.</li>
+            <li><strong>Cajas: 2:</strong> Soporta múltiples puntos de venta.</li>
+            <li><strong>Catálogo desde QR:</strong> Facilita el acceso a tus productos.</li>
+            <li><strong>Control de bodegas:</strong> Mantén tus productos organizados.</li>
+            <!-- Características Adicionales ocultas inicialmente -->
+            <li class="additional-features"><strong>Manejo de caja y medios de pago:</strong> Optimiza tus transacciones.</li>
+            <li class="additional-features"><strong>Productos de inventarios ILIMITADOS:</strong> Control total sobre tu stock.</li>
+            <li class="additional-features"><strong>Gestión de gastos y pagos:</strong> Mantén tus costos bajo control.</li>
+            <li class="additional-features"><strong>Contabilidad básica incluida:</strong> Gestión financiera básica incluida.</li>
+            <li class="additional-features"><strong>Creacion de descuentos.</strong> Mantén la calidad de tus productos.</li>
+            <li class="additional-features"><strong>Registra Clientes y Proveedores.</strong></li>
+            <li class="additional-features"><strong>Estadísticas y reportes en tiempo real:</strong> Información instantánea para tomar decisiones.</li>
+            <li class="additional-features"><strong>Envío de reportes por email:</strong> Facilita la gestión administrativa.</li>
+        </ul>
+        <!-- Botón para expandir o contraer la tarjeta -->
+        <button class="btn btn-hover toggle-details">Ver más</button><br><br>
+        <!-- Botón para abrir el modal -->
+        <button type="button" class="btn-factura" data-bs-toggle="modal" data-bs-target="#priceModalPremium">
+            Facturación electrónica Ilimitada
+        </button>
+    </div>
+    <div class="text-center">
+        <button class="btn-comprar mb-4" onclick="window.location.href='https://api.whatsapp.com/send?phone=573206930837&text=Hola%2C%20me%20gustar%C3%ADa%20saber%20m%C3%A1s%20acerca%20del%20producto.'">Comprar</button>
+        
+    </div>
+   
+</div>
+</div>       
+<br>
+<div class="modern-title-nav">
+    <h1><strong>Planes con Facturacion Electronica</strong></h1>
+</div>
+<br>
+<div class="row">
+    <div class="col-md-6 mx-4">
+        <img src="{% static 'images/11.png' %}" alt="Mesa" style="width: 520px; height: 260px;">
+    </div>
+
+    <div class="col-md-4 mx-4">
+        <img src="{% static 'images/12.png' %}" alt="Mesa" style="width: 420px; height: 260px;">
+    </div>
+    <div class="col-md-2">
+  
+    </div>
+
+   
+</div>
+        <div class="cards-container">
+            <!-- POS Restobar Basico -->
+            <div class="card card-custom">
+                <div class="card-header card-header-custom">
+                    <h4 class="h4-tienda">
+                        <img src="{% static 'icons/basico_plan.svg' %}" alt="Mesa" style="width:37px; height:37px;">
+                        Basico
+                    </h4>
+            </div>
+            <div class="card-body card-body-custom text-center">
+                <div class="pricing">
+                    <span class="amount">$41.900</span><span class="period">/mes</span>
+                </div>
+                <ul class="features list-unstyled">
+                    <!-- Características Principales -->
+                    <li><strong>Documentos Electronicos:</strong> 200.</li>
+                    <li><strong>Documento Adicional:</strong> $200.</li>
+                </ul>
+                
+            </div>
+    
+</div>
+
+<!-- POS Restobar Premium -->
+<div class="card card-custom">
+
+    <div class="card-header card-header-custom">
+        <h4 class="h4-tienda">
+            <img src="{% static 'icons/plus_plan.svg' %}" alt="Mesa" style="width:37px; height:37px;">
+            Plus
+        </h4>
+    </div>
+    <div class="card-body card-body-custom text-center">
+        <div class="pricing">
+            <span class="amount">$84.900</span><span class="period">/mes</span>
+        </div>
+        <ul class="features list-unstyled">
+            <!-- Características Principales -->
+
+            <li><strong>Documentos Electronicos:</strong> 500.</li>
+            <li><strong>Documento Adicional:</strong> $150.</li>
+        </ul>
+    </div>
+</div>
+
+<!-- POS Restobar Premium -->
+<div class="card card-custom">
+
+    <div class="card-header card-header-custom">
+        <h4 class="h4-tienda">
+            <img src="{% static 'icons/premium_plan.svg' %}" alt="Mesa" style="width:37px; height:37px;">
+            Premium 
+        </h4>
+    </div>
+    <div class="card-body card-body-custom text-center">
+        <div class="pricing">
+            <span class="amount">$149.900</span><span class="period">/mes</span>
+        </div>
+
+        <ul class="features list-unstyled">
+            <!-- Características Principales -->
+            <li><strong>Documentos Electronicos:</strong> 1000.</li>
+            <li><strong>Documento Adicional:</strong> $100.</li>
+        </ul>
+    </div>
+</div>
+
+<!-- POS Tienda -->
+<div class="card card-custom">
+
+    <div class="card-header card-header-custom">
+        <h4 class="h4-tienda">
+            <img src="{% static 'icons/empresarial_plan.svg' %}" alt="Mesa" style="width:37px; height:37px;">
+               Empresarial
+        </h4>
+    </div>
+    <div class="card-body card-body-custom text-center">
+        <div class="pricing">
+            <span class="amount mx-1">$499.900</span><span class="period">/mes</span>
+        </div>
+        <ul class="features list-unstyled">
+            <!-- Características Principales -->
+ 
+            <li><strong>Documentos Electronicos:</strong> 5000.</li>
+            <li><strong>Documento Adicional:</strong> $80.</li>
+        </ul>
+    </div>
+    
+</div>
+
+
+    
+    <!-- Modal -->
+    <div class="modal fade" id="priceModalRestobar" tabindex="-1" aria-labelledby="priceModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+               
+                <div class="modal-body">
+                    <table class="table table-bordered text-center">
+                        <thead class="table-primary">
+                            <tr>
+                                <th>Rango de Ventas Mensuales</th>
+                              
+                                <th>Restobar POS</th>
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>$1 a $10,000,000</td>
+                              
+                                <td>$119.980</td>
+                               
+                            </tr>
+                            <tr>
+                                <td>$10,000,001 a $25,000,000</td>
+                                
+                                <td>$134.480</td>
+                            
+                            </tr>
+                            <tr>
+                                <td>$25,000,001 a $50,000,000</td>
+                                
+                                <td>$162.480</td>
+                                
+                            </tr>
+                            <tr>
+                                <td>$50,000,001 a $100,000,000</td>
+                              
+                                <td>$190.480</td>
+                               
+                            </tr>
+                            <tr>
+                                <td>$100,000,001 a $300,000,000</td>
+                             
+                                <td>$325.080</td>
+                                
+                            </tr>
+                            <tr>
+                                <td>$300,000,001 en adelante</td>
+                              
+                                <td>$437.480</td>
+                              
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+               
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="priceModalPremium" tabindex="-1" aria-labelledby="priceModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="priceModalLabel">Precios por Rango de Ventas Mensuales</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-bordered text-center">
+                        <thead class="table-primary">
+                            <tr>
+                                <th>Rango de Ventas Mensuales</th>
+                                <th>Restobar Premium</th>
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>$1 a $10,000,000</td>
+                             
+                                <td>$139.980</td>
+                                
+                            </tr>
+                            <tr>
+                                <td>$10,000,001 a $25,000,000</td>
+                               
+                                <td>$154.480</td>
+                                
+                            </tr>
+                            <tr>
+                                <td>$25,000,001 a $50,000,000</td>
+                                
+                                <td>$182.480</td>
+                                
+                            </tr>
+                            <tr>
+                                <td>$50,000,001 a $100,000,000</td>
+                               
+                                <td>$210.480</td>
+                               
+                            </tr>
+                            <tr>
+                                <td>$100,000,001 a $300,000,000</td>
+                           
+                                <td>$345.080</td>
+                               
+                            </tr>
+                            <tr>
+                                <td>$300,000,001 en adelante</td>
+                              
+                                <td>$457.480</td>
+                                
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+               
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="priceModalTienda" tabindex="-1" aria-labelledby="priceModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="priceModalLabel">Precios por Rango de Ventas Mensuales</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-bordered text-center">
+                        <thead class="table-primary">
+                            <tr>
+                                <th>Rango de Ventas Mensuales</th>
+                           
+                                <th>Tienda POS</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>$1 a $10,000,000</td>
+                              
+                                <td>$137.980</td>
+                            </tr>
+                            <tr>
+                                <td>$10,000,001 a $25,000,000</td>
+                               
+                                <td>$152.480</td>
+                            </tr>
+                            <tr>
+                                <td>$25,000,001 a $50,000,000</td>
+                             
+                                <td>$180.480</td>
+                            </tr>
+                            <tr>
+                                <td>$50,000,001 a $100,000,000</td>
+                             
+                                <td>$208.480</td>
+                            </tr>
+                            <tr>
+                                <td>$100,000,001 a $300,000,000</td>
+                               
+                                <td>$343.080</td>
+                            </tr>
+                            <tr>
+                                <td>$300,000,001 en adelante</td>
+                                
+                                <td>$455.480</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            
+            </div>
+        </div>
+    </div>
+    
+</div>
+<br>
+<br>
+</div>
+</div>
+
+    <script>
+        // Add event listener for checkboxes
+        document.querySelectorAll('.custom-checkbox input').forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                const card = this.closest('.card-custom');
+                if (this.checked) {
+                    card.classList.add('selected');
+                } else {
+                    card.classList.remove('selected');
+                }
+            });
+        });
+        document.querySelectorAll('.toggle-details').forEach(button => {
+            button.addEventListener('click', function() {
+                const cardBody = this.closest('.card-body-custom');
+                const isExpanded = cardBody.classList.toggle('expanded');
+                
+                // Cambiar el texto del botón según el estado de expansión
+                this.textContent = isExpanded ? 'Ver menos' : 'Ver más';
+            });
+        });
+
+    </script>
+    {% endblock %}

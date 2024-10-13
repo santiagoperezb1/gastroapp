@@ -1,0 +1,273 @@
+/* Estilos para un acordeón completamente transparente */
+.accordion {
+    background-color: transparent; /* Fondo transparente */
+    border: none; /* Sin borde */
+}
+
+.accordion-item {
+    border: none; /* Sin borde en los items */
+}
+
+.accordion-header {
+    background-color: transparent; /* Fondo transparente en el encabezado */
+    border: none; /* Sin borde en el encabezado */
+}
+
+.accordion-button {
+    background-color: transparent; /* Fondo transparente en el botón */
+    color: #ffffff; /* Color del texto, ajusta según tu preferencia */
+    border: none; /* Sin borde en el botón */
+    box-shadow: none; /* Sin sombra */
+}
+
+.accordion-button:hover {
+    background-color: transparent; /* Fondo transparente al pasar el ratón */
+}
+
+.accordion-body {
+    background-color: transparent; /* Fondo transparente en el cuerpo */
+    border: none; /* Sin borde en el cuerpo */
+}
+
+
+.card-custom-stacts {
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(3, 2, 64, 0.889);
+    background-color: rgb(40, 58, 57);
+    color: #ffffff;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card-body-custom {
+    padding: 20px;
+}
+
+.microsoft-style-button {
+    background-color: transparent;
+    border: none;
+    font-weight: 600;
+    color: rgba(255, 253, 253, 0.893);
+    display: flex;
+    align-items: center;
+}
+
+.microsoft-style-icon {
+    width: 26px;
+    height: 26px;
+    margin-right: 5px;
+}
+
+.microsoft-style-text {
+    font-size: 18px;
+}
+
+.pin-calculator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#pinInput {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    height: 50px;
+}
+
+.button-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.button-grid button {
+    width: 60px;
+    height: 60px;
+    font-size: 1.25rem;
+}
+
+#clearButton, #submitPin {
+    grid-column: span 3;
+    width: 100%;
+}
+
+.btn-arqueo {
+    background: rgb(1, 72, 165);
+    color: beige;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn-arqueo:hover {
+    background: rgb(140, 60, 0);
+    transform: translateY(-2px);
+}
+
+.btn-arqueo:active {
+    transform: translateY(1px);
+}
+
+.btn-arqueo:hover {
+    background: rgb(49, 26, 8);
+    color: beige;
+    border: 2px solid black;
+}
+
+/* Estilo para el encabezado de la tabla */
+.table thead {
+    background: rgb(2, 43, 97);
+    color: white;
+}
+
+/* Estilo para las filas del cuerpo de la tabla */
+.table tbody {
+    background: rgba(235, 230, 230, 0.467);
+    font-weight: bold;
+}
+
+/* Estilo para la tabla en general */
+.table {
+    border: 1px solid #ddd;
+}
+
+/* Estilo para las celdas de la tabla */
+.table th, .table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.btn {
+    border: none; /* Elimina el borde por defecto */
+    outline: none; /* Elimina el contorno al hacer clic */
+    cursor: pointer;
+      transition: transform 0.2s ease;
+    
+  }
+  .btn:hover {
+      transition: transform 0.2s ease;
+      transform: scale(0.9); /* Escala el ícono al 90% al hacer clic */
+    
+  }
+  .btn:focus,
+  .btn:active {
+    border: none; /* Asegura que no aparezca borde en estos estados */
+    outline: none; /* Asegura que no aparezca contorno en estos estados */
+  }
+  .btn:active img {
+    transform: scale(0.9); /* Escala el ícono al 90% al hacer clic */
+  }
+
+  .modern-title-alt {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 1.2rem; /* Tamaño de fuente grande */
+    font-weight: 600; /* Peso de fuente para un toque moderno */
+    color: #050928f4; /* Color de texto oscuro para buen contraste */
+    text-align: center; /* Centrar el título */
+    margin-bottom: 1rem; /* Espacio debajo del título */
+    border-bottom: 2px solid #0078D4; /* Línea inferior para destacar */
+    padding-bottom: 0.5rem; /* Espacio entre el texto y la línea */
+  }
+  
+  .ventas {
+    background: #030115e8;/* Opacidad ajustada para mayor visibilidad */
+    color: white;
+    border-radius: 15px; /* Bordes redondeados para un estilo más suave */
+    box-shadow: 0 4px 6px rgba(7, 195, 198, 0.719); /* Sombra sutil para profundidad */
+    padding: 16px; /* Espaciado interno para contenido más cómodo */
+    margin: 16px; /* Margen para separación de otros elementos */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transición suave para efectos interactivos */
+  }
+  .ventas:hover {
+    transform: translateY(-4px); /* Levantar la tarjeta al pasar el cursor */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Sombra más prominente al interactuar */
+  }
+
+  .header-card {
+    background: transparent;/* Opacidad ajustada para mayor visibilidad */
+    color: white;
+    border:none; /* Bordes redondeados para un estilo más suave */
+    border-radius: 16px;
+    padding: 6px; /* Espaciado interno para contenido más cómodo */
+    margin: 10px; /* Margen para separación de otros elementos */
+    
+  }
+
+
+  .form-control {
+    background: #fdfdfff2;/* Opacidad ajustada para mayor visibilidad */
+    color: rgb(0, 0, 0);
+    border-radius: 15px; /* Bordes redondeados para un estilo más suave */
+    box-shadow: 0 4px 6px rgba(44, 45, 45, 0.719); /* Sombra sutil para profundidad */
+    padding: 16px; /* Espaciado interno para contenido más cómodo */
+    margin: 16px; /* Margen para separación de otros elementos */
+  }
+  
+  .ventas-item {
+    background: #030320;/* Opacidad ajustada para mayor visibilidad */
+    color: rgb(255, 255, 255);
+    border-radius: 15px; /* Bordes redondeados para un estilo más suave */
+    box-shadow: 0 2px 6px rgba(7, 74, 198, 0.381); /* Sombra sutil para profundidad */
+    padding: 16px; /* Espaciado interno para contenido más cómodo */
+    margin: 16px; /* Margen para separación de otros elementos */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transición suave para efectos interactivos */
+  }
+  .ventas-item:hover {
+    background: #1b1b28d2;
+    transform: translateY(-4px); /* Levantar la tarjeta al pasar el cursor */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Sombra más prominente al interactuar */
+  }
+
+  .none {
+    background: transparent;
+    border: none;
+  }
+  
+/* Media Queries para dispositivos móviles */
+@media (max-width: 600px) {
+    .input-group {
+        width: 100%; /* Hacer que los inputs ocupen el ancho completo en móviles */
+    }
+
+    .btn {
+        width: 100%; /* Hacer que el botón también ocupe el ancho completo */
+    }
+
+    .card-body-custom {
+        padding: 15px;
+    }
+
+    .microsoft-style-text {
+        font-size: 14px;
+    }
+
+    #pinInput {
+        font-size: 1.2rem;
+        height: 40px;
+    }
+
+    .button-grid button {
+        width: 50px;
+        height: 50px;
+        font-size: 1rem;
+    }
+
+    .btn-arqueo {
+        padding: 10px 15px;
+        font-size: 0.9rem;
+    }
+
+    .microsoft-style-icon {
+        width: 20px;
+        height: 20px;
+    }
+}

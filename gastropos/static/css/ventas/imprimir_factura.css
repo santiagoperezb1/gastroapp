@@ -1,0 +1,47 @@
+/* static/css/imprimir_factura.css */
+
+@media print {
+    /* Estilos para impresión */
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+    }
+
+    .invoice {
+        width: 100%;
+        max-width: 80mm; /* Para impresoras de 80 mm */
+        margin: auto;
+        padding: 5mm; /* Ajusta el padding para evitar cortes */
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+
+    .invoice h1, .invoice h2, .invoice h3, .invoice h4, .invoice p {
+        margin: 0;
+        padding: 0;
+        margin-bottom: 3px;
+    }
+
+    .invoice-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 5mm;
+    }
+
+    .invoice-table th, .invoice-table td {
+        padding: 3px;
+        text-align: left;
+        font-size: 12px; /* Ajusta el tamaño de fuente */
+    }
+
+    .total-row, .total-row-alt {
+        font-weight: bold;
+    }
+
+    .logo {
+        max-width: 50mm; /* Ajusta el tamaño del logo */
+        margin: 0 auto 10px;
+    }
+}

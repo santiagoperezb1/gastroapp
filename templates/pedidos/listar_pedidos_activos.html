@@ -1,0 +1,140 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load custom_filters %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/pedidos/pedidos_activos.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <br>
+    <br>
+    <h4 class="mx-2 h4-header"><img src="{% static 'icons/check_fblue.svg' %}" alt="Mesa" style="width:27px; height:35px;"> Pendiente <img src="{% static 'icons/check_fgray.svg' %}" alt="Mesa" style="width:27px; height:35px;"> Entregado</h4>
+    <hr class="my-5">
+    <div id="pedidoCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            {% for slide in slides %}
+            <button type="button" data-bs-target="#pedidoCarousel" data-bs-slide-to="{{ forloop.counter0 }}" class="{% if forloop.first %}active{% endif %}" aria-current="{% if forloop.first %}true{% endif %}" aria-label="Slide {{ forloop.counter }}"></button>
+            {% endfor %}
+        </div>
+        <div class="carousel-inner">
+            {% for slide in slides %}
+            <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                <div class="row">
+                    {% for pedido in slide %}
+                    <div class="col-md-3 mb-3">
+                        <div class="card-shadow-test">
+                            <div class="custom-card-body">
+                                <h6 class="custom-card-title">Mesa {{ pedido.mesa.numero }} - ID Pedido: {{ pedido.id }}  <br><img src="{% static 'icons/hora.svg' %}" alt="Mesa" style="width:22px; height:22px;"><strong> {{ pedido.fecha_pedido|date:"h:i a" }}</strong></h6>
+                              
+                            </div>
+                            <ul class="custom-list-group">
+                                {% for item in pedido.itempedido_set.all %}
+                                <li class="custom-list-item">
+                                    <h6>
+                                        {% if item.plato %}
+                                            <strong>{{ item.plato.nombre }}</strong> 
+                                            {% if item.estado != 'Entregado' %}
+                                                <button type="button" class="btn btn-hover btn-sm" style="font-weight: bold; background: transparent;" onclick="cambiarEstadoItem('{{ item.id }}')">
+                                                    <img src="{% static 'icons/check_fblue.svg' %}" alt="Mesa" style="width:37px; height:45px;">
+                                                </button>
+                                            {% else %}
+                                                <img src="{% static 'icons/check_fgray.svg' %}" alt="Mesa" style="width:37px; height:45px;">
+                                            {% endif %}
+                                            <br>|<img src="{% static 'icons/amount.svg' %}" alt="Mesa" style="width:22px; height:22px;"><strong> {{ item.cantidad }} </strong>
+                                        {% else %}
+                                            {{ item.producto.nombre }}
+                                        {% endif %}
+                                        {{ item.detalle }}
+                                    </h6>
+                                </li>
+                                {% endfor %}
+
+                            </ul>
+                            
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#pedidoCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#pedidoCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    <hr class="my-5">
+    <div id="pedidoDomicilioCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            {% for slide in slides_domicilio %}
+            <button type="button" data-bs-target="#pedidoDomicilioCarousel" data-bs-slide-to="{{ forloop.counter0 }}" class="{% if forloop.first %}active{% endif %}" aria-current="{% if forloop.first %}true{% endif %}" aria-label="Slide {{ forloop.counter }}"></button>
+            {% endfor %}
+        </div>
+        <div class="carousel-inner">
+            {% for slide in slides_domicilio %}
+            <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                <div class="row">
+                    {% for pedido in slide %}
+                    <div class="col-md-3 mb-3">
+                        <div class="card-shadow-test">
+                            <div class="custom-card-body">
+                                <h6 class="custom-card-title">{{ pedido.nombre_cliente }} - ID: {{ pedido.id }}</h6>
+                                <h5 class="custom-card-subtitle" style="font-size: 22px;"><img src="{% static 'icons/hora.svg' %}" alt="Mesa" style="width:22px; height:22px;"><strong> {{ pedido.fecha_pedido|date:"h:i a" }}</strong></h5>
+                            </div>
+                            <ul class="custom-list-group">
+                                {% for item in pedido.itempedidodomicilio_set.all %}
+                                <li class="custom-list-item">
+                                    <h6>
+                                        {% if item.plato %}
+                                            <strong>{{ item.plato.nombre }}</strong> 
+                                            {% if item.estado != 'Entregado' %}
+                                                <button type="button" class="btn btn-hover btn-sm" style="font-weight: bold; background: transparent;" onclick="cambiarEstadoDomiItem('{{ item.id }}')">
+                                                    <img src="{% static 'icons/check_fblue.svg' %}" alt="Mesa" style="width:37px; height:45px;">
+                                                </button>
+                                            {% else %}
+                                                <img src="{% static 'icons/check_fgray.svg' %}" alt="Mesa" style="width:37px; height:45px;">
+                                            {% endif %}
+                                            <br>|<img src="{% static 'icons/amount.svg' %}" alt="Mesa" style="width:22px; height:22px;"> {{ item.cantidad }} |
+                                        {% else %}
+                                            {{ item.producto.nombre }}
+                                        {% endif %}
+                                        {{ item.detalle }}
+                                    </h6>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#pedidoDomicilioCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#pedidoDomicilioCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</div>
+<br>
+
+<script>
+    const pedidosActualizadosUrl = "{% url 'pedidos_actualizados' %}";
+    const cambiarEstadoUrl = "{% url 'cambiar_estado_item' 0 %}"; // URL base
+    const cambiarEstadoDomiUrl = "{% url 'cambiar_estado_item_domicilio' 0 %}";
+    const csrfToken = '{{ csrf_token }}'; // CSRF token
+</script>
+<script src="{% static 'js/pedidos/actualizaciones.js' %}"></script>
+
+{% endblock %}

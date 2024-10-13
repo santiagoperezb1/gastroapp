@@ -1,0 +1,233 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load custom_filters %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/ventas/editar_venta.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="card card-none shadow-sm">
+        <div class="card-body">
+            <div class="row justify-content-center">
+                <!-- Columna para los detalles del arqueo -->
+                <div class="col-md-6 mb-4">
+                    <div class="factura-card">
+                        <h2 class="text-center">ꜰᴀᴄᴛᴜʀᴀ ᴅᴇ ᴠᴇɴᴛᴀ</h2>
+                        <br>
+                        <div class="row mb-2">
+                            <div class="col">
+                                <label>Subtotal:</label>
+                                <span>$ {{ compra.total_sin_descuento|format_number }}</span>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col">
+                                <label>Descuento:</label>
+                                <span>$ - {{ compra.total_descuento|format_number }}</span>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col">
+                                <label>Propina:</label>
+                                <span>$ {{ compra.total_propina|format_number }}</span>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col">
+                                <label>Total IVA:</label>
+                                <span>$ {{ compra.valor_impuesto|format_number }}</span>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col">
+                                <label>Total Cancelado:</label>
+                                <span>$ {{ compra.total_impuesto|format_number }}</span>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row mb-2">
+                            
+                            <table class="table table-custom">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th>Producto</th>
+                                        <th>Cantidad</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for detalle in compra.detalles.all %}
+                                    <tr>
+                                        <td>{{ detalle.plato.nombre }}</td>
+                                        <td>{{ detalle.cantidad }}<br></td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>                           
+                        </div>
+                    </div>
+                </div>
+
+            <!-- Columna para la información de la compra -->
+            <div class="col-md-6 mb-4">
+                <div class="card-shadow">
+                <ul class="list-group mb-4">
+                    <li class="list-group-item"><h5 class="h5-header"><strong>Fecha de venta:</strong> {{ compra.fecha_compra|date:"d/m/Y h:i a" }}</h5></li>
+                </ul>
+
+                <form method="post">
+                    {% csrf_token %}
+                    <table class="table table-custom">
+                        <thead>
+                            <tr>
+                                <th>impuesto</th>
+                                <th>documento cliente</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{ form.impuesto }}</td>
+                                <td>{{ form.cedula_cliente }}</td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                <th>metodo de pago</th>
+                                <th>Nombre Cliente</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{ form.tipo_pago }}</td>
+                                <td>{{ form.nombre_cliente }}</td>
+                            </tr>
+                        </tbody>
+                        <thead>
+                            <tr>
+                                
+                                <th>telefono</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                               
+                                <td>{{ form.telefono_cliente }}</td>
+                            </tr>
+                        </tbody>
+                
+                    </table>
+
+                    <div class="text-center">
+                        <br>
+                        <a href="{% url 'obtener_registros_venta' %}" class="btn btn-hover" style="color: rgb(255, 255, 255);">
+                            <img src="{% static 'icons/backaw.svg' %}" alt="Regresar" style="width:37px; height:37px;">
+                        </a>
+                        <a href="#" class="btn btn-hover btn-sm" onclick="confirmDelete('{{ compra.id }}'); return false;">
+                            <img src="{% static 'icons/delete_blackbl.svg' %}" alt="Mesa" style="width:40px; height:40px;">
+                        </a>
+                        <button type="submit" class="btn btn-hover">
+                            <img src="{% static 'icons/save_blackbl.svg' %}" alt="Guardar" style="width:30px; height:30px;">
+                        </button>                
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- Botón de facturación al final de la tarjeta -->
+    <div class="card-footer text-center" style="border: none; background: transparent;">
+        <button type="button" class="btn btn-hover" data-bs-toggle="modal" data-bs-target="#ModalFinalizar" style="font-size: 17px;">
+            <img src="{% static 'icons/taxes.svg' %}" alt="Finalizar" style="width:77px; height:77px;">
+        </button>
+    </div>
+</div>
+</div>
+
+    <div class="modal fade" id="ModalFinalizar" tabindex="-1" role="dialog" aria-labelledby="finalizarModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content card-shadow">
+                <div class="modal-body">
+                    <form method="get" action="{% url 'enviar_factura_por_email_domicilio' compra.id %}">
+                        <div class="form-group">
+                            <label for="email">Dirección de Correo Electrónico</label>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Introduce el email">
+                    </div>
+                    <br>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-hover">
+                            <img src="{% static 'icons/gmail.svg' %}" alt="Enviar" style="width:40px; height:40px;">
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer text-align: center">
+                <a href="{% url 'imprimir_factura_venta_domicilio' compra.id %}" class="btn">
+                    <img src="{% static 'icons/printer_mdn.svg' %}" alt="Enviar" style="width:40px; height:40px;"><strong> Imprimir copia</strong>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="pinModal" tabindex="-1" aria-labelledby="pinModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog">
+      <div class="modal-content bg-dark">
+        <div class="modal-body">
+          <div class="pin-calculator">
+            <input type="password" id="pinInput" class="form-control mb-3" placeholder="Ingrese PIN" readonly>
+            <div class="button-grid">
+              <button class="btn btn-light" data-value="1">1</button>
+              <button class="btn btn-light" data-value="2">2</button>
+              <button class="btn btn-light" data-value="3">3</button>
+              <button class="btn btn-light" data-value="4">4</button>
+              <button class="btn btn-light" data-value="5">5</button>
+              <button class="btn btn-light" data-value="6">6</button>
+              <button class="btn btn-light" data-value="7">7</button>
+              <button class="btn btn-light" data-value="8">8</button>
+              <button class="btn btn-light" data-value="9">9</button>
+              <button class="btn btn-light" data-value="0">0</button>
+              <button class="btn btn-danger" id="clearButton">C</button>
+              <button class="btn btn-primary" id="submitPin"><img src="{% static 'icons/check_fblackg.svg' %}" alt="Mesa" class="microsoft-style-icon"></button>
+            </div>
+            <div id="pinError" class="text-danger mt-2" style="display: none;">PIN incorrecto. Intente de nuevo.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- Modal -->
+<div class="modal fade" id="pinModal" tabindex="-1" aria-labelledby="pinModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog">
+      <div class="modal-content bg-dark">
+        <div class="modal-body">
+          <div class="pin-calculator">
+            <input type="password" id="pinInput" class="form-control mb-3" placeholder="Ingrese PIN" readonly>
+            <div class="button-grid">
+              <button class="btn btn-light" data-value="1">1</button>
+              <button class="btn btn-light" data-value="2">2</button>
+              <button class="btn btn-light" data-value="3">3</button>
+              <button class="btn btn-light" data-value="4">4</button>
+              <button class="btn btn-light" data-value="5">5</button>
+              <button class="btn btn-light" data-value="6">6</button>
+              <button class="btn btn-light" data-value="7">7</button>
+              <button class="btn btn-light" data-value="8">8</button>
+              <button class="btn btn-light" data-value="9">9</button>
+              <button class="btn btn-light" data-value="0">0</button>
+              <button class="btn btn-danger" id="clearButton">C</button>
+              <button class="btn btn-primary" id="submitPin"><img src="{% static 'icons/check_fblackg.svg' %}" alt="Mesa" class="microsoft-style-icon"></button>
+            </div>
+            <div id="pinError" class="text-danger mt-2" style="display: none;">PIN incorrecto. Intente de nuevo.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    var deleteUrl = "{% url 'eliminar_venta_domicilio' '0' %}";
+    var redirectUrl = "{% url 'obtener_registros_venta' %}";
+    const userPin = "{{ pin }}";
+ </script>
+ <script src="{% static 'js/ventas/verify-pin-domi.js' %}"></script>
+{% endblock %}

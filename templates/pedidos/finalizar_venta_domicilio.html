@@ -1,0 +1,147 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load custom_filters %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/pedidos/finalizar_venta.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <!-- Tarjeta con sombra para finalizar la venta -->
+    <div class="card-shadow-test">
+        <div class="card-body card-body-custom">
+            <!-- Mostrar mensaje de error si hay uno -->
+            {% if error %}
+            <div class="alert alert-danger" role="alert">{{ error }}</div>
+            {% endif %}
+
+            <div class="row">
+                <!-- Formulario para finalizar la venta -->
+                <div class="col-md-5 mb-4">
+                    <form id="finalizar-venta-domicilio-form" method="post" action="{% url 'finalizar_venta_domicilio' pedido.id %}">
+                        {% csrf_token %}
+                        <div class="form-group mb-3">
+                            <label for="{{ form.tipo_pago.id_for_label }}" class="text-white">Método de Pago</label>
+                            {{ form.tipo_pago }}
+                        </div>
+                        <div class="form-group">
+                            <label for="{{ form.impuesto.id_for_label }}" class="text-white">Impuesto</label>
+                            {{ form.impuesto }}
+                        </div>
+                        <div class="form-group">
+                            <label for="{{ form.guardar_cliente.id_for_label }}" class="text-white">¿Desea guardar el cliente en la base de datos?</label>
+                            {{ form.guardar_cliente }}
+                        </div>
+                </div>
+            
+                <!-- Columna para los artículos del pedido -->
+                <div class="col-md-7 mb-4 border-left">
+                    {% if pedido.itempedidodomicilio_set.all %}
+                    <table class="table table-hover bg-white">         
+                        <tbody>
+                            {% for item in pedido.itempedidodomicilio_set.all %}
+                            <tr>
+                                <td>
+                                    <input type="checkbox" class="form-check-input" id="check{{ item.id }}" name="item_check">
+                                </td>
+                                <td>
+                                    <a href="{% url 'detalle_pedido_domicilio' pedido.id %}" class="text-dark">
+                                        <h5>{{ item.plato.nombre }} ($ {{ item.plato.precio|format_number }})</h5>
+                                    </a>
+                                </td>
+                                <td>
+                                    <h4>{{ item.cantidad }}</h4>
+                                </td>
+                                <td>
+                                    <!-- Mostrar el total calculado -->
+                                    <span class="badge badge-custom-large  text-dark rounded-pill item-total">
+                                        $ {{ item.total|format_number }}
+                                    </span>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    {% else %}
+                        <div class="alert alert-warning" role="alert">No hay artículos en el pedido.</div>
+                    {% endif %}
+
+                    <div class="card  transparent-card">
+                        <!-- Total de artículos seleccionados -->
+                        <h3 class="label-text mx-2">Subtotal de articulos seleccionados: $<span id="totalSeleccionado">0.00</span></h3>
+                        <h3 class="label-text mx-2">Subtotal restante: $<span id="totalRestanteCal">{{ total|format_number }}</span></h3>
+                    </div>
+                    
+                    <br>
+                    <div class="form-group d-flex align-items-center">
+                        <div class="discount-controls d-flex align-items-center">
+                            <button type="button"  class="btn-outline-secondary mx-2" id="btnDisminuirDescuento">-</button>
+                            <input type="text" name="descuento" class="descuento-field" value="0" style="width: 60px; height: 40px; text-align: center;">
+                            <button type="button"  class="btn-outline-secondary mx-2" id="btnAumentarDescuento">+</button>
+                        </div>
+                        <button type="button" class="btn-descuento" id="btnAplicarDescuento">% descuento</button>
+                    </div>
+                    
+                    <br>
+                    <div class="form-group d-flex align-items-center">
+                        <div class="discount-controls d-flex align-items-center">
+                            <button type="button" class="btn-outline-secondary mx-2" id="btnDisminuirPropina">-</button>
+                            <input type="text" name="propina" class="propina-field" value="0" style="width: 60px; height: 40px; text-align: center;">
+                            <button type="button" class="btn-outline-secondary mx-2" id="btnAumentarPropina">+</button>
+                        </div>
+                        <button type="button" class="btn-descuento" id="btnGuardarPropina">% propina</button>
+                    </div>
+                </div>
+            </form>
+            </div>
+        </div>
+
+        <div class="badge-container d-flex justify-content-center">
+            <span class="badge badge-custom-large bg-hover rounded-pill label-text" id="totalRestante" data-total="{{ total|floatformat:3 }}">
+                Subtotal $ <span class="text-value price-text"> {{ total|format_number }}</span>
+                <img src="{% static 'icons/cash_fgreen.svg' %}" alt="Mesa" style="width:32px; height:32px;">
+            </span>
+        </div>
+        <div class="card-footer text-center">
+            <div class="footer-content d-flex flex-column align-items-center">
+                <div class="button-group">
+                    <a href="{% url 'crear_pedido' %}">
+                        <button type="button" class="btn-volver">
+                            <img src="{% static 'icons/back_bdark.svg' %}" alt="Mesa" style="width:43px; height:40px;"> Volver
+                        </button>
+                    </a>
+                    <button type="button" class="btn-total" data-bs-toggle="modal" data-bs-target="#ModalFinalizarDomi" style="font-size: 23px;" {% if disable_buttons %}disabled{% endif %}>
+                        <img src="{% static 'icons/cart_check_sgreen.svg' %}" alt="Mesa" style="width:43px; height:40px;"> cobrar: {{ pedido.nombre_cliente }}
+                    </button>
+                </div>
+                
+            </div>
+        </div>
+</div>
+
+<!-- Modal para opciones de finalización -->
+<div class="modal fade" id="ModalFinalizarDomi" tabindex="-1" role="dialog" aria-labelledby="finalizarModalDomiLabel" aria-hidden="true">
+    <div class="modal-dialog  modal-custom-position-pago" role="document">
+        <div class="modal-content bg-white">
+            <div class="modal-header">
+                <h5 class="modal-title" id="finalizarModalLabel">Confirmar Venta</h5>
+            </div>
+            <div class="modal-body">
+                <!-- Contenido del modal aquí -->
+            </div>
+            <div class="modal-footer">     
+                <form method="post" action="{% url 'imprimir_factura_domicilio' pedido.id %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-dark">Factura Electronica</button>
+                </form>
+                <button type="submit" form="finalizar-venta-domicilio-form" class="btn btn-warning">Factura POS</button>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<script src="{% static 'js/pedidos/finalizar_venta.js' %}"></script>
+<script src="{% static 'js/pedidos/actualizar_totales.js' %}"></script>
+
+{% endblock %}

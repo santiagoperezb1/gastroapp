@@ -1,0 +1,23 @@
+.card-shadow {
+    background: #080d25;/* Opacidad ajustada para mayor visibilidad */
+    color: white;
+    border-radius: 8px; /* Bordes redondeados para un estilo más suave */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra sutil para profundidad */
+    padding: 16px; /* Espaciado interno para contenido más cómodo */
+    margin: 16px; /* Margen para separación de otros elementos */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transición suave para efectos interactivos */
+}
+
+.card-custom {
+    border: none;
+    border-radius: 12px;
+    background-color: #ffffff;
+    padding: 25px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card-custom:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}

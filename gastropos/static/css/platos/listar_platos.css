@@ -1,0 +1,113 @@
+/* Estilo inspirado en Microsoft Fluent Design */
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    color: #323130;
+    background-color: #f3f2f1;
+}
+
+h2, h4 {
+    font-weight: 600;
+    color: #323130;
+    margin-bottom: 8px;
+}
+
+.accordion-header {
+    border-bottom: 1px solid #e1e1e1;
+}
+
+.img-custom {
+    width: auto;         /* Ancho automático */
+    height: 180px;      /* Altura fija, puedes ajustarlo a tu necesidad */
+    object-fit: cover;  /* Asegura que la imagen se recorte adecuadamente */
+}
+
+.img-custom:hover {
+    box-shadow: 0 2px 4px rgba(252, 249, 249, 0.494);
+    transform: translateY(-2px);
+}
+
+.microsoft-style-button {
+    background-color: transparent;
+    border: none;
+    font-weight: 600;
+    color: #0078d4; /* Color primario de Microsoft */
+    padding: 10px 15px;
+    transition: background-color 0.3s, color 0.3s;
+    display: flex;
+    align-items: center;
+    border-radius: 4px;
+}
+
+.microsoft-style-button:hover {
+    background-color: #e1e1e1;
+    color: #005a9e;
+}
+
+.microsoft-style-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+}
+
+.microsoft-style-text {
+    font-size: 15px;
+}
+
+.accordion-item {
+    background: #ffffff;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card {
+    border: 1px solid #e1e1e1;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+    transition: box-shadow 0.3s, transform 0.3s;
+}
+
+.card:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
+    transform: translateY(-2px);
+}
+
+.card-img-top {
+    border-bottom: 1px solid #e1e1e1;
+}
+
+.btn {
+    border-radius: 4px;
+    font-weight: 600;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.btn-danger {
+    background-color: #d13438;
+    border: none;
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #a80000;
+}
+
+.btn-success {
+    background-color: #107c10;
+    border: none;
+    color: white;
+}
+
+.btn-success:hover {
+    background-color: #0b6a0b;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}

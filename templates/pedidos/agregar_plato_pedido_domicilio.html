@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load custom_filters %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/pedidos/agregar_plato.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="card card-shadow-agregar">
+        <div class="card-body">
+            <div class="row">
+                <!-- Columna para el formulario de agregar plato -->
+                <div class="col-md-3 mb-4">
+                    <!-- Formulario de búsqueda -->
+                    <form method="get" class="mb-4">
+                        <div class="input-group">
+                            <input type="text" name="buscar" class="form-control" placeholder="Buscar por nombre..." value="{{ request.GET.buscar }}">
+                            <button type="submit" class="btn btn-info"><i class="fa-solid fa-magnifying-glass"></i></button>
+                        </div>
+                    </form>
+
+                    <!-- Formulario para agregar plato al pedido -->
+                    <form id="agregarPlatoForm" method="post" class="mb-4">
+                        {% csrf_token %}
+                        {{ form.plato }}
+                        <div class="mb-3">
+                            <br>
+                            <div class="input-group">
+                                <button type="button" class="btn btn-outline-secondary" onclick="changeQuantity(-1)">-</button>
+                                {{ form.cantidad }}
+                                <button type="button" class="btn btn-outline-secondary" onclick="changeQuantity(1)">+</button>
+                            </div>
+                        </div>
+                        {{ form.detalle }}
+                        <br>
+                        <div class="text-center">
+                            <button type="button" class="btn btn-hover" onclick="agregarPlatoPedido()">
+                                <img src="{% static 'icons/cart_plus_ligh.svg' %}" alt="Mesa" style="width:57px; height:57px;">
+                            </button>
+                        </div>
+                    </form>      
+                </div>
+
+                <!-- Columna para el acordeón de categorías -->
+                <div class="col-md-6">
+                    <!-- Acordeón de categorías -->
+                    <div class="accordion" id="accordionPanelsStayOpenExample">
+                        {% for categoria in categorias %}
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button {% if forloop.first %}collapsed{% endif %}" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse{{ categoria.id }}" aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}" aria-controls="panelsStayOpen-collapse{{ categoria.id }}">
+                                    <span class="text-primary" style="font-size: 22px;"> {{ categoria.nombre }}</span>  
+                                </button>
+                            </h2>
+                            <div id="panelsStayOpen-collapse{{ categoria.id }}" class="accordion-collapse collapse {% if forloop.first %}{% endif %}">
+                                <div class="accordion-body">
+                                    <div class="row">
+                                        {% for plato in categoria.platos.all %}
+                                        <div class="col-md-4 mb-4">
+                                            <div class="card-custom-platos" onclick="agregarPlato('{{ plato.id }}')" style="cursor: pointer;">
+                                                {% if plato.imagen %}
+                                                    <img src="{{ plato.imagen.url }}" class="card-img-top img-custom" alt="Imagen de plato">
+                                                {% else %}
+                                                    <img src="{% static 'images/dish.jpg' %}" class="card-img-top img-custom" alt="Imagen por defecto">
+                                                {% endif %}
+                                                <div class="card-body text-center">
+                                                    <h6 class="card-title-plato">{{ plato.nombre }}</h6>
+                                                    <i class="fa-solid fa-tag" style="font-size: 15px;"> {{ plato.precio|format_number }}</i><br>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {% empty %}
+                                        <p>No hay platos registrados en esta categoría.</p>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div> 
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <br>
+                </div>
+
+                <div class="col-md-3 mb-4">
+                    <table class="table table-custom">
+                        <thead>
+                            <tr>
+                                <th>cantidad - producto</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% if items.exists %}
+                            {% for item in items %}
+                            <tr class="table table-primary">
+                                <td class="card-title-plato">{{ item.cantidad }} - {{ item.plato.nombre }}<br>{{ item.detalle }}</td>
+                            </tr>
+                            {% endfor %}
+                            {% else %}
+                            <tr class="table-primary">
+                                <td>No hay platos en el pedido.</td>
+    
+                            </tr>
+                            {% endif %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Botones de acción adicionales -->
+        <div class="card-footer text-center">
+            <div class="btn-group" role="group">
+                <a href="{% url 'crear_pedido' %}" class="btn btn-hover"><img src="{% static 'icons/back_light.svg' %}" alt="Mesa" style="width:37px; height:37px;"></a>
+                <a href="{% url 'imprimir_comanda_pedido_domi' pedido.id %}" class="btn btn-hover"><img src="{% static 'icons/printer_mdn.svg' %}" alt="Mesa" style="width:42px; height:42px;"></i></a>
+                <a href="{% url 'finalizar_venta_domicilio' pedido.id %}" class="btn btn-hover mb-7"><img src="{% static 'icons/pay_black_y.svg' %}" alt="Mesa" style="width:43px; height:40px;"></a>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="{% static 'js/pedidos/agregar_plato_domi.js' %}"></script>
+{% endblock %}

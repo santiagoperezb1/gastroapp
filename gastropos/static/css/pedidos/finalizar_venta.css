@@ -1,0 +1,345 @@
+.card-shadow-finalizar {
+    background: white; /* Opacidad ajustada para mayor visibilidad */
+    border-radius: 8px; /* Bordes redondeados para un estilo más suave */
+    box-shadow: 0 4px 8px rgba(5, 103, 13, 0.716); /* Sombra inicial sutil */
+    padding: 16px; /* Espaciado interno para contenido más cómodo */
+    margin: 16px; /* Margen para separación de otros elementos */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transición suave para efectos interactivos */
+}
+
+.card-shadow-test {
+    background: #050b25;/* Opacidad ajustada para mayor visibilidad */
+    border-radius: 8px; /* Bordes redondeados para un estilo más suave */
+    box-shadow: 0 4px 8px rgba(230, 113, 10, 0.476); /* Sombra sutil para profundidad */
+    padding: 16px; /* Espaciado interno para contenido más cómodo */
+    border-left: 3px solid rgba(238, 156, 74, 0.686);
+    margin: 16px; /* Margen para separación de otros elementos */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transición suave para efectos interactivos */
+  }
+  .card-shadow-test:hover {
+    transform: translateY(-4px); /* Levantar la tarjeta al pasar el cursor */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Sombra más prominente al interactuar */
+  }
+
+.label-text {
+    color: white;
+    font-size: 17px;
+    font-weight: 600;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.price-text {
+    color: white;
+    font-size: 27px;
+    font-weight: bold;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+/* Sombra más pronunciada al pasar el cursor */
+.card-shadow-finalizar:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Sombra más intensa */
+    transform: translateY(-2px); /* Levanta ligeramente la carta */
+}
+
+
+  .card-body-custom {
+    padding: 20px;
+  }
+
+  .badge-custom-large {
+    font-size: 1.1rem; /* Ajusta el tamaño según tus necesidades */
+    padding: 0.5em 1em; /* Ajusta el padding según tus necesidades */
+    height: auto;
+    width: auto;
+    background: transparent;
+    color: white;
+}
+.h5-total {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 1.9rem; /* Tamaño de fuente grande */
+    font-weight: 600; /* Peso de fuente para un toque moderno */
+    color: #031c16; /* Color de texto oscuro para buen contraste */
+    text-align: left; 
+    text-transform: uppercase;
+  }
+
+h5 {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 0.9rem; /* Tamaño de fuente grande */
+    font-weight: 600; /* Peso de fuente para un toque moderno */
+    color: #05082b; /* Color de texto oscuro para buen contraste */
+    text-align: left; 
+    text-transform: uppercase;
+  }
+  h4 {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 1.3rem; /* Tamaño de fuente grande */
+    font-weight: 600; /* Peso de fuente para un toque moderno */
+    color: #0210a5; /* Color de texto oscuro para buen contraste */
+    text-align: center; 
+    text-transform: uppercase;
+  }
+  h3 {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 1.2rem; /* Tamaño de fuente grande */
+    font-weight: 600; /* Peso de fuente para un toque moderno */
+    color: #141416; /* Color de texto oscuro para buen contraste */
+    text-align: left; 
+    margin: 0;
+  }
+  .modern-title-alt {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 2.5rem; /* Tamaño de fuente grande */
+    font-weight: 600; /* Peso de fuente para un toque moderno */
+    color: #f9faff; /* Color de texto oscuro para buen contraste */
+    text-align: center; /* Centrar el título */
+    margin-bottom: 1rem; /* Espacio debajo del título */
+    border-bottom: 2px solid #0078D4; /* Línea inferior para destacar */
+    padding-bottom: 0.5rem; /* Espacio entre el texto y la línea */
+  }
+  
+  /* Reemplaza todos los estilos en línea en el HTML */
+
+.total-icon {
+    width: 52px;
+    height: 52px;
+}
+
+.transparent-card {
+    background: transparent;
+    border: none;
+}
+
+.border-left {
+    border-left: 2px solid white;
+}
+
+.descuento-field {
+    width: 60px;
+    height: 40px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.propina-field {
+    width: 60px;
+    height: 40px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.propina-field {
+    width: 60px;
+    height: 40px;
+    text-align: center;
+}
+
+
+.btn-secondary {
+    background: rgb(20, 78, 239);
+    font-size: 20px;
+}
+
+.btn {
+    border: none; /* Elimina el borde por defecto */
+    outline: none; /* Elimina el contorno al hacer clic */
+    cursor: pointer;
+      transition: transform 0.2s ease;
+    
+  }
+  .btn:hover {
+      transition: transform 0.2s ease;
+      transform: scale(0.9); /* Escala el ícono al 90% al hacer clic */
+    
+  }
+  .btn:focus,
+  .btn:active {
+    border: none; /* Asegura que no aparezca borde en estos estados */
+    outline: none; /* Asegura que no aparezca contorno en estos estados */
+  }
+  .btn:active img {
+    transform: scale(0.9); /* Escala el ícono al 90% al hacer clic */
+  }
+.card-footer .btn-hover img {
+    width: 57px;
+    height: 57px;
+}
+
+.btn-total {
+    background: rgba(39, 89, 11, 0.702);
+    color: rgb(251, 252, 251);
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    font-family:Arial, Helvetica, sans-serif;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn-total:hover {
+    background: rgb(7, 19, 110); /* Color de fondo más oscuro al pasar el mouse */
+    transform: translateY(-2px); /* Levanta ligeramente el botón */
+}
+
+.btn-total:active {
+    transform: translateY(1px); /* Efecto de presión */
+}
+
+.btn-volver {
+    background: rgba(175, 66, 66, 0.792);
+    color: rgb(254, 255, 254);
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    font-family:Arial, Helvetica, sans-serif;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn-volver:hover {
+    background: rgb(145, 5, 5); /* Color de fondo más oscuro al pasar el mouse */
+    transform: translateY(-2px); /* Levanta ligeramente el botón */
+}
+
+.btn-volver:active {
+    transform: translateY(1px); /* Efecto de presión */
+}
+
+.btn-descuento {
+    background: rgb(189, 207, 230);
+    color: #030303;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 15px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn-descuento:hover {
+    background: rgb(88, 86, 97); /* Color de fondo más oscuro al pasar el mouse */
+    transform: translateY(-2px); /* Levanta ligeramente el botón */
+}
+
+.btn-descuento:active {
+    transform: translateY(1px); /* Efecto de presión */
+}
+
+.btn-propina {
+    background: rgb(23, 93, 14);
+    color: beige;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn-propina:hover {
+    background: rgb(11, 63, 30); /* Color de fondo más oscuro al pasar el mouse */
+    transform: translateY(-2px); /* Levanta ligeramente el botón */
+}
+
+.btn-propina:active {
+    transform: translateY(1px); /* Efecto de presión */
+}
+
+.btn-outline-secondary {
+    background-color: rgb(224, 186, 74);
+    border: 1px solid #4c4747;
+    border-radius: 30px;
+    color: #171515;
+    transition: all 0.3s ease;
+    font-size: 20px;
+    font-weight: bold;
+    width: 40px;
+    height: 40px;
+}
+
+.btn-outline-secondary:hover {
+    background-color: #e5e28d;
+    border-color: #544c4c;
+    color: #161414;
+    box-shadow: 0 4px 8px rgba(5, 70, 127, 0.802);
+}
+
+/* Estilos generales para móviles pequeños */
+@media (max-width: 576px) {
+    .card-shadow-finalizar, .card-shadow-test {
+        padding: 10px; /* Reduce el padding */
+        margin: 8px; /* Reduce el margen */
+        box-shadow: none; /* Quita la sombra para un diseño más limpio */
+    }
+
+    .label-text {
+        font-size: 15px; /* Reduce el tamaño de la fuente */
+    }
+
+    .h5-total, h4, h3 {
+        font-size: 1.2rem; /* Ajusta el tamaño de los encabezados */
+    }
+
+    .table {
+        font-size: 14px; /* Tamaño de fuente más pequeño para la tabla */
+    }
+
+    .btn {
+        padding: 8px 10px; /* Ajusta el padding de los botones */
+        font-size: 16px; /* Tamaño de fuente más pequeño para los botones */
+    }
+
+    .discount-field, .propina-field {
+        width: 50px; /* Reduce el ancho de los campos */
+        height: 30px; /* Reduce la altura */
+    }
+
+    .btn-total, .btn-volver, .btn-descuento, .btn-propina {
+        width: 100%; /* Botones de ancho completo */
+        margin-bottom: 10px; /* Espacio entre botones */
+    }
+
+    .badge-custom-large {
+        font-size: 1rem; /* Tamaño de fuente más pequeño para las etiquetas */
+        padding: 0.3em 0.5em; /* Ajusta el padding */
+    }
+
+    .modal-dialog {
+        max-width: 90%; /* Ancho máximo del modal */
+    }
+
+    .card-footer {
+        padding: 10px; /* Reduce el padding del footer */
+        display: flex; /* Cambia a flexbox para mejor alineación */
+        flex-direction: column; /* Alinea los elementos en columna */
+        align-items: center; /* Centra los elementos horizontalmente */
+        width: 100%; /* Asegura que el footer ocupe el ancho completo de la tarjeta */
+        box-sizing: border-box; /* Asegura que el padding se incluya en el ancho total */
+    }
+
+    .btn-volver, .btn-total {
+        width: 100%; /* Botones de ancho completo */
+        margin-bottom: 10px; /* Espacio entre botones */
+    }
+
+    .badge-custom-large {
+        font-size: 1.2rem; /* Tamaño de fuente más pequeño */
+        padding: 0.5em; /* Ajusta el padding */
+        text-align: center; /* Centra el texto */
+    }
+}

@@ -1,0 +1,85 @@
+/* Fondo de la página con imagen */
+body {
+    background-image: url('/static/images/login_fond.png');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Arial', sans-serif;
+    color: #fff;
+}
+
+/* Contenedor principal de inicio de sesión */
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    padding: 20px;
+}
+
+/* Caja de inicio de sesión */
+.login-box {
+    border-radius: 20px;
+    background: rgba(0, 0, 0, 0.7);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-width: 450px;
+    padding: 2px; /* Agregado padding para que los elementos no toquen los bordes */
+}
+
+/* Encabezado de la tarjeta de inicio de sesión */
+.login-header {
+    text-align: center;
+    padding: 20px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    background: linear-gradient(135deg, #1e456e, #3b2d0eca);
+    color: #fff;
+}
+
+/* Cuerpo de la tarjeta de inicio de sesión */
+.login-body {
+    padding: 20px;
+}
+
+/* Estilo de los botones */
+.btn-warning {
+    border-radius: 30px;
+    transition: all 0.4s ease;
+    background: linear-gradient(135deg, #ff7e5f, #feb47b);
+    border: none;
+    color: #fff;
+    padding: 12px 20px;
+    font-size: 16px;
+    display: block; /* Asegura que el botón ocupe el ancho completo disponible */
+    width: calc(100% - 2px); /* Asegura que el botón no sobrepase la tarjeta */
+}
+
+.btn-warning:hover {
+    background: linear-gradient(135deg, #feb47b, #ff7e5f);
+    color: #fff;
+    transform: scale(1.1);
+}
+
+/* Estilo de los campos de formulario */
+.form-control {
+    border-radius: 25px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    box-shadow: inset 0 1px 5px rgba(0, 0, 0, 0.2);
+    width: calc(100% - 30px); /* Ajusta el ancho para que no sobrepase */
+    margin-bottom: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+/* Estilo del icono de login */
+.login-icon {
+    font-size: 60px;
+    color: #00d2d3;
+}

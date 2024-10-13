@@ -1,0 +1,116 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%; /* Asegúrate de que el body y html ocupen el 100% */
+}
+
+.custom-footer {
+  background-color: #050b25; /* Cambia este color por el que prefieras */
+  color: white;
+}
+
+.icon-navbar {
+  width:17px; 
+  height:17px;
+}
+
+.icon-save-profile {
+  width:35px; 
+  height:35px;
+}
+
+.btn {
+    border: none; /* Elimina el borde por defecto */
+    outline: none; /* Elimina el contorno al hacer clic */
+    cursor: pointer;
+      transition: transform 0.2s ease;
+    
+  }
+  .btn:hover {
+    transition: transform 0.2s ease;
+    transform: scale(0.9); /* Escala el ícono al 90% al hacer clic */
+  
+  }
+  .btn:focus,
+  .btn:active {
+    border: none; /* Asegura que no aparezca borde en estos estados */
+    outline: none; /* Asegura que no aparezca contorno en estos estados */
+  }
+  .btn:active img {
+    transform: scale(0.9); /* Escala el ícono al 90% al hacer clic */
+  }
+
+  .custom-navbar {
+    background-color: #050b25; /* Cambia este color por el que prefieras */
+}
+
+ Estilo general para tablas Bootstrap */
+.table-custom {
+  border-collapse: collapse; /* Asegura que las celdas se unan sin espacio */
+  width: 100%; /* Ajusta el ancho de la tabla al contenedor */
+}
+
+/* Estilo moderno para el thead de tablas */
+.table-custom thead {
+  background-color: #343a40; /* Color de fondo oscuro para el encabezado */
+  color: #ffffff; /* Color de texto blanco */
+  text-transform: uppercase; /* Convierte el texto a mayúsculas */
+}
+
+.table-custom thead th {
+  padding: 15px; /* Espaciado interno */
+  border: none; /* Sin borde en el encabezado */
+  font-weight: bold; /* Negrita en encabezados */
+  font-size: 0.8rem; /* Tamaño de fuente más grande */
+}
+
+.table-custom thead th:hover {
+  background-color: #557492; /* Color de fondo al pasar el ratón */
+  color: white;
+  cursor: pointer; /* Cambia el cursor al pasar el ratón */
+}
+
+.table-custom thead th:first-child {
+  border-top-left-radius: 8px; /* Esquinas redondeadas */
+}
+
+.table-custom thead th:last-child {
+  border-top-right-radius: 8px; /* Esquinas redondeadas */
+}
+
+.table-custom th, .table-custom td {
+  padding: 12px 15px; /* Espaciado interno */
+  text-align: left; /* Alineación del texto */
+  border: 1px solid #dee2e6; /* Color del borde */
+}
+
+.table-custom th {
+  background-color: #f8f9fa; /* Color de fondo para encabezados */
+  color: #343a40; /* Color del texto para encabezados */
+  font-weight: bold; /* Negrita en encabezados */
+}
+
+.table-custom tr:nth-child(even) {
+  background-color: #f2f2f2; /* Color de fondo alternativo para filas */
+}
+
+.table-custom tr:hover {
+  background-color: #e2e6ea; /* Color de fondo al pasar el ratón sobre la fila */
+}
+
+.table-custom .table-action {
+  display: flex;
+  justify-content: space-around; /* Espacio uniforme entre acciones */
+}
+
+.table-custom .table-action button {
+  border: none; /* Sin borde */
+  background: none; /* Sin fondo */
+  cursor: pointer; /* Cambiar cursor al pasar el ratón */
+  color: #007bff; /* Color de texto de los botones */
+}
+
+.table-custom .table-action button:hover {
+  text-decoration: underline; /* Subrayar al pasar el ratón */
+}
+/*
