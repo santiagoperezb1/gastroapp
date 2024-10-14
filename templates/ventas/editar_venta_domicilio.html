@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-{% load custom_filters %}
+{% load humanize %}
 
 {% block extra_css %}
     <link rel="stylesheet" href="{% static 'css/ventas/editar_venta.css' %}">
@@ -19,31 +19,31 @@
                         <div class="row mb-2">
                             <div class="col">
                                 <label>Subtotal:</label>
-                                <span>$ {{ compra.total_sin_descuento|format_number }}</span>
+                                <span>$ {{ compra.total_sin_descuento|floatformat:0|intcomma }}</span>
                             </div>
                         </div>
                         <div class="row mb-2">
                             <div class="col">
                                 <label>Descuento:</label>
-                                <span>$ - {{ compra.total_descuento|format_number }}</span>
+                                <span>$ - {{ compra.total_descuento|floatformat:0|intcomma }}</span>
                             </div>
                         </div>
                         <div class="row mb-2">
                             <div class="col">
-                                <label>Propina:</label>
-                                <span>$ {{ compra.total_propina|format_number }}</span>
+                                <label>Domicilio:</label>
+                                <span>$ {{ compra.total_propina|floatformat:0|intcomma }}</span>
                             </div>
                         </div>
                         <div class="row mb-2">
                             <div class="col">
                                 <label>Total IVA:</label>
-                                <span>$ {{ compra.valor_impuesto|format_number }}</span>
+                                <span>$ {{ compra.valor_impuesto|floatformat:0|intcomma }}</span>
                             </div>
                         </div>
                         <div class="row mb-2">
                             <div class="col">
                                 <label>Total Cancelado:</label>
-                                <span>$ {{ compra.total_impuesto|format_number }}</span>
+                                <span>$ {{ compra.total_impuesto|floatformat:0|intcomma }}</span>
                             </div>
                         </div>
                         <br>

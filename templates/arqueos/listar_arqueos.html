@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-{% load custom_filters %}
+{% load humanize %}
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/arqueos/listar_arqueo_caja.css' %}">
@@ -40,12 +40,12 @@
                         <td>{{ arqueo.id }}</td>
                         <td>{{ arqueo.fecha_inicio|date:"d/m/Y h:i a" }}</td>
                         <td>{{ arqueo.fecha_fin|date:"d/m/Y h:i a" }}</td>
-                        <td>${{ arqueo.efectivo_inicial|format_number }}</td>
-                        <td>${{ arqueo.total_ventas|format_number }}</td>
-                        <td>${{ arqueo.total_ventas_domicilios|format_number }}</td>
-                        <td>${{ arqueo.total_pagos|format_number }}</td>
-                        <td>${{ arqueo.efectivo_final|format_number }}</td>
-                        <td>${{ arqueo.efectivo_final_registrado|format_number }}</td>
+                        <td>${{ arqueo.efectivo_inicial|floatformat:0|intcomma }}</td>
+                        <td>${{ arqueo.total_ventas|floatformat:0|intcomma }}</td>
+                        <td>${{ arqueo.total_ventas_domicilios|floatformat:0|intcomma }}</td>
+                        <td>${{ arqueo.total_pagos|floatformat:0|intcomma }}</td>
+                        <td>${{ arqueo.efectivo_final|floatformat:0|intcomma }}</td>
+                        <td>${{ arqueo.efectivo_final_registrado|floatformat:0|intcomma }}</td>
                         <td>{{ arqueo.estado }}</td>
                         <td>
                             {% if arqueo.estado == 'En Curso' %}

@@ -4,6 +4,13 @@ html, body {
   height: 100%; /* Asegúrate de que el body y html ocupen el 100% */
 }
 
+.logo {
+  width: 110px; /* Ajusta el tamaño del logo */
+  height: auto; /* Mantiene la proporción */
+  border-radius: 20px; /* Bordes redondeados para un estilo más suave */
+  box-shadow: 0 4px 5px rgba(233, 230, 230, 0.771); /* Sombra sutil para profundidad */
+}
+
 .custom-footer {
   background-color: #050b25; /* Cambia este color por el que prefieras */
   color: white;

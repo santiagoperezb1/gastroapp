@@ -1,5 +1,5 @@
 {% load static %}
-{% load custom_filters %}
+{% load humanize %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -45,8 +45,8 @@
                 <tr class="total-row">
                     <td>{{ detalle.plato.nombre }}</td>
                     <td>{{ detalle.cantidad }}</td>
-                    <td>${{ detalle.precio_unitario|format_number }}</td>
-                    <td>${{ detalle.total_detalle|format_number }}</td>
+                    <td>${{ detalle.precio_unitario|floatformat:0|intcomma }}</td>
+                    <td>${{ detalle.total_detalle|floatformat:0|intcomma }}</td>
                 </tr>
                 {% empty %}
                 <tr>
@@ -60,27 +60,27 @@
             <tfoot>
                 <tr class="total-row-alt">
                     <td colspan="3">Subtotal</td>
-                    <td>${{ compra.total_sin_descuento|format_number }}</td>
+                    <td>${{ compra.total_sin_descuento|floatformat:0|intcomma }}</td>
                 </tr>
                 {% if compra.total_descuento > 0 %}
                 <tr class="total-row-alt">
                     <td colspan="3">Descuento</td>
-                    <td>-${{ compra.total_descuento|format_number }}</td>
+                    <td>-${{ compra.total_descuento|floatformat:0|intcomma }}</td>
                 </tr>
                 {% endif %}
                 <tr class="total-row-alt">
                     <td colspan="3">Total IVA</td>
-                    <td>${{ compra.valor_impuesto|format_number }}</td>
+                    <td>${{ compra.valor_impuesto|floatformat:0|intcomma }}</td>
                 </tr>
                 {% if compra.total_propina > 0 %}
                 <tr class="total-row-alt">
                     <td colspan="3">Propina</td>
-                    <td>${{ compra.total_propina|format_number }}</td>
+                    <td>${{ compra.total_propina|floatformat:0|intcomma }}</td>
                 </tr>
                 {% endif %}
                 <tr class="total-row-alt">
                     <td colspan="3">Total Cancelado</td>
-                    <td>${{ compra.total_impuesto|format_number }}</td>
+                    <td>${{ compra.total_impuesto|floatformat:0|intcomma }}</td>
                 </tr>
             </tfoot>
         </table>
@@ -95,8 +95,8 @@
                 </tr>
                 <tr>
                     <td>{{ compra.impuesto }}</td>
-                    <td>${{ compra.total_sin_descuento|format_number }}</td>
-                    <td>${{ compra.valor_impuesto|format_number }}</td>
+                    <td>${{ compra.total_sin_descuento|floatformat:0|intcomma }}</td>
+                    <td>${{ compra.valor_impuesto|floatformat:0|intcomma }}</td>
                 </tr>
             </tbody>
         </table>

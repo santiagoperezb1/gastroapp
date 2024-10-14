@@ -191,6 +191,53 @@ def eliminar_plato(request, item_id, pedido_id):
     return JsonResponse({'success': False}, status=400)
 
 @login_required(login_url='/login/')
+def cargar_detalle_pedido_domicilio(request, pedido_id):
+    pedido = get_object_or_404(PedidoDomicilio, id=pedido_id)
+
+    if request.method == 'POST':
+        item_id = request.POST.get('item_id')
+        action = request.POST.get('action')
+
+        if action == 'editar':
+            item = get_object_or_404(ItemPedidoDomicilio, id=item_id)
+            nueva_cantidad = request.POST.get('nueva_cantidad')
+            item.cantidad = nueva_cantidad
+            item.save()
+            return JsonResponse({'success': True})
+
+        elif action == 'eliminar':
+            item = get_object_or_404(ItemPedidoDomicilio, id=item_id)
+            item.delete()
+            return JsonResponse({'success': True})
+
+    context = {
+        'pedido': pedido,
+    }
+
+    # Renderizar el template con los detalles del pedido
+    html = render_to_string('pedidos/detalle_pedido_modal_domicilio.html', context)
+    return JsonResponse({'html': html})
+
+def editar_plato_domicilio(request, item_id, pedido_id):
+    if request.method == "POST":
+        nueva_cantidad = request.POST.get('cantidad')
+        item = ItemPedidoDomicilio.objects.get(id=item_id)
+        item.cantidad = nueva_cantidad
+        item.save()
+        return JsonResponse({'success': True})
+    return JsonResponse({'success': False}, status=400)
+    
+def eliminar_plato_domicilio(request, item_id, pedido_id):
+    if request.method == "POST":
+        try:
+            item = ItemPedidoDomicilio.objects.get(id=item_id)
+            item.delete()
+            return JsonResponse({'success': True})
+        except ItemPedido.DoesNotExist:
+            return JsonResponse({'success': False}, status=404)
+    return JsonResponse({'success': False}, status=400)
+
+@login_required(login_url='/login/')
 def generar_comanda(request, pedido_id):
     # Obtener el pedido y asegurar que el usuario sea el propietario
     pedido = get_object_or_404(Pedido, id=pedido_id, usuario=request.user)
@@ -424,6 +471,8 @@ def finalizar_venta_domicilio(request, pedido_id):
             impuesto = form.cleaned_data['impuesto']
             descuento = form.cleaned_data['descuento']
             propina = form.cleaned_data['propina']
+            print(type(propina))
+            print(propina)
             descuento = Decimal(descuento)
             propina = Decimal(propina)
             guardar_cliente = form.cleaned_data['guardar_cliente']
@@ -447,7 +496,7 @@ def finalizar_venta_domicilio(request, pedido_id):
             total = sum(item.plato.precio * item.cantidad for item in pedido.itempedidodomicilio_set.all())
 
             descontar = (descuento*total/100)
-            adicionar = (propina*total/100)
+            adicionar = propina
 
             total_sin_descuento = total
 

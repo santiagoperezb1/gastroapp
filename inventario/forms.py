@@ -11,7 +11,6 @@ class ProductoForm(forms.ModelForm):
             'precio': forms.NumberInput(attrs={
                 'class': 'form-control', 
                 'placeholder': 'Precio', 
-                'step': '0.01',  # Permite decimales
                 'min': '0'       # Establece el valor mínimo permitido (opcional)
             }),
             'unidad_medida': forms.Select(attrs={'class': 'form-control'})

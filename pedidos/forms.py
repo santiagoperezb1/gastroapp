@@ -149,7 +149,7 @@ class FinalizarVentaDomicilioForm(forms.Form):
     propina = forms.DecimalField(
         required=False,
         initial=0.00,
-        max_digits=5,
+        max_digits=8,
         decimal_places=2,
         widget=forms.NumberInput(attrs={
             'class': 'form-control propina-field',

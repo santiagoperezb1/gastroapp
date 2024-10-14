@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-{% load custom_filters %}
+{% load humanize %}
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/pedidos/finalizar_venta.css' %}">
@@ -44,7 +44,7 @@
                                 </td>
                                 <td>
                                     <a href="{% url 'detalle_pedido' pedido.mesa.id %}" class="text-dark">
-                                        <h5>{{ item.plato.nombre }} ($ {{ item.plato.precio|format_number }})</h5>
+                                        <h5>{{ item.plato.nombre }} ($ {{ item.plato.precio|floatformat:0|intcomma }})</h5>
                                     </a>
                                 </td>
                                 <td>
@@ -52,7 +52,7 @@
                                 </td>
                                 <td>
                                     <span class="badge badge-custom-large text-dark rounded-pill item-total">
-                                        $ {{ item.total|format_number }}
+                                        $ {{ item.total|floatformat:0|intcomma }}
                                     </span>
                                 </td>
                             </tr>
@@ -65,7 +65,7 @@
 
                     <div class="card transparent-card">
                         <h3 class="label-text mx-2">Subtotal de articulos seleccionados: $<span id="totalSeleccionado">0.00</span></h3>
-                        <h3 class="label-text mx-2">Subtotal restante: $<span id="totalRestanteCal">{{ total|format_number }}</span></h3>
+                        <h3 class="label-text mx-2">Subtotal restante: $<span id="totalRestanteCal">{{ total|floatformat:0|intcomma }}</span></h3>
                     </div>
                     <br>
                     <div class="form-group d-flex align-items-center">
@@ -91,7 +91,7 @@
         </div>
         <div class="badge-container d-flex justify-content-center">
             <span class="badge badge-custom-large bg-hover rounded-pill label-text" id="totalRestante" data-total="{{ total|floatformat:3 }}">
-                Subtotal $ <span class="text-value price-text"> {{ total|format_number }}</span>
+                Subtotal $ <span class="text-value price-text"> {{ total|floatformat:0|intcomma }}</span>
                 <img src="{% static 'icons/cash_fgreen.svg' %}" alt="Mesa" style="width:32px; height:32px;">
             </span>
         </div>

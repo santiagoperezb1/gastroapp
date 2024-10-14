@@ -1,6 +1,6 @@
 /* Fondo de la página con imagen */
 body {
-    background-image: url('/static/images/login_fond.png');
+    background-image: url('/static/images/login_sign.png');
     background-size: cover;
     background-position: center;
     height: 100vh;

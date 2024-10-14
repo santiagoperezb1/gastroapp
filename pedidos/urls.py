@@ -17,7 +17,10 @@ from .views import (
     imprimir_comanda_pedido_domi,
     cargar_detalle_pedido,
     editar_plato,
-    eliminar_plato
+    eliminar_plato,
+    cargar_detalle_pedido_domicilio,
+    editar_plato_domicilio,
+    eliminar_plato_domicilio,
 )
 
 urlpatterns = [
@@ -39,4 +42,7 @@ urlpatterns = [
     path('cargar-detalle-pedido/<int:pedido_id>/', cargar_detalle_pedido, name='cargar_detalle_pedido'),
     path('editar-plato/<int:item_id>/<int:pedido_id>/', editar_plato, name='editar_plato'),
     path('eliminar-plato/<int:item_id>/<int:pedido_id>/', eliminar_plato, name='eliminar_plato'),
+    path('cargar-detalle-pedido-domicilio/<int:pedido_id>/', cargar_detalle_pedido_domicilio, name='cargar_detalle_pedido_domicilio'),
+    path('editar-plato-domicilio/<int:item_id>/<int:pedido_id>/', editar_plato_domicilio, name='editar_plato_domicilio'),
+    path('eliminar-plato-domicilio/<int:item_id>/<int:pedido_id>/', eliminar_plato_domicilio, name='eliminar_plato_domicilio'),
 ]

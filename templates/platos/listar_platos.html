@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load humanize %}
 
 {% block extra_css %}
     <link rel="stylesheet" href="{% static 'css/platos/listar_platos.css' %}">
@@ -73,7 +74,7 @@
                                     
                                     <div>
                                         <a href="{% url 'actualizar_plato' plato.id %}">
-                                            <i class="fa-solid fa-tag"> ${{ plato.precio|floatformat:0 }}</i>
+                                            <i class="fa-solid fa-tag"> ${{ plato.precio|floatformat:0|intcomma }}</i>
                                         </a>
                                     </div>
                                     <div class="text-center mt-4">

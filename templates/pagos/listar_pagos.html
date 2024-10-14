@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load humanize %}
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/pagos/listar_pagos.css' %}">
@@ -55,8 +56,8 @@
                 <td>{{ pago.concepto }}</td>
                 <td>{{ pago.observaciones }}</td>
                 <td>{{ pago.metodo_pago }}</td>
-                <td>${{ pago.valor }}</td>
-                <td>${{ pago.calcular_total }}</td>
+                <td>${{ pago.valor|floatformat:0|intcomma }}</td>
+                <td>${{ pago.calcular_total|floatformat:0|intcomma }}</td>
                 <td>
                     <a href="{% url 'editar_pago' pago.id %}" class="btn btn-primary btn-sm">Editar</a>
                     <a href="#" class="btn btn-danger btn-sm" onclick="confirmDelete('{{ pago.id }}'); return false;">Eliminar</a>

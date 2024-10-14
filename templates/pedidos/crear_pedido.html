@@ -65,9 +65,21 @@
             </div>
         </div>
 
+       <!-- Modal para Detalles del Pedido Domicilio-->
+        <div class="modal fade" id="pedidoDetailsModalDomi" tabindex="-1" role="dialog" aria-labelledby="pedidoDetailsModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document" style="background: transparent; border: none;">
+                <div class="modal-content" style="background: transparent; border: none;">
+      
+                    <div class="modal-body" id="modalBodyDomi" style="background: transparent; border: none;">
+                        <!-- Aquí se cargarán los detalles del pedido -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Columna derecha: Pedidos Activos como cartas -->
         <div class="col-md-9 mb-4">
-            <div class="card shadow-sm mb-4 fixed-size-card" style="background: transparent; border-style: none; scrollbar-width: thin; scrollbar-color: #007bff #f8f9fa;">
+            <div class="card shadow-sm mb-4 fixed-size-card" style="background: transparent; border-style: none; scrollbar-width: thin; scrollbar-color: #007bff #f8f9fa; overflow-y: auto; height: 500px;">
                 <div class="card-body">
                     <div class="row pedidos-activos">
                         {% for pedido in pedidos_activos %}
@@ -91,10 +103,8 @@
                                         </li>
                                         {% endfor %}                                      
                                     </ul>
-                                    
                                     <a href="{% url 'agregar_plato_pedido' pedido.id %}" class="btn btn-hover mt-3 btn-detalles"><img src="{% static 'icons/add_sblue.svg' %}" alt="Mesa" style="width:45px; height:45px;"></a>            
                                     <a href="{% url 'finalizar_venta' pedido.id %}" class="btn btn-hover mt-3 btn-detalles"><img src="{% static 'icons/check_borderb.svg' %}" alt="Mesa" style="width:45px; height:45px;"></a>
-                                    
                                 </div>
                             </div>
                         </div>
@@ -150,8 +160,9 @@
                         {% for pedido, items in pedidos_con_items %}
                         <div class="col-md-6 mb-4 pedido-card-container">
                             <div class="card-shadow-test">
-                                
-                                <h6 class="modern-title-small mt-2"><strong> {{ pedido.id }} | {{ pedido.nombre_cliente }}</strong></h6>  
+                                <a href="{% url 'detalle_pedido_domicilio' pedido.id %}">
+                                    <h6 class="modern-title-small mt-2"><strong> {{ pedido.id }} | {{ pedido.nombre_cliente }}</strong></h6>
+                                </a>                          
                                 <div class="card-body text-center pedido-body">                           
                                     <h4 class="modern-subtitle-small"><img src="{% static 'icons/location.svg' %}" alt="Mesa" style="width:22px; height:22px;"> {{ pedido.direccion_cliente }}<br><img src="{% static 'icons/hora.svg' %}" alt="Mesa" style="width:22px; height:22px;"> {{ pedido.fecha_pedido|date:"h:i a" }}</h4>
                                     <ul class="list-group pedido-items">
@@ -162,14 +173,15 @@
                                             {% elif item.estado == 'En proceso' %}
                                                 estado-en-proceso
                                             {% endif %}">
-                                            <button class="btn btn-detalles"><strong>{{ item.cantidad }} | {{ item.plato.nombre }}</strong></button>
+                                            <button class="btn btn-detalles" onclick="showDetailsDomicilio('{{ pedido.id }}')">
+                                                <strong>{{ item.cantidad }} | {{ item.plato.nombre }}</strong>
+                                            </button>
                                         </li>
 
                                         {% endfor %}
                                     </ul>
-                                    <a href="{% url 'detalle_pedido_domicilio' pedido.id %}" class="btn btn-hover mt-3 btn-detalles"><img src="{% static 'icons/info_syellow.svg' %}" alt="Mesa" style="width:40px; height:40px;"></a>
                                     <a href="{% url 'agregar_plato_pedido_domicilio' pedido.id %}" class="btn btn-hover mt-3 btn-detalles"><img src="{% static 'icons/add_sblue.svg' %}" alt="Mesa" style="width:45px; height:45px;"></a>            
-                                    <a href="{% url 'finalizar_venta_domicilio' pedido.id %}" class="btn btn-hover mt-3 btn-detalles"><img src="{% static 'icons/check_sgreen.svg' %}" alt="Mesa" style="width:45px; height:45px;"></a>
+                                    <a href="{% url 'finalizar_venta_domicilio' pedido.id %}" class="btn btn-hover mt-3 btn-detalles"><img src="{% static 'icons/check_borderb.svg' %}" alt="Mesa" style="width:45px; height:45px;"></a>
                                 </div>
                             </div>
                         </div>
@@ -184,6 +196,11 @@
 <input type="hidden" id="cargar-detalle-pedido-url" value="{% url 'cargar_detalle_pedido' 0 %}">
 <input type="hidden" id="editar-plato-url" value="{% url 'editar_plato' 0 0 %}">
 <input type="hidden" id="eliminar-plato-url" value="{% url 'eliminar_plato' 0 0 %}">
+
+<input type="hidden" id="cargar-detalle-pedido-domi-url" value="{% url 'cargar_detalle_pedido_domicilio' 0 %}">
+<input type="hidden" id="editar-plato-domi-url" value="{% url 'editar_plato_domicilio' 0 0 %}">
+<input type="hidden" id="eliminar-plato-domi-url" value="{% url 'eliminar_plato_domicilio' 0 0 %}">
+
 <script>
     var csrfToken = '{{ csrf_token }}';
 </script>

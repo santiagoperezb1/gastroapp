@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-{% load custom_filters %}
+{% load humanize %}
 
 {% block extra_css %}
   <link rel="stylesheet" href="{% static 'css/ventas/estadisticas.css' %}">
@@ -48,7 +48,7 @@
                   <ul class="list-group list-group-flush">
                     <li class="list-group-item list-group-item-custom d-flex justify-content-between align-items-center">
                     <strong> ᴛᴏᴛᴀʟ ᴅᴇ ᴅɪɴᴇʀᴏ</strong>
-                      <span class="badge badge-custom-large rounded-pill">${{ total_ventas|format_number  }}</span>
+                      <span class="badge badge-custom-large rounded-pill">${{ total_ventas|floatformat:0|intcomma  }}</span>
                     </li>
                     <li class="list-group-item list-group-item-custom d-flex justify-content-between align-items-center">
                     <strong>ᴄᴀɴᴛɪᴅᴀᴅ ᴅᴇ ᴘʟᴀᴛᴏs</strong>
@@ -66,7 +66,7 @@
                 <ul class="list-group list-group-flush">
                   <li class="list-group-item list-group-item-custom d-flex justify-content-between align-items-center">
                    <strong> ᴛᴏᴛᴀʟ ᴅᴇ ᴅɪɴᴇʀᴏ</strong>
-                   <span class="badge badge-custom-large rounded-pill">${{ total_ventas_domicilio|format_number  }}</span>
+                   <span class="badge badge-custom-large rounded-pill">${{ total_ventas_domicilio|floatformat:0|intcomma  }}</span>
                   </li>
                   <li class="list-group-item list-group-item-custom d-flex justify-content-between align-items-center">
                   <strong>ᴄᴀɴᴛɪᴅᴀᴅ ᴅᴇ ᴘʟᴀᴛᴏs</strong>
@@ -88,7 +88,7 @@
                     {% for tipo, total in ventas_por_tipo_pago.items %}
                     <li class="list-group-item list-group-item-custom d-flex justify-content-between align-items-center">
                       <strong>{{ tipo }}</strong>
-                      <h4 class="text-dark">${{ total }}</h4>
+                      <h4 class="text-dark">${{ total|floatformat:0|intcomma }}</h4>
                     </li>
                     {% endfor %}
                   </ul>
@@ -100,7 +100,7 @@
                     {% for tipo, total in ventas_por_tipo_pago_domicilio.items %}
                     <li class="list-group-item list-group-item-custom d-flex justify-content-between align-items-center">
                       {{ tipo }}
-                      <h4 class="text-dark">${{ total }}</h4>
+                      <h4 class="text-dark">${{ total|floatformat:0|intcomma }}</h4>
                     </li>
                     {% endfor %}
                   </ul>
@@ -120,7 +120,7 @@
                 <ul class="list-group list-group-flush">
                   {% for mes, total in ventas_por_mes.items %}
                   <li class="list-group-item list-group-item-custom">{{ mes }} |
-                    <h4 class="text-dark"> ${{ total }}</h4>
+                    <h4 class="text-dark"> ${{ total|floatformat:0|intcomma }}</h4>
                   </li>
                   {% endfor %}
                 </ul>
@@ -140,7 +140,7 @@
                   <ul class="list-group list-group-flush">
                     {% for mes, total in ventas_por_mes_domicilio.items %}
                     <li class="list-group-item list-group-item-custom">{{ mes }} |
-                      <h4 class="text-dark"> ${{ total }}</h4>
+                      <h4 class="text-dark"> ${{ total|floatformat:0|intcomma }}</h4>
                     </li>
                     {% endfor %}
                   </ul>

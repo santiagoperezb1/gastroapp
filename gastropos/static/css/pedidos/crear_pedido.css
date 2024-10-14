@@ -35,6 +35,19 @@
     display: none;
   }
 
+  .modal-dialog {
+    max-width: 600px; /* Ajusta este valor según tus necesidades */
+}
+
+.modal-body {
+    padding: 20px; /* Aumenta el padding para más espacio */
+}
+
+.card-shadow-modal {
+    padding: 16px; /* Aumenta el padding interno de la tarjeta */
+}
+
+
   .card-title {
     font-size: 1.25rem; /* Tamaño del texto, ajusta según prefieras */
     font-weight: 700; /* Peso de la fuente, negrita */
@@ -123,6 +136,17 @@
   }
   
   .modern-title-small {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.3rem; /* Tamaño de fuente grande */
+    font-weight: 400; /* Peso de fuente para un toque moderno */
+    color: #bed1db; /* Color de texto oscuro para buen contraste */
+    text-align: center; /* Centrar el título */
+    margin-bottom: 1rem; /* Espacio debajo del título */
+    border-bottom: 2px solid #0468ec; /* Línea inferior para destacar */
+    padding-bottom: 0.5rem; /* Espacio entre el texto y la línea */
+  }
+
+  .modern-subtitle-small {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 1.3rem; /* Tamaño de fuente grande */
     font-weight: 400; /* Peso de fuente para un toque moderno */

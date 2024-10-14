@@ -1,36 +1,36 @@
 
-    <ul class="card-shadow-test">
-        {% for item in pedido.itempedido_set.all %}
-        <li class="list-group-item d-flex justify-content-between align-items-center">
+<ul class="card-shadow-modal">
+    {% for item in pedido.itempedido_set.all %}
+    <li class="list-group-item d-flex">
+        <div class="col-4">
             <strong>{{ item.plato.nombre }}</strong>
+        </div>
+        <div class="col-5 d-flex align-items-center">
             <div class="input-group">
-                <button class="btn btn-outline-secondary mx-2" onclick="decrementarCantidad('{{ item.id }}')">-</button>
-                <input type="number" value="{{ item.cantidad }}" min="1" id="cantidad_{{ item.id }}" class="form-control mx-1" style="width: 60px;">
-                <button class="btn btn-outline-secondary mx-2" onclick="incrementarCantidad('{{ item.id }}')">+</button>
+                <button class="btn btn-outline-secondary" onclick="decrementarCantidad('{{ item.id }}')">-</button>
+                <input type="number" value="{{ item.cantidad }}" min="1" id="cantidad_{{ item.id }}" class="form-control" style="width: 60px;">
+                <button class="btn btn-outline-secondary" onclick="incrementarCantidad('{{ item.id }}')">+</button>
             </div>
-            <div>
-                <button class="btn btn-warning btn-sm mx-1" onclick="editarPlato('{{ item.id }}', '{{ pedido.id }}')">Editar</button>
-                
-            </div>
-            <div>
-            
-                <button class="btn btn-danger btn-sm" onclick="eliminarPlato('{{ item.id }}', '{{ pedido.id }}')">Eliminar</button>
-            </div>
-        </li>
-        {% endfor %}
-    </ul>
-
+        </div>
+        <div class="col-3 d-flex justify-content-end">
+            <button class="btn btn-warning btn-sm mx-1" onclick="editarPlato('{{ item.id }}', '{{ pedido.id }}')">Editar</button>
+            <button class="btn btn-danger btn-sm" onclick="eliminarPlato('{{ item.id }}', '{{ pedido.id }}')">Eliminar</button>
+        </div>
+    </li>
+    {% endfor %}
+</ul>
 
 <!-- Estilos CSS -->
 <style>
     .modal-body {
         background-color: #f8f9fa; /* Fondo claro */
+        padding: 20px;
     }
-    .card-shadow-test {
-  background: #1b252afe;/* Opacidad ajustada para mayor visibilidad */
+    .card-shadow-modal {
+  background: #fffffffe;/* Opacidad ajustada para mayor visibilidad */
   border-radius: 8px; /* Bordes redondeados para un estilo más suave */
   box-shadow: 0 4px 8px rgba(230, 113, 10, 0.476); /* Sombra sutil para profundidad */
-  padding: 16px; /* Espaciado interno para contenido más cómodo */
+  padding: 8px; /* Espaciado interno para contenido más cómodo */
   border-left: 3px solid rgba(238, 156, 74, 0.686);
   margin-bottom: 10px; /* Espacio entre los items */
   margin: 16px; /* Margen para separación de otros elementos */
@@ -42,8 +42,8 @@
 }
 
     .list-group-item {
-        background-color: #1b252afe; /* Fondo blanco para los items */
-        color: white;
+        background-color: #fffdfdfe; /* Fondo blanco para los items */
+        color: rgb(8, 8, 8);
         border: none; /* Borde gris claro */
         margin-bottom: 10px; /* Espacio entre los items */
         border-bottom: 1px solid white;

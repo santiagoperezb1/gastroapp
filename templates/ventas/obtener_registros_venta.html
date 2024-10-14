@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-{% load custom_filters %}
+{% load humanize %}
 
 {% block extra_css %}
     <link rel="stylesheet" href="{% static 'css/ventas/obtener_registros_venta.css' %}">
@@ -84,11 +84,11 @@
                                     </ul>
                                 </td>
                                 <td>{{ compra.get_tipo_pago_display }}</td>
-                                <td>${{ compra.total_sin_descuento|format_number }}</td>
-                                <td>${{ compra.total_descuento|format_number }}</td>
-                                <td>${{ compra.total_propina|format_number }}</td>
-                                <td>${{ compra.valor_impuesto|format_number }}</td>
-                                <td>${{ compra.total_impuesto|format_number }}</td>
+                                <td>${{ compra.total_sin_descuento|floatformat:0|intcomma }}</td>
+                                <td>${{ compra.total_descuento|floatformat:0|intcomma }}</td>
+                                <td>${{ compra.total_propina|floatformat:0|intcomma }}</td>
+                                <td>${{ compra.valor_impuesto|floatformat:0|intcomma }}</td>
+                                <td>${{ compra.total_impuesto|floatformat:0|intcomma }}</td>
                             </tr>
                             {% empty %}
                             <tr>
@@ -161,7 +161,7 @@
                                 <th>tipo de pago</th>
                                 <th>subtotal</th>
                                 <th>descuento</th>
-                                <th>propina</th>
+                                <th>domicilio</th>
                                 <th>total iva</th>
                                 <th>total</th>                              
                             </tr>
@@ -189,11 +189,11 @@
                                     </ul>
                                 </td>
                                 <td>{{ compra.get_tipo_pago_display }}</td>
-                                <td>${{ compra.total_sin_descuento|format_number }}</td>
-                                <td>${{ compra.total_descuento|format_number }}</td>
-                                <td>${{ compra.total_propina|format_number }}</td>
-                                <td>${{ compra.valor_impuesto|format_number }}</td>
-                                <td>${{ compra.total_impuesto|format_number }}</td>
+                                <td>${{ compra.total_sin_descuento|floatformat:0|intcomma }}</td>
+                                <td>${{ compra.total_descuento|floatformat:0|intcomma }}</td>
+                                <td>${{ compra.total_propina|floatformat:0|intcomma }}</td>
+                                <td>${{ compra.valor_impuesto|floatformat:0|intcomma }}</td>
+                                <td>${{ compra.total_impuesto|floatformat:0|intcomma }}</td>
                             </tr>
                             {% empty %}
                             <tr>

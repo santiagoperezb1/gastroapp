@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-{% load custom_filters %}
+{% load humanize %}
 
 {% block extra_css %}
     <link rel="stylesheet" href="{% static 'css/pedidos/agregar_plato.css' %}">
@@ -67,7 +67,7 @@
                                                 {% endif %}
                                                 <div class="card-body text-center">
                                                     <h6 class="card-title-plato">{{ plato.nombre }}</h6>
-                                                    <i class="fa-solid fa-tag" style="font-size: 15px;"> {{ plato.precio|format_number }}</i><br>
+                                                    <i class="fa-solid fa-tag" style="font-size: 15px;"> {{ plato.precio|floatformat:0|intcomma }}</i><br>
                                                 </div>
                                             </div>
                                         </div>
